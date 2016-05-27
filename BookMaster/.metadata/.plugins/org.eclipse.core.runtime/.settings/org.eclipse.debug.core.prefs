@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="returnBook"/>\r\n<expression enabled\="true" text\="returnBook"/>\r\n<expression enabled\="true" text\="e.printStackTrace();"/>\r\n<expression enabled\="true" text\="psbook.toString()"/>\r\n<expression enabled\="true" text\="psbook.toString()"/>\r\n<expression enabled\="true" text\="psstock"/>\r\n</watchExpressions>\r\n

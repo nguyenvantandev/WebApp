@@ -1,0 +1,648 @@
+package action;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import connection.DbConnection;
+import value.BookInfo;
+
+@WebServlet("/Koushingamen")
+public class Koushingamen extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public Koushingamen() {
+		super();
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+
+		String bookid = request.getParameter("id");
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String publisher = request.getParameter("publisher");
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
+		String zaiko = request.getParameter("zaiko");
+		String action = request.getParameter("action");
+		String bookupdatecount = request.getParameter("bookupdatecount");
+		String stockupdatecount = request.getParameter("stockupdatecount");
+
+		String searchid = request.getParameter("searchid");
+		if (searchid == null) {
+			searchid = "";
+		}
+		String searchtitle = request.getParameter("searchtitle");
+		if (searchtitle == null) {
+			searchtitle = "";
+		}
+		String searchauthor = request.getParameter("searchauthor");
+		if (searchauthor == null) {
+			searchauthor = "";
+		}
+		String searchpulisher = request.getParameter("searchpulisher");
+		if (searchpulisher == null) {
+			searchpulisher = "";
+		}
+		String searchpulication_dayin = request.getParameter("searchpulication_dayin");
+		if (searchpulication_dayin == null) {
+			searchpulication_dayin = "";
+		}
+		String searchpulication_dayout = request.getParameter("searchpulication_dayout");
+		if (searchpulication_dayout == null) {
+			searchpulication_dayout = "";
+		}
+		String searchcheckbox = request.getParameter("searchcheckbox");
+		if (searchcheckbox == null) {
+			searchcheckbox = "false";
+		}
+
+		// 追加処理 => Start
+		if (bookid.equals("") && action.equals("追加")) {
+			//
+			DbConnection con = new DbConnection();
+			Connection connection = null;
+				String sql = "SELECT nextval('book_id_seq') AS book_id";
+				PreparedStatement psbook = null;
+				PreparedStatement psstock = null;
+				int seq = 0;
+				try {
+					connection = con.connect();
+					PreparedStatement preparedstatement = connection.prepareStatement(sql);
+					ResultSet rs_seq = preparedstatement.executeQuery();
+					while (rs_seq.next()) {
+						seq = rs_seq.getInt("book_id");
+						System.out.println(seq);
+						String insertbook = "INSERT INTO mt_book (book_id, book_title, author_name, publisher, publication_day, delete_flg, insert_day, update_cnt)VALUES (?,?,?,?,?,?,current_timestamp,0)";
+						String insertstock = "INSERT INTO tbl_book_stock(book_id, stock, insert_day, update_cnt) VALUES (?,?,current_timestamp,0)";
+						try {
+							psbook = connection.prepareStatement(insertbook);
+							psbook.setInt(1, seq);
+							psbook.setString(2, title);
+							psbook.setString(3, author);
+							psbook.setString(4, publisher);
+							Calendar c = Calendar.getInstance();
+							SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+							c.set(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(day));
+							java.sql.Date sqlDate;
+							try {
+								sqlDate = (java.sql.Date) new Date(sdf.parse(sdf.format(c.getTime())).getTime());
+								psbook.setDate(5, sqlDate);
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+								e.printStackTrace();
+							}
+							psbook.setString(6, "0");
+							int returnBook = psbook.executeUpdate();
+							if (returnBook == 1) {
+								psstock = connection.prepareStatement(insertstock);
+								if (!"".equals(zaiko)) {
+									psstock.setInt(1, seq);
+									psstock.setInt(2, Integer.parseInt(zaiko));
+									psstock.executeUpdate();
+								}
+							}
+							connection.commit();
+						} catch (SQLException se) {
+							request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+							se.printStackTrace();
+							try {
+								if (connection != null)
+									connection.rollback();
+									request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+							} catch (SQLException se2) {
+								se2.printStackTrace();
+							} // end try
+						} 
+						// 再検索 => Start
+						BookInfo info = new BookInfo();
+						String searchvalue = "SELECT book.book_id, book.book_title, book.author_name, book.publisher, book.publication_day, stock.stock, book.delete_flg, book.update_cnt AS bookupdatecount, stock.update_cnt AS stockupdatecount FROM mt_book book left JOIN tbl_book_stock stock ON book.book_id = stock.book_id WHERE book.book_id= ?";
+						try {
+							PreparedStatement preparedStatement  = connection.prepareStatement(searchvalue);
+							preparedStatement.setInt(1, seq);
+							ResultSet rs = preparedStatement.executeQuery();
+							if (rs.next()) {
+								info.setBookid(rs.getString("book_id"));
+								info.setBooktitle(rs.getString("book_title"));
+								info.setAuthorname(rs.getString("author_name"));
+								info.setPublisher(rs.getString("publisher"));
+								info.setPublicationday(rs.getString("publication_day"));
+								if ("".equals(zaiko)) {
+									info.setStock("");
+								} else {
+									info.setStock(rs.getString("stock"));
+								}
+
+								info.setDeleleflg(rs.getString("delete_flg"));
+								info.setUpdatecnt(rs.getString("bookupdatecount"));
+								info.setStockupdatecnt(rs.getString("stockupdatecount"));
+							}
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+							e.printStackTrace();
+						}
+						// 再検索 => End
+						// set value => Start
+						request.setAttribute("bookid", info.getBookid());
+						request.setAttribute("booktitle", info.getBooktitle());
+						request.setAttribute("authorname", info.getAuthorname());
+						request.setAttribute("publisher", info.getPublisher());
+						String[] dbpulicationday = info.getPublicationday().split("-");
+						request.setAttribute("year", dbpulicationday[0]);
+						request.setAttribute("month", dbpulicationday[1]);
+						request.setAttribute("day", dbpulicationday[2]);
+						request.setAttribute("stock", info.getStock());
+						request.setAttribute("bookupdatecount", info.getUpdatecnt());
+						request.setAttribute("stockupdatecount", info.getStockupdatecnt());
+						// set value => End
+					}
+				} catch (Exception ex) {
+					try {
+						connection.rollback();
+						request.setAttribute("bookid", bookid);
+						request.setAttribute("booktitle", title);
+						request.setAttribute("authorname", author);
+						request.setAttribute("publisher", publisher);
+						request.setAttribute("year", year);
+						request.setAttribute("month", month);
+						request.setAttribute("day", day);
+						request.setAttribute("stock", zaiko);
+						request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					ex.printStackTrace();
+				}
+			// For back button//
+			request.setAttribute("searchid", searchid);
+			request.setAttribute("searchtitle", searchtitle);
+			request.setAttribute("searchauthor", searchauthor);
+			request.setAttribute("searchpulisher", searchpulisher);
+			request.setAttribute("searchpulication_dayin", searchpulication_dayin);
+			request.setAttribute("searchpulication_dayout", searchpulication_dayout);
+			request.setAttribute("searchcheckbox", searchcheckbox);
+			request.setAttribute("completemessage", "本情報を登録しました。");
+			RequestDispatcher rd = request.getRequestDispatcher("koushingamen.jsp");
+			rd.forward(request, response);
+		}
+		// 追加処理 => End
+		// 更新処理 => Start
+		else if (!"".equals(bookid) && action.equals("更新")) {
+			DbConnection con = new DbConnection();
+				String sqlupdatebook = "UPDATE mt_book SET  book_title = ? , author_name = ?, publisher = ?, publication_day = ?, update_day = current_timestamp , update_cnt = update_cnt + 1 WHERE book_id = ? AND update_cnt = ?";
+				String sqlupdatestock = "UPDATE tbl_book_stock SET stock = ?, update_day = current_timestamp, update_cnt = update_cnt+1 WHERE book_id = ? AND update_cnt = ?";
+				String sqlinsertstock = "INSERT INTO tbl_book_stock(book_id, stock, insert_day, update_cnt) VALUES (?,?,current_timestamp,0)";
+				String sqldeletestock = "DELETE FROM tbl_book_stock WHERE book_id = ? AND update_cnt = ?";
+				String searchstock = "SELECT book_id, stock FROM tbl_book_stock WHERE book_id = ?";
+				String updatecondition = "SELECT book_id FROM mt_book WHERE book_id = ? AND update_cnt = ?";
+				//
+				try {
+					Connection connection = con.connect();
+					PreparedStatement searchstockstatement = connection.prepareStatement(searchstock);
+					searchstockstatement.setInt(1, Integer.parseInt(bookid));
+					ResultSet rs = searchstockstatement.executeQuery();
+					
+					PreparedStatement updateconditionstatement = connection.prepareStatement(updatecondition);
+					updateconditionstatement.setInt(1, Integer.parseInt(bookid));
+					updateconditionstatement.setInt(2, Integer.parseInt(bookupdatecount));
+					ResultSet condition = updateconditionstatement.executeQuery();
+					
+					
+					if (condition.next()) {
+						PreparedStatement updatebookstatement = connection.prepareStatement(sqlupdatebook);
+						updatebookstatement.setString(1, title);
+						updatebookstatement.setString(2, author);
+						updatebookstatement.setString(3, publisher);
+						Calendar c = Calendar.getInstance();
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+						c.set(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(day));
+						java.sql.Date sqlDate;
+						try {
+							sqlDate = (java.sql.Date) new Date(sdf.parse(sdf.format(c.getTime())).getTime());
+							updatebookstatement.setDate(4, sqlDate);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+							e.printStackTrace();
+						}
+						updatebookstatement.setInt(5, Integer.parseInt(bookid));
+						updatebookstatement.setInt(6, Integer.parseInt(bookupdatecount));
+						updatebookstatement.executeUpdate();
+						// 在庫ある
+						if (!"".equals(zaiko)) {
+								boolean choose = false;
+								while (rs.next()) {
+									// 更新場合
+									PreparedStatement updatestockstatement = connection.prepareStatement(sqlupdatestock);
+									updatestockstatement.setInt(1, Integer.parseInt(zaiko));
+									updatestockstatement.setInt(2, Integer.parseInt(bookid));
+									updatestockstatement.setInt(3, Integer.parseInt(stockupdatecount));
+									updatestockstatement.executeUpdate();
+									choose = true;
+								}
+								// 追加場合
+								if (!choose) {
+									PreparedStatement insertstockstatement = connection.prepareStatement(sqlinsertstock);
+									insertstockstatement.setInt(1, Integer.parseInt(bookid));
+									insertstockstatement.setInt(2, Integer.parseInt(zaiko));
+									insertstockstatement.executeUpdate();
+								}
+						}
+						// 在庫無し
+						else if ("".equals(zaiko)) {
+
+								while (rs.next()) {
+									PreparedStatement deletestockstatement = connection.prepareStatement(sqldeletestock);
+									deletestockstatement.setInt(1, Integer.parseInt(bookid));
+									deletestockstatement.setInt(2, Integer.parseInt(stockupdatecount));
+									deletestockstatement.executeUpdate();
+								}
+						}
+						connection.commit();
+						// 再検索 => Start
+						BookInfo info = new BookInfo();
+						String searchvalue = "SELECT book.book_id, book.book_title, book.author_name, book.publisher, book.publication_day, stock.stock, book.delete_flg, book.update_cnt AS bookupdatecount, stock.update_cnt AS stockupdatecount FROM mt_book book left JOIN tbl_book_stock stock ON book.book_id = stock.book_id WHERE book.book_id= ?";
+						try {
+							PreparedStatement preparedStatement  = connection.prepareStatement(searchvalue);
+							preparedStatement.setInt(1, Integer.parseInt(bookid));
+							ResultSet searchresult = preparedStatement.executeQuery();
+							while (searchresult.next()) {
+								info.setBookid(searchresult.getString("book_id"));
+								info.setBooktitle(searchresult.getString("book_title"));
+								info.setAuthorname(searchresult.getString("author_name"));
+								info.setPublisher(searchresult.getString("publisher"));
+								info.setPublicationday(searchresult.getString("publication_day"));
+								if ("".equals(zaiko)) {
+									info.setStock("");
+								} else {
+									info.setStock(searchresult.getString("stock"));
+								}
+								info.setDeleleflg(searchresult.getString("delete_flg"));
+								info.setUpdatecnt(searchresult.getString("bookupdatecount"));
+								info.setStockupdatecnt(searchresult.getString("stockupdatecount"));
+							}
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+							e.printStackTrace();
+						}
+						// 再検索 => End
+						// set value => Start
+						request.setAttribute("bookid", info.getBookid());
+						request.setAttribute("booktitle", info.getBooktitle());
+						request.setAttribute("authorname", info.getAuthorname());
+						request.setAttribute("publisher", info.getPublisher());
+						String[] dbpulicationday = info.getPublicationday().split("-");
+						request.setAttribute("year", dbpulicationday[0]);
+						request.setAttribute("month", dbpulicationday[1]);
+						request.setAttribute("day", dbpulicationday[2]);
+						request.setAttribute("stock", info.getStock());
+						request.setAttribute("bookupdatecount", info.getUpdatecnt());
+						request.setAttribute("stockupdatecount", info.getStockupdatecnt());
+						// set value => End
+					}
+					// 同時に更新する場合処理 => Start
+					else {
+						request.setAttribute("bookid", bookid);
+						request.setAttribute("booktitle", title);
+						request.setAttribute("authorname", author);
+						request.setAttribute("publisher", publisher);
+						request.setAttribute("year", year);
+						request.setAttribute("month", month);
+						request.setAttribute("day", day);
+						request.setAttribute("stock", zaiko);
+						request.setAttribute("bookupdatecount", bookupdatecount);
+						request.setAttribute("stockupdatecount", stockupdatecount);
+						request.setAttribute("existvalue", "1");
+					}
+					// 同時に更新する場合処理 => End
+				} catch (Exception ex) {
+					try {
+						con.connection.rollback();
+						request.setAttribute("bookid", bookid);
+						request.setAttribute("booktitle", title);
+						request.setAttribute("authorname", author);
+						request.setAttribute("publisher", publisher);
+						request.setAttribute("year", year);
+						request.setAttribute("month", month);
+						request.setAttribute("day", day);
+						request.setAttribute("stock", zaiko);
+						request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					ex.printStackTrace();
+				}
+			// --------//
+			// For back button//
+			request.setAttribute("searchid", searchid);
+			request.setAttribute("searchtitle", searchtitle);
+			request.setAttribute("searchauthor", searchauthor);
+			request.setAttribute("searchpulisher", searchpulisher);
+			request.setAttribute("searchpulication_dayin", searchpulication_dayin);
+			request.setAttribute("searchpulication_dayout", searchpulication_dayout);
+			request.setAttribute("searchcheckbox", searchcheckbox);
+			request.setAttribute("completemessage", "本情報を更新しました。");
+			RequestDispatcher rd = request.getRequestDispatcher("koushingamen.jsp");
+			rd.forward(request, response);
+		}
+		// 更新処理 => End
+		// 削除処理 => Start
+		else if (!bookid.equals("") && action.equals("削除")) {
+			
+			DbConnection con = new DbConnection();
+			Connection connection = null;
+				String sqlupdatebook = "UPDATE mt_book SET delete_flg = ?, update_cnt = update_cnt + 1 WHERE book_id = ? AND update_cnt = ?";
+				String sqldeletestock = "DELETE FROM tbl_book_stock WHERE book_id = ? AND update_cnt = ?";
+				String deletecondition = "SELECT * FROM mt_book WHERE book_id = ? AND update_cnt = ?";
+				try {
+					connection = con.connect();
+					PreparedStatement deleteconditionstatement = connection.prepareStatement(deletecondition);
+					deleteconditionstatement.setInt(1, Integer.parseInt(bookid));
+					deleteconditionstatement.setInt(2, Integer.parseInt(bookupdatecount));
+					ResultSet rs = deleteconditionstatement.executeQuery();
+					
+					if (rs.next()) {
+						PreparedStatement updatebookstatement = connection.prepareStatement(sqlupdatebook);
+						updatebookstatement.setString(1, String.valueOf('1'));
+						updatebookstatement.setInt(2, Integer.parseInt(bookid));
+						updatebookstatement.setInt(3, Integer.parseInt(bookupdatecount));
+						updatebookstatement.executeUpdate();
+						
+						PreparedStatement preparedstatement9 = connection.prepareStatement(sqldeletestock);
+						preparedstatement9.setInt(1, Integer.parseInt(bookid));
+						preparedstatement9.setInt(2, Integer.parseInt(bookupdatecount));
+						preparedstatement9.executeUpdate();
+						connection.commit();
+						// set value => Start
+						Timestamp nowdate = new Timestamp(System.currentTimeMillis());
+						SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+						String pday = dateFormat.format(nowdate);
+						request.setAttribute("bookid", "");
+						request.setAttribute("booktitle", "");
+						request.setAttribute("authorname", "");
+						request.setAttribute("publisher", "");
+						String[] dbpulicationday = pday.split("-");
+						request.setAttribute("year", dbpulicationday[0]);
+						request.setAttribute("month", dbpulicationday[1]);
+						request.setAttribute("day", dbpulicationday[2]);
+						request.setAttribute("stock", "");
+						String getupdatecnt = "SELECT update_cnt FROM mt_book WHERE book_id = '" + bookid + "'";
+						ResultSet getupdate = con.resultSet(getupdatecnt);
+						try {
+							if (getupdate.next()) {
+								request.setAttribute("bookupdatecount", getupdate.getString("update_cnt"));
+							}
+						} catch (Exception ex) {
+							request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+							ex.printStackTrace();
+						}
+						request.setAttribute("stockupdatecount", "");
+						// set value => End
+					}
+					// 同時に更新する場合処理 => Start
+					else {
+						request.setAttribute("bookid", bookid);
+						request.setAttribute("booktitle", title);
+						request.setAttribute("authorname", author);
+						request.setAttribute("publisher", publisher);
+						request.setAttribute("year", year);
+						request.setAttribute("month", month);
+						request.setAttribute("day", day);
+						request.setAttribute("stock", zaiko);
+						request.setAttribute("bookupdatecount", bookupdatecount);
+						request.setAttribute("stockupdatecount", stockupdatecount);
+						request.setAttribute("existvalue", "1");
+					}
+					// 同時に更新する場合処理 => End
+				} catch (Exception ex) {
+					try {
+						connection.rollback();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+						e.printStackTrace();
+					}
+					ex.printStackTrace();
+				}
+			// --------//
+			// For back button//
+			request.setAttribute("searchid", searchid);
+			request.setAttribute("searchtitle", searchtitle);
+			request.setAttribute("searchauthor", searchauthor);
+			request.setAttribute("searchpulisher", searchpulisher);
+			request.setAttribute("searchpulication_dayin", searchpulication_dayin);
+			request.setAttribute("searchpulication_dayout", searchpulication_dayout);
+			request.setAttribute("searchcheckbox", searchcheckbox);
+			request.setAttribute("completemessage", "本情報を削除しました。");
+			RequestDispatcher rd = request.getRequestDispatcher("koushingamen.jsp");
+			rd.forward(request, response);
+		}
+		// 削除処理 => End
+		// 戻る処理=> start
+		else if ("戻る".equals(action)) {
+			ArrayList<String> pramSQL = new ArrayList<String>();
+			DbConnection con = new DbConnection();
+			Connection connection = null;
+				PreparedStatement preparedStatement = null;
+				ResultSet rs = null;
+				String sort = " ORDER BY book_id ASC";
+				String mysql = "SELECT book.book_id, book.book_title, book.author_name, book.publisher, book.publication_day, stock.stock, book.delete_flg FROM mt_book book left JOIN tbl_book_stock stock ON book.book_id = stock.book_id";
+				ArrayList<BookInfo> lstResult = new ArrayList<BookInfo>();
+				try {
+					connection = con.connect();
+					Boolean where = false;
+					if(!"".equals(searchid)){
+						if(where == false){
+							where = true;
+							String str= " WHERE book.book_id = to_number(?, '999999')";
+							mysql += str;
+							pramSQL.add(searchid);
+						}
+						if("false".equals(searchcheckbox)){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.delete_flg = '0'";
+								mysql += str;
+							}
+							else {
+								String str = " AND book.delete_flg = '0'";
+								mysql += str;
+							}
+						}
+					}
+					if("".equals(searchid)){
+						if(!"".equals(searchtitle)){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.book_title LIKE ?";
+								mysql += str;
+								pramSQL.add("%"+searchtitle+"%");
+							}
+							else {
+								String str = " AND book.book_title LIKE ?";
+								mysql += str;
+								pramSQL.add("%"+searchtitle+"%");
+							}
+						}
+						if(!"".equals(searchauthor)){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.author_name LIKE ?";
+								mysql += str;
+								pramSQL.add("%"+searchauthor+"%");
+							}
+							else{
+								String str = " AND book.author_name LIKE ?";
+								mysql += str;
+								pramSQL.add("%"+searchauthor+"%");
+							}
+						}
+						if(!"".equals(searchpulisher)){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.publisher LIKE ?";
+								mysql += str;
+								pramSQL.add("%"+searchpulisher+"%");
+							}
+							else {
+								String str = " AND book.publisher LIKE ?";
+								mysql += str;
+								pramSQL.add("%"+searchpulisher+"%");
+							}
+						}
+						if(!"".equals(searchpulication_dayin) && !"".equals(searchpulication_dayout)){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.publication_day >= to_timestamp(?, 'yyyyMMdd') AND book.publication_day <= to_timestamp(?, 'yyyyMMdd')";
+								mysql += str;
+								pramSQL.add(searchpulication_dayin);
+								pramSQL.add(searchpulication_dayout);
+							}
+							else{
+								String str = " AND book.publication_day >= to_timestamp(?, 'yyyyMMdd') AND book.publication_day <= to_timestamp(?, 'yyyyMMdd')";
+								mysql += str;
+								pramSQL.add(searchpulication_dayin);
+								pramSQL.add(searchpulication_dayout);
+							}
+						}
+						if(!"".equals(searchpulication_dayin) && "".equals(searchpulication_dayout)){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.publication_day >= to_timestamp(?, 'yyyyMMdd')";
+								mysql += str;
+								pramSQL.add(searchpulication_dayin);
+							}
+							else{
+								String str = " AND book.publication_day >= to_timestamp(?, 'yyyyMMdd')";
+								mysql += str;
+								pramSQL.add(searchpulication_dayin);
+							}
+						}
+						if(!"".equals(searchpulication_dayout) && "".equals(searchpulication_dayin) ){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.publication_day <= to_timestamp(?, 'yyyyMMdd')";
+								mysql += str;
+								pramSQL.add(searchpulication_dayout);
+							}
+							else{
+								String str = " AND book.publication_day <= to_timestamp(?, 'yyyyMMdd')";
+								mysql += str;
+								pramSQL.add(searchpulication_dayout);
+							}
+						}
+						if("false".equals(searchcheckbox)){
+							if(where == false){
+								where = true;
+								String str = " WHERE book.delete_flg = '0'";
+								mysql += str;
+							}
+							else {
+								String str = " AND book.delete_flg = '0'";
+								mysql += str;
+							}
+						}
+					}
+					mysql += sort;
+					preparedStatement  = connection.prepareStatement(mysql);
+					
+					for(int i = 0; i < pramSQL.size(); i++){
+						preparedStatement.setString(1+i, pramSQL.get(i));
+					}
+					
+					rs = preparedStatement.executeQuery();
+					while (rs.next()) {
+						BookInfo info = new BookInfo();
+						info.setBookid(rs.getString("book_id"));
+						info.setBooktitle(rs.getString("book_title"));
+						info.setAuthorname(rs.getString("author_name"));
+						info.setPublisher(rs.getString("publisher"));
+						String getpublication = rs.getString("publication_day");
+						String[] splitpublication = getpublication.split("-");
+						String searchyear = splitpublication[0];
+						String searchmonth = splitpublication[1];
+						String searchday = splitpublication[2];
+						String publication = searchyear + "/" + searchmonth + "/" + searchday;
+						info.setPublicationday(publication);
+						info.setPublicationday(publication);
+						if(rs.getString("stock") == null || rs.getString("stock").equals("0")){
+							info.setStock("在庫なし");
+						}else{
+							info.setStock(rs.getString("stock"));
+						}
+						if(rs.getString("delete_flg").equals("1")){
+							info.setDeleleflg("〇");
+						}
+						else{
+							info.setDeleleflg("");
+						}
+						
+					    lstResult.add(info);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					request.setAttribute("servererrormessage", "サーバー処理で例外が発生しました。");
+					e.printStackTrace();
+				}
+				request.setAttribute("memberList", lstResult);
+				int count = lstResult.size();
+				request.setAttribute("count", count);
+
+			// For back button//
+			request.setAttribute("id", searchid);
+			request.setAttribute("book_title", searchtitle);
+			request.setAttribute("book_author", searchauthor);
+			request.setAttribute("book_pulisher", searchpulisher);
+			request.setAttribute("checkinday", searchpulication_dayin);
+			request.setAttribute("checkinout", searchpulication_dayout);
+			request.setAttribute("checkbox", searchcheckbox);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("ichirangamen.jsp");
+			rd.forward(request, response);
+		}
+		// 戻る処理=> End
+	}
+}

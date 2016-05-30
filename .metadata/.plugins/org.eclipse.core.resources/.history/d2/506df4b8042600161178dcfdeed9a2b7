@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+body {
+	margin-left: 10%;
+    margin-right: 5%;
+}
+fieldset {
+    height: 50px;
+    width: 1300px;
+}

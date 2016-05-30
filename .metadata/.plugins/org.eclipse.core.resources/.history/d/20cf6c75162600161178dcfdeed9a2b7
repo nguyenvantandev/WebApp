@@ -1,0 +1,21 @@
+function kuria_click(){
+	document.getElementById("shain_ID").value = "";
+	document.getElementById("namae").value = "";
+	document.getElementById("sebetsu").value = "";
+	document.getElementById("sakujosumi").checked = false;
+}
+function shinkitsuika_click(){
+	document.getElementById("click_action").value = "新規追加";
+	document.getElementById("EmployeeSearch").submit();
+}
+function kensaku_click(){
+	var shainID = document.getElementById("shain_ID").value;
+	if(!shainID.match( /^[A-Za-z0-9]+$/)){
+		return false;
+		alert("社員IDは半角英数字で入力してください。");
+	}else{
+		document.getElementById("click_action").value = "検索";
+		document.getElementById("EmployeeSearch").submit();
+	}
+	return true;
+}

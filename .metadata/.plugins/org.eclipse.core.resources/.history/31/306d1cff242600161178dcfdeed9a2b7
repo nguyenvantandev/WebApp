@@ -1,0 +1,13 @@
+package Value;
+
+public class SearchValue {
+	
+	private String ShainId;
+	private String namae;
+	private String sebetsu;
+	private String nenrei;
+	private String keikennensuu;
+	private String saiyorieki;
+	private String sakujosumi;
+	
+}

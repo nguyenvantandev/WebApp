@@ -1,3 +1,27 @@
+function employeeSearch_load(){
+	var id = document.getElementById("id").value;
+	var name = document.getElementById("name").value;
+	var sex = document.getElementById("sex").value;
+	var del = document.getElementById("del").value;
+//	var man = document.getElementById("sebetsu")[1].innerHTML;
+//	var woman = document.getElementById("sebetsu")[2].innerHTML;
+//	var other = document.getElementById("sebetsu")[0].innerHTML;
+	
+	if(id != "null"){
+		document.getElementById("shain_ID").value = id;
+	}
+	if(name != "null"){
+		document.getElementById("namae").value = name;
+	}
+	if(sex != "null"){
+		document.getElementById("sebetsu")[0].innerHTML = sex;
+	}
+	
+	if(del == "1"){
+		document.getElementById("sakujosumi").checked = true;
+	}
+}
+
 function kuria_click(){
 	document.getElementById("shain_ID").value = "";
 	document.getElementById("namae").value = "";

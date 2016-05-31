@@ -49,19 +49,19 @@ fieldset {
 
 table {
 	border-collapse: collapse;
-	width: 92%;
+	width: 89%;
 	height: 100%;
 }
 
 th {
-	width: 109px;
+	
 	table-layout:fixed;
 	height: 30px;
 	background-color: #A9E2F3;
 }
 
 td {
-	width: 109px;
+	
 	table-layout:fixed;
 	height: 30px;
 	background-color: white;
@@ -77,8 +77,21 @@ tbody {
   height:400px;
 
 }
-
-
-
+#ShainMaster{
+    height: 30px;
+    width: 90px;
+}
+#Sakujo{
+    height: 30px;
+    width: 70px;
+}
+#GijutsushikakuMaster{
+    height: 31px;
+    width: 109px;
+}
+#GijitsushaKerekisho{
+    height: 31px;
+    width: 104px;
+}
 
 

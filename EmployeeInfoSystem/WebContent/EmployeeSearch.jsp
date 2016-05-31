@@ -47,7 +47,7 @@
 				対象件数：<%=((Integer) request.getAttribute("count"))%>件<br>
 				</c:if>
 			</div> 
-			
+			<input type="hidden" id="kennsu" name="kennsu" value="<%=((Integer) request.getAttribute("count"))%>">
 			<div id="list">
 				<table id="table" border="1">
 					<thead>
@@ -77,14 +77,14 @@
 								<td style="width: 250px" align="center"><c:out value="${row.saiyorieki}"></c:out></td>
 								<td style="width: 53px" align="center"><c:out value="${row.sakujosumi}"></c:out></td>
 								<td style="width: 176px" align="center">
-								<input type="button" id="ShainMaster" name="ShainMaster" value="参照／編集">
-								<input type="button" id="Sakujo" name="Sakujo" value="削除">
+								<input type="button" id="ShainMaster${row.num}" name="ShainMaster" value="参照／編集" onclick="shainmaster_click(this)" style="height: 30px; width: 90px;">
+								<input type="button" id="Sakujo${row.num}" name="Sakujo" value="削除" onclick="sakujo_click(this)" style="height: 30px; width: 70px;">
 								</td>
 								<td style="width: 117px" align="center">
-								<input type="button" id="GijutsushikakuMaster" name="GijutsushikakuMaster" value="参照／編集">
+								<input type="button" id="GijutsushikakuMaster${row.num}" name="GijutsushikakuMaster" value="参照／編集" onclick="GijutsushikakuMaster_click(this)" style=" height: 31px; width: 109px;">
 								</td>
 								<td style="width: 110px" align="center">
-								<input type="button" id="GijitsushaKerekisho" name="GijitsushaKerekisho" value="参照">
+								<input type="button" id="GijitsushaKerekisho${row.num}" name="GijitsushaKerekisho" value="参照" onclick="GijitsushaKerekisho_click(this)" style=" height: 31px; width: 104px;">
 								</td>
 
 							</tr>
@@ -92,6 +92,12 @@
 
 					</tbody>
 				</table>
+				<input type="hidden" id="serverErrorMs" name="serverErrorMs" value="<%=request.getAttribute("serverErrorMs")%>">
+				<input type="hidden" id="shainmasterButton" name="shainmasterButton" value="<%=request.getAttribute("shainmasterButton")%>">
+				<input type="hidden" id="sakujoButton" name="sakujoButton" value="<%=request.getAttribute("sakujoButton")%>">
+				<input type="hidden" id="sakujoMes" name="sakujoMes" value="<%=request.getAttribute("sakujoMes")%>">
+				<input type="hidden" id="GijutsushikakuMasterButton" name="GijutsushikakuMasterButton" value="<%=request.getAttribute("GijutsushikakuMasterButton")%>">
+				<input type="hidden" id="GijitsushaKerekishoButton" name="GijitsushaKerekishoButton" value="<%=request.getAttribute("GijitsushaKerekishoButton")%>">
 			</div>
 
 		</div>

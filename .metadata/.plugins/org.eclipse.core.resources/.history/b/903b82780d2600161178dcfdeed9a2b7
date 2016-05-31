@@ -1,5 +1,0 @@
-function kuria_click(){
-	document.getElementById("").value = "";
-	document.getElementById("").value = "";
-	
-}

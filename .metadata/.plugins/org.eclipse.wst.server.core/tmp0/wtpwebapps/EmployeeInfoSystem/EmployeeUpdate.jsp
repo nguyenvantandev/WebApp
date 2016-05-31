@@ -8,5 +8,6 @@
 </head>
 <body>
 <p>社員マスタ更新画面</p>
+<input type="text"name="id" id="id" value="<%=request.getAttribute("id")%>">
 </body>
 </html>

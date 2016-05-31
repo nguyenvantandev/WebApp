@@ -1,6 +1,0 @@
-function kuria_click(){
-	document.getElementById("shain_ID").value = "";
-	document.getElementById("namae").value = "";
-	document.getElementById("sebetsu").value = "";
-	document.getElementById("sakujosumi").checked = false;
-}

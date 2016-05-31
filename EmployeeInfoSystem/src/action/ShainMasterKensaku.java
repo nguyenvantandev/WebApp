@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -45,11 +46,10 @@ public class ShainMasterKensaku extends HttpServlet {
 		String namae = request.getParameter("namae");
 		String seibetsu = request.getParameter("sebetsu");
 		String sakujosumi = request.getParameter("sakujosumi");
-		System.out.println(click_action);
-		System.out.println(shainID);
-		System.out.println(namae);
-		System.out.println(seibetsu);
-		System.out.println(sakujosumi);
+		String shainMasterButton = request.getParameter("shainmasterButton");
+		String sakujoButton = request.getParameter("sakujoButton");
+		String gijutsushikakuMasterButton = request.getParameter("GijutsushikakuMasterButton");
+		String gijitsushaKerekishoButton = request.getParameter("GijitsushaKerekishoButton");
 		/*
 		 * EmployeeSearch.jspからパラメータ取得する。
 		 * 終了
@@ -63,6 +63,7 @@ public class ShainMasterKensaku extends HttpServlet {
 		if("新規追加".equals(click_action)){
 			RequestDispatcher rd = request.getRequestDispatcher("EmployeeUpdate.jsp");
 			rd.forward(request, response);
+			return;
 		}
 		/*
 		 * 社員マスタ更新画面に遷移する。
@@ -156,6 +157,7 @@ public class ShainMasterKensaku extends HttpServlet {
 				}
 				
 			}catch(Exception e){
+				request.setAttribute("serverErrorMs", "サーバー処理で例外が発生しました。");
 				e.printStackTrace();
 			}
 			if("on".equals(sakujosumi)){
@@ -166,11 +168,115 @@ public class ShainMasterKensaku extends HttpServlet {
 			request.setAttribute("count", ValNum);
 			RequestDispatcher rd = request.getRequestDispatcher("EmployeeSearch.jsp");
 			rd.forward(request, response);
+			return;
 		}
 		/*
 		 * 検索処理を行う
 		 * 終了
 		 * */
+		
+		/*
+		 * 参照/編集ボタン押下の処理
+		 * (社員マスタ)
+		 *開始
+		 * */
+		if(!"".equals(shainMasterButton) && !"null".equals(shainMasterButton)){
+			request.setAttribute("id", shainMasterButton);
+			RequestDispatcher rd = request.getRequestDispatcher("EmployeeUpdate.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		/*
+		 * 参照/編集ボタン押下の処理
+		 * (社員マスタ)
+		 *終了
+		 * */
+		
+		/*
+		 * 削除ボタン押下の処理
+		 * 開始
+		 * */
+		if(!"".equals(sakujoButton) && !"null".equals(sakujoButton)){
+			String sqlsearch = "SELECT emp_id, del_flg, upd_date FROM emp_mas WHERE emp_id = ? AND del_flg = ?";
+			String sql = "UPDATE emp_mas SET del_flg = ?, upd_date = current_timestamp WHERE emp_id = ? AND del_flg = ?";
+			try{
+				connection = con.connect();
+				preparedstatement = connection.prepareStatement(sqlsearch);
+				preparedstatement.setString(1, sakujoButton);
+				preparedstatement.setString(2, "0");
+				rs = preparedstatement.executeQuery();
+				if(rs.next()){
+					preparedstatement = connection.prepareStatement(sql);
+					preparedstatement.setString(1, "1");
+					preparedstatement.setString(2, sakujoButton);
+					preparedstatement.setString(3, "0");
+					preparedstatement.executeUpdate();
+					connection.commit();
+					request.setAttribute("sakujoMes", "社員ID"+sakujoButton+"の社員情報を削除しました。");
+				}else{
+					request.setAttribute("sakujoMes", "社員ID"+sakujoButton+"が見つかりません。");
+				}
+				
+			}catch(Exception e){
+				request.setAttribute("serverErrorMs", "サーバー処理で例外が発生しました。");
+				try {
+				request.setAttribute("serverErrorMs", "サーバー処理で例外が発生しました。");
+					connection.rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			request.setAttribute("id", shainID);
+			request.setAttribute("name", namae);
+			request.setAttribute("sex", seibetsu);
+			if("on".equals(sakujosumi)){
+				request.setAttribute("del", "1");
+			}
+			request.setAttribute("sakujoButton", "検索");
+			RequestDispatcher rd = request.getRequestDispatcher("EmployeeSearch.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		/*
+		 * 削除ボタン押下の処理
+		 * 終了
+		 * */
+		
+		/*
+		 * 参照/編集ボタン押下の処理
+		 * (技術資格マスタ)
+		 *開始
+		 * */
+		if(!"".equals(gijutsushikakuMasterButton) && !"null".equals(gijutsushikakuMasterButton)){
+			request.setAttribute("id", gijutsushikakuMasterButton);
+			RequestDispatcher rd = request.getRequestDispatcher("SkillUpdate.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		/*
+		 * 参照/編集ボタン押下の処理
+		 * (技術資格マスタ)
+		 *終了
+		 * */
+		
+		/*
+		 * 参照ボタン押下の処理
+		 * ((技術者経歴書)
+		 *開始
+		 * */
+		if(!"".equals(gijitsushaKerekishoButton) && !"null".equals(gijitsushaKerekishoButton)){
+			request.setAttribute("id", gijitsushaKerekishoButton);
+			RequestDispatcher rd = request.getRequestDispatcher("Resume.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		/*
+		 * 参照ボタン押下の処理
+		 * ((技術者経歴書)
+		 *終了
+		 * */
+		
 	}
 
 }

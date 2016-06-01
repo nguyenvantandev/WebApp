@@ -61,6 +61,10 @@ public class ShainMasterKensaku extends HttpServlet {
 		 * */
 		
 		if("êVãKí«â¡".equals(click_action)){
+			request.setAttribute("shainId_search", shainID);
+			request.setAttribute("namae_search", namae);
+			request.setAttribute("sebetsu_search",seibetsu);
+			request.setAttribute("sakujo_search", sakujosumi);
 			RequestDispatcher rd = request.getRequestDispatcher("EmployeeUpdate.jsp");
 			rd.forward(request, response);
 			return;
@@ -182,6 +186,10 @@ public class ShainMasterKensaku extends HttpServlet {
 		 * */
 		if(!"".equals(shainMasterButton) && !"null".equals(shainMasterButton)){
 			request.setAttribute("shaiNum", shainMasterButton);
+			request.setAttribute("shainId_search", shainID);
+			request.setAttribute("namae_search", namae);
+			request.setAttribute("sebetsu_search",seibetsu);
+			request.setAttribute("sakujo_search", sakujosumi);
 			RequestDispatcher rd = request.getRequestDispatcher("EmployeeUpdate.jsp");
 			rd.forward(request, response);
 			return;
@@ -250,6 +258,10 @@ public class ShainMasterKensaku extends HttpServlet {
 		 * */
 		if(!"".equals(gijutsushikakuMasterButton) && !"null".equals(gijutsushikakuMasterButton)){
 			request.setAttribute("id", gijutsushikakuMasterButton);
+//			request.setAttribute("shainId_search", shainID);
+//			request.setAttribute("namae_search", namae);
+//			request.setAttribute("sebetsu_search",seibetsu);
+//			request.setAttribute("sakujo_search", sakujosumi);
 			RequestDispatcher rd = request.getRequestDispatcher("SkillUpdate.jsp");
 			rd.forward(request, response);
 			return;
@@ -267,6 +279,10 @@ public class ShainMasterKensaku extends HttpServlet {
 		 * */
 		if(!"".equals(gijitsushaKerekishoButton) && !"null".equals(gijitsushaKerekishoButton)){
 			request.setAttribute("id", gijitsushaKerekishoButton);
+//			request.setAttribute("shainId_search", shainID);
+//			request.setAttribute("namae_search", namae);
+//			request.setAttribute("sebetsu_search",seibetsu);
+//			request.setAttribute("sakujo_search", sakujosumi);
 			RequestDispatcher rd = request.getRequestDispatcher("Resume.jsp");
 			rd.forward(request, response);
 			return;

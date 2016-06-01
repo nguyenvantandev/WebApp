@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/EmployeeSearch.css">
 <script type="text/javascript" src="js/EmployeeSearch.js"></script>
-<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"> -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
 <title>社員マスタ検索画面</title>

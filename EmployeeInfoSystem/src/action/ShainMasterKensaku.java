@@ -181,7 +181,7 @@ public class ShainMasterKensaku extends HttpServlet {
 		 *ŠJŽn
 		 * */
 		if(!"".equals(shainMasterButton) && !"null".equals(shainMasterButton)){
-			request.setAttribute("id", shainMasterButton);
+			request.setAttribute("shaiNum", shainMasterButton);
 			RequestDispatcher rd = request.getRequestDispatcher("EmployeeUpdate.jsp");
 			rd.forward(request, response);
 			return;

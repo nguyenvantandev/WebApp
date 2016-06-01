@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+body {
+	    margin-left: 21%;
+    margin-right: 10%;
+    margin-top: 2%;
+}
+h2 {
+	    margin-bottom: 43px;
+    margin-top: 0px;
+}
+#modoru{
+	right: 31%;
+	position: absolute;
+	    width: 64px;
+    height: 31px;
+}
+#id {
+	margin-right: 30px;
+}
+#name{
+	    margin-right: 45px;
+}
+#furiname, #shortname{
+    margin-right: 10px;
+    margin-left: 20px;
+}
+#sex{
+	margin-right: 42px;
+}
+#birthday{
+	margin-right: 15px;
+}
+#station{
+	    margin-right: 31px;
+}

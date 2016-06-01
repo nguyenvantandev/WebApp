@@ -1,0 +1,41 @@
+function employeeUpdate_load(){
+	//Set Day => Start
+	var nowyear = new Date().getFullYear();
+	var startyear = 2030;
+	var endyear = 1970;
+	var optionsyear = "";
+	for (var year = startyear; year >= endyear; year--) {
+		optionsyear += "<option>" + year + "</option>";
+	}
+	document.getElementsByName("year")[0].innerHTML = optionsyear;
+//	var year = $("#year_id")[0].value;
+//	$('#year_input').val(year);
+	// month
+
+	var startmonth = 1;
+	var endmonth = 12;
+	var optionsmonth = "";
+	for (var month = startmonth; month <= endmonth; month++) {
+		if (month <= 9) {
+			month = "0" + month.toString();
+		}
+		optionsmonth += "<option>" + month + "</option>";
+	}
+	document.getElementsByName("month")[0].innerHTML = optionsmonth;
+//	var month = $("#month_id")[0].value;
+//	$('#month_input').val(month);
+	// day
+	var startday = 1;
+	var endday = 31;
+	var optionsday = "";
+	for (var day = startday; day <= endday; day++) {
+		if (day <= 9) {
+			day = "0" + day.toString();
+		}
+		optionsday += "<option>" + day + "</option>";
+	}
+	document.getElementsByName("day")[0].innerHTML = optionsday;
+//	var day = $("#day_id")[0].value;
+//	$('#date_input').val(day);
+	//Set Day => End
+}

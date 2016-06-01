@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+body {
+	    margin-left: 21%;
+    margin-right: 10%;
+    margin-top: 2%;
+}
+p {
+	    margin-bottom: 0px;
+    margin-top: 0px;
+}
+#modoru{
+	right: 10%;
+	position: absolute;
+}

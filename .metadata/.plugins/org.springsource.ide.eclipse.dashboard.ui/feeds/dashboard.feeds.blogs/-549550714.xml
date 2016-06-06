@@ -5,7 +5,65 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-06-01T09:45:00Z</updated>
+  <updated>2016-06-03T13:53:58Z</updated>
+  <entry>
+    <title>Spring Cloud Stream 1.0.1.RELEASE is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/03/spring-cloud-stream-1-0-1-release-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marius Bogoevici</name>
+    </author>
+    <id>tag:spring.io,2016-06-03:2518</id>
+    <updated>2016-06-03T13:53:58Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that Spring Cloud Stream 1.0.1.RELEASE is now available. The artifacts can be found in &lt;a href="https://repo.spring.io"&gt;Spring Repository&lt;/a&gt; as well as &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cspring-cloud-stream"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As a maintenance release it includes a number of fixes and improvements, such as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;additional configuration options for bindings;&lt;/li&gt;
+  &lt;li&gt;the ability to create binder configurations that do not interfere with the user-created ones; this is a feature useful for libraries that include Spring Cloud Stream under the hood and wish to do so&lt;br/&gt;transparently.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The entire list of changes can be found &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/issues?q=milestone%3A1.0.1.RELEASE+is%3Aclosed"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks to everyone who contributed to the project, and continue to do so either directly by opening pull requests or issues in &lt;a href="https://github.com/spring-cloud/spring-cloud-stream"&gt;GitHub&lt;/a&gt; issues, or asking &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud-stream"&gt;Stack Overflow&lt;/a&gt; questions.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;I will be talking about Spring Cloud Stream at &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt;, which will be taking place in Las Vegas between August 1-4 this year. There are many other great talks so &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions"&gt;check the agenda&lt;/a&gt; and &lt;a href="https://2016.event.springoneplatform.io/register"&gt;get your ticket&lt;/a&gt; if you havenÅft done so already. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Reactor guides deprecated</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/02/reactor-guides-deprecated" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Greg Turnquist</name>
+    </author>
+    <id>tag:spring.io,2016-06-02:2517</id>
+    <updated>2016-06-02T11:57:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Greetings Spring community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;There has been a lot of buzz in the past six months over &lt;a href="https://spring.io/blog/2016/02/09/reactive-spring"&gt;Spring 5 and Reactive Streams&lt;/a&gt; support. I personally witnessed the number of questions Rossen received during his Reactive Spring MVC talk at DevNexus back in March. And his reactive talk at Spring I/O conference more recently was VERY popular to attenders.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Based on the huge leaps and bounds &lt;a href="https://spring.io/blog/2016/03/11/reactor-core-2-5-becomes-a-unified-reactive-foundation-on-java-8"&gt;Project Reactor has made&lt;/a&gt; in the past two years, we are taking two of our guides down:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Creating an Asynchronous, Event-Driven Application with Reactor&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Uploading pictures with Reactor&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Those guides are over two years old, and as you know, in software land, that is ancient. They are based on an old, experimental API. Updating them isn&amp;#8217;t just a lot of work. It doesn&amp;#8217;t tell a good story of Reactor and Reactive Streams. Instead, the Reactor team is working on new examples, and when the API is firmed up, will look into writing new guides.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The source code for the guides will remain visible in github for a limited time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Cheers!&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Spring AMQP 1.6 RELEASE available</title>
     <link rel="alternate" href="https://spring.io/blog/2016/06/01/spring-amqp-1-6-release-available" />
@@ -1797,40 +1855,5 @@ dependencies {&#xD;
   &lt;li&gt;I enjoyed this nice post &lt;a href="https://vanwilgenburg.wordpress.com/2016/04/01/spring-boot-http2/"&gt;on Spring Boot and HTTP 2&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;a nice post from my buddy Markus Eisele on our joint talk at O&amp;rsquo;Reilly&amp;rsquo;s Software Architecture show where we &lt;a href="http://blog.eisele.net/2016/04/integration-architecture-with-java-ee-and-spring.html"&gt;discussed Spring and Java EE integration patterns&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 1.3.5 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/05/10/spring-boot-1-3-5-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>St?phane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2016-05-10:2495</id>
-    <updated>2016-05-10T06:53:33Z</updated>
-    <content type="html">&lt;p&gt;Shortly after 1.3.4, we&amp;rsquo;ve just released &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.3.5+is%3Aclosed"&gt;Spring Boot 1.3.5&lt;/a&gt; as we&amp;rsquo;ve identified a &lt;a href="https://github.com/spring-projects/spring-boot/issues/5901"&gt;rather nasty regression&lt;/a&gt; with the Spring Integration auto-configuration. The bits are available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;, as usual.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring IO Platform 2.0.4.RELEASE</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/05/09/spring-io-platform-2-0-4-release" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Andy Wilkinson</name>
-    </author>
-    <id>tag:spring.io,2016-05-09:2494</id>
-    <updated>2016-05-09T12:27:19Z</updated>
-    <content type="html">&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Spring IO Platform&lt;/a&gt; 2.0.4.RELEASE is now available from both &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.spring.platform"&gt;Maven Central&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;This maintenance release upgrades the versions of a number of the projects in the Platform to pick up their latest maintenance releases:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Reactor 2.0.8.RELEASE&lt;/li&gt;
-  &lt;li&gt;Spring AMQP 1.5.5.RELEASE&lt;/li&gt;
-  &lt;li&gt;Spring Batch 3.0.7.RELEASE&lt;/li&gt;
-  &lt;li&gt;Spring Boot 1.3.4.RELEASE&lt;/li&gt;
-  &lt;li&gt;Spring Cloud Connectors 1.2.2.RELEASE&lt;/li&gt;
-  &lt;li&gt;Spring Framework 4.2.6.RELEASE&lt;/li&gt;
-  &lt;li&gt;Spring Security 4.0.4.RELEASE&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The versions of several third-party dependencies have also been updated.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/platform/docs/2.0.4.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

@@ -15,9 +15,11 @@
 <body onload="employeeSearch_load()">
 	<form action="ShainMasterKensaku" method="post" id="EmployeeSearch" name="EmployeeSearch">
 		<div>
+					<input type="button" id="modoru" name="modoru" value="戻る" onclick="location.href='Menu.jsp'"><br>
 			<h3>
 				<b>社員マスタ検索</b>
 			</h3>
+
 			<fieldset>
 				<legend>検索条件</legend>
 				<label id="shain_title"><b>社員ID：</b></label><input type="text" id="shain_ID" name="shain_id" maxlength="4" style="ime-mode: disabled;"> 

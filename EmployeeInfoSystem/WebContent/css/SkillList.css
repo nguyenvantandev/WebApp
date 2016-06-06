@@ -18,8 +18,8 @@ body {
 }
 
 #shinkitsuika {
-	width: 86px;
-	height: 31px;
+	width: 90px;
+	height: 38px;
 	margin-top: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
@@ -27,9 +27,15 @@ body {
 	position: absolute;
 }
 
-#kensaku {
+.henshu, .sakujo {
+	margin-left: 15px;
 	width: 86px;
 	height: 31px;
+}
+
+#kensaku {
+	width: 90px;
+	height: 38px;
 	margin-top: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
@@ -67,16 +73,20 @@ fieldset {
 }
 
 #kuria {
-	width: 86px;
-	height: 31px;
+	width: 90px;
+	height: 38px;
 }
 
 #seisekinashi {
 	margin-left: 66px;
+	width: 17px;
+	height: 17px;
 }
 
 #seisekiari, #sakujosumi {
 	margin-left: 19px;
+	width: 17px;
+	height: 17px;
 }
 
 #list {

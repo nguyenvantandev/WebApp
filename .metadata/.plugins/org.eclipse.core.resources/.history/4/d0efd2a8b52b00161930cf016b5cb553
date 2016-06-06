@@ -1,0 +1,24 @@
+function skillList_load(){
+	var id = document.getElementById("hidden_shikakuId").value;
+	var name = document.getElementById("hidden_shikakumei").value;
+	var seisekinashi = document.getElementById("hidden_seisekinashi").value;
+	var seisekiari = document.getElementById("hidden_seisekiari").value;
+	var sakujosumi = document.getElementById("hidden_sakujosumi").value;
+	if(id != "null"){
+		document.getElementById("shikakuId").value = id;
+	}
+	if(name != "null"){
+		document.getElementById("shikakumei").value = id;
+	}
+	if(seisekinashi == "on"){
+		document.getElementById("seisekinashi").value = id;
+	}
+	if(seisekiari == "on"){
+		document.getElementById("seisekiari").value = id;
+	}
+	if(sakujosumi == "on"){
+		document.getElementById("sakujosumi").value = id;
+	}
+	
+	
+}

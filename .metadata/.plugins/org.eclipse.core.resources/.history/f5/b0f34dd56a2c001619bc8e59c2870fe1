@@ -1,0 +1,71 @@
+package action;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class GijutsuShikakuMasterUpdate
+ */
+@WebServlet("/GijutsuShikakuMasterUpdate")
+public class GijutsuShikakuMasterUpdate extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public GijutsuShikakuMasterUpdate() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+
+		String shikakuId = request.getParameter("shikakuId");
+		
+		String search_id = request.getParameter("hidden_shikakuId");
+		String search_name = request.getParameter("hidden_shikakumei");
+		String search_seisekinashi = request.getParameter("hidden_seisekinashi");
+		String search_seisekiari = request.getParameter("hidden_seisekiari");
+		String search_sakujosumi = request.getParameter("hidden_sakujosumi");
+		
+		
+		System.out.println(shikakuId);
+		System.out.println(search_id);
+		System.out.println(search_name);
+		System.out.println(search_seisekinashi);
+		System.out.println(search_seisekiari);
+		System.out.println(search_sakujosumi);
+		
+		String actionName = request.getParameter("actionName");
+		
+		if("ñﬂÇÈ".equals(actionName)){
+			request.setAttribute("hidden_shikakuId", search_id);
+			request.setAttribute("hidden_shikakumei", search_name);
+			request.setAttribute("hidden_seisekinashi", search_seisekinashi);
+			request.setAttribute("hidden_seisekiari", search_seisekiari);
+			request.setAttribute("hidden_sakujosumi", search_sakujosumi);
+			request.setAttribute("saikensaku", "çƒåüçı");
+			RequestDispatcher rd = request.getRequestDispatcher("SkillList.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		request.setAttribute("hidden_shikakuId", search_id);
+		request.setAttribute("hidden_shikakumei", search_name);
+		request.setAttribute("hidden_seisekinashi", search_seisekinashi);
+		request.setAttribute("hidden_seisekiari", search_seisekiari);
+		request.setAttribute("hidden_sakujosumi", search_sakujosumi);
+		request.setAttribute("shikakuId", shikakuId);
+		RequestDispatcher rd = request.getRequestDispatcher("SkillListUpdate.jsp");
+		rd.forward(request, response);
+	}
+
+}

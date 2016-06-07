@@ -79,5 +79,9 @@ function sakujo_click(Val){
 	}
 }
 
+function shinkitsuika_click(){
+	document.getElementById("actionName").value ="新規追加";
+	document.getElementById("SkillList").submit();
+}
 
 

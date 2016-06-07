@@ -1,0 +1,47 @@
+function SkillListUpdate_load(){
+	var shikakuId = document.getElementById("shikakuId").value;
+	var shikakumei = document.getElementById("shikakumei").value;
+	var firstSearch = document.getElementById("skillListFrom_shikakuId").value;
+	
+	if(shikakuId != "null"){
+		document.getElementById("shikakuId").value = shikakuId;
+	}else{
+		document.getElementById("shikakuId").value = "";
+	}
+	if(shikakumei != "null"){
+		document.getElementById("shikakumei").value = shikakumei;
+	}else{
+		document.getElementById("shikakumei").value = "";
+	}
+	
+	var id = document.getElementById("hidden_shikakuId").value;
+	if(id != "null"){
+		document.getElementById("hidden_shikakuId").value = id;
+	}
+	
+	var name = document.getElementById("hidden_shikakumei").value;
+	if(name != "null"){
+		document.getElementById("hidden_shikakumei").value = name;
+	}
+	
+	var seisekinashi = document.getElementById("hidden_seisekinashi").value;
+	if(seisekinashi != "null"){
+		document.getElementById("hidden_seisekinashi").value = seisekinashi;
+	}
+	
+	var seisekiari = document.getElementById("hidden_seisekiari").value;
+	if(seisekiari != "null"){
+		document.getElementById("hidden_seisekiari").value = seisekiari;
+	}
+	var sakujosumi = document.getElementById("hidden_sakujosumi").value;
+	if(id != "null"){
+		document.getElementById("hidden_shikakuId").value = id;
+	}
+	
+	
+	if(firstSearch != "null"){
+		document.getElementById("shikakuId").value = firstSearch;
+		document.getElementById("SkillListUpdate").submit();
+	}
+	
+}

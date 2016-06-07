@@ -34,7 +34,7 @@
 
 
 
-<input type="button" id="shinkitsuika" name="shinkitsuika" value="新規追加" onclick="location.href='SkillListUpdate.jsp'">
+<input type="button" id="shinkitsuika" name="shinkitsuika" value="新規追加" onclick="shinkitsuika_click()">
 <input type="button" id="kensaku" name="kensaku" value="検索" onclick="kensaku_click()">
 			<div id="list">
 				<table id="table" border="1">

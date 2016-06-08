@@ -257,7 +257,7 @@ public class ShainMasterKensaku extends HttpServlet {
 		 *ŠJŽn
 		 * */
 		if(!"".equals(gijutsushikakuMasterButton) && !"null".equals(gijutsushikakuMasterButton)){
-			request.setAttribute("id", gijutsushikakuMasterButton);
+			request.setAttribute("zengamen_shainId", gijutsushikakuMasterButton);
 //			request.setAttribute("shainId_search", shainID);
 //			request.setAttribute("namae_search", namae);
 //			request.setAttribute("sebetsu_search",seibetsu);

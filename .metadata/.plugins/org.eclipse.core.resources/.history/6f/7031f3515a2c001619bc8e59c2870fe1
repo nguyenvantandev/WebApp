@@ -1,6 +1,0 @@
-function SkillListUpdate_load(){
-	var shikakuId = document.getElementById("").value;
-	var shikakumei = document.getElementById("").value;
-	
-	
-}

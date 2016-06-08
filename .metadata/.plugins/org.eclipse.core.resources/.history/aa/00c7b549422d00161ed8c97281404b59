@@ -1,0 +1,10 @@
+package Value;
+
+public class SkillValue {
+
+	private String num;
+	private String shainid;
+	private String namae;
+	private String shutokuday;
+	private String seiseki;
+}

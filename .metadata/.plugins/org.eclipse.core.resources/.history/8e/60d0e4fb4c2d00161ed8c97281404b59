@@ -1,0 +1,35 @@
+function pop(div) {
+	document.getElementById(div).style.display = 'block';
+}
+function hide(div) {
+	document.getElementById(div).style.display = 'none';
+}
+
+function SkillUpdate_load(){
+	
+	var shikakuId = document.getElementById("shainId").value;
+	var namae = document.getElementById("namae").value;
+	if(shikakuId != "null"){
+		document.getElementById("shainId").disabled = true;
+		document.getElementById("shainId").value = shikakuId;
+	}else{
+		document.getElementById("shainId").value = "";
+	}
+	if(namae != "null"){
+		document.getElementById("namae").disabled = true;
+		document.getElementById("namae").value= namae;
+	}else{
+		document.getElementById("namae").value = "";
+	}
+	var id = document.getElementById("zengamen_shainId").value;
+	if(id != "null"){
+		document.getElementById("actionName").value = "初期表示";
+		document.getElementById("actionValue").value = id;
+		document.getElementById("SkillUpdate").submit();
+	}
+}
+
+function koshin_click(Val){
+	document.getElementById("popDivUpdate").style.display = 'block';
+	var report = Val.parentNode.parentNode.cells[1].innerHTML;
+}

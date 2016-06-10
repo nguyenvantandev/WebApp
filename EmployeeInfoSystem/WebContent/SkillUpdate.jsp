@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,7 +17,7 @@
 	
 		<div id="Interface">
 
-			<input type="button" id="modoru" name="modoru" value="戻る">
+			<input type="button" id="modoru" name="modoru" value="戻る" onclick="modoru_click()">
 			<h3>
 				<b>技術資格マスタ更新画面</b>
 			</h3>
@@ -45,7 +46,7 @@
 								<td style="width: 141px" align="center"><c:out value="${row.seiseki}"></c:out></td>
 								<td style="width: 204px" align="center">
 								<input type="button" id="koushin" name="koushin" value="更新" onclick="popupKoshin_click(this)"> 
-									<input  type="button" id="sakujo" name="sakujo" value="削除">
+									<input  type="button" id="sakujo" name="sakujo" value="削除" onclick="sakujo_click(this)">
 								</td>
 
 							</tr>
@@ -54,22 +55,24 @@
 					</tbody>
 				</table>
 			</div>
-
-			 
+			<c:forEach var="row" items="${memberList}"><input type="hidden" id="num" name="num" value="${row.num}"></c:forEach>
+			
 			<input type="button" id="tsuika" name="tsuika" value="追加" onclick="popupTsuika_click()">
+			
+			
 			<!--追加  -->
 			<div id="popDivAdd" class="ontop">
 				<div id="addform">
 					<input type="button" id="tojiru" name="tojiru" value="閉じる" onclick="hide('popDivAdd')">
 					<h3><b>資格追加</b></h3>
 					<label id="label_shiakumei">資格名</label>
-					<select id="shikakuMei" name="shikakuMei">
-					<c:forEach var="item" items="${ColectionList }">
-					<option><c:out value="${item.Info }"></c:out></option>
+					<select id="shikakuMei" name="shikakuMei" onchange="shikakuMei_change()">
+					<c:forEach var="lisencenname" items="${ColectionList}">
+					<option>
+					<c:out value="${lisencenname.info}"></c:out>
+					</option>
 					</c:forEach>
-					<option></option>
 					</select><br>
-					
 					<label id="label_shutokuDate" >取得年月日</label>
 					<select id="year" name="year">
 					<option></option>
@@ -88,15 +91,16 @@
 					<select id="houjijun" name="houjijun">
 					<option></option>
 					</select><br>
-					<input type="button" id="popup_tsuika" name="popup_tsuika" value="追加">
+					<input type="button" id="popup_tsuika" name="popup_tsuika" value="追加" onclick="tsuika_click()">
 				</div>
 			</div>
+
 
 			<!--更新  -->			
 			<div id="popDivUpdate" class="ontop">
 				<div id="addform">
 					<input type="button" id="tojiru" name="tojiru" value="閉じる" onclick="hide('popDivUpdate')">
-					<h3><b>資格追加</b></h3>
+					<h3><b>資格更新</b></h3>
 					<label id="label_shiakumei">資格名</label><input type="text" id="upd_shikakumei" name="upd_shikakumei"><br>
 					<label id="label_shutokuDate" >取得年月日</label>
 					<select id="upd_year" name="upd_year">
@@ -116,14 +120,29 @@
 					<select id="upd_houjijun" name="upd_houjijun">
 					<option></option>
 					</select><br>
-					<input type="button" id="popup_koushin" name="popup_koushin" value="更新">
+					<input type="button" id="popup_koushin" name="popup_koushin" value="更新" onclick="koushin_click()">
 				</div>
 			</div>
 		</div>
 		<input type="hidden" id="zengamen_shainId" name="zengamen_shainId" value="<%=request.getAttribute("zengamen_shainId")%>">
+		<input type="hidden" id="shainId_search" name="shainId_search" value="<%=request.getAttribute("shainId_search")%>">
+		<input type="hidden" id="namae_search" name="namae_search" value="<%=request.getAttribute("namae_search")%>">
+		<input type="hidden" id="sebetsu_search" name="sebetsu_search" value="<%=request.getAttribute("sebetsu_search")%>">
+		<input type="hidden" id="sakujo_search" name="sakujo_search" value="<%=request.getAttribute("sakujo_search")%>">
+		
 		<input type="hidden" id="actionName" name="actionName">
 		<input type="hidden" id="actionValue" name="actionValue">
-
+		<input type="hidden" id="licenseID" name="licenseID">
+		
+		<input type="hidden" id="hyoujijun_count" name="hyoujijun_count" value="<%=request.getAttribute("hyoujijun_count")%>">
+		<input type="hidden" id="seisekiStyle" name="seisekiStyle" value="<%=request.getAttribute("seisekiStyle")%>">
+		<c:forEach var="lisencenname" items="${ColectionList}">
+			<input type="hidden" id="recordTest" name="recordTest" value="${lisencenname.record}">
+			<input type="hidden" id="LcsId" name="LcsId" value="${lisencenname.licenseid}">
+		</c:forEach>
+		<input type="hidden" id="compeleteMes" name="compeleteMes" value="<%=request.getAttribute("compeleteMes")%>">
+		<input type="hidden" id="errorMes" name="errorMes" value="<%=request.getAttribute("errorMes")%>">
+		<input type="hidden" id="serverErrorMes" name="serverErrorMes" value="<%=request.getAttribute("serverErrorMes")%>">
 	</form>
 
 </body>

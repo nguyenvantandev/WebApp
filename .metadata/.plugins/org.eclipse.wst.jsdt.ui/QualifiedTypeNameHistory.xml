@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="Document"/>
 <fullyQualifiedTypeName name="Geolocation"/>
 <fullyQualifiedTypeName name="HTMLInputElement"/>
+<fullyQualifiedTypeName name="CharacterData"/>
 </qualifiedTypeNameHistroy>

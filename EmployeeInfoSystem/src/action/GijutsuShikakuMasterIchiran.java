@@ -196,14 +196,14 @@ public class GijutsuShikakuMasterIchiran extends HttpServlet {
 		 */
 		if("çÌèú".equals(actionName) && !"".equals(actionValue)){
 			//System.out.println("Run");
-			String shiyouKakunin = "SELECT COUNT(license_id) AS count FROM emp_skill_lic WHERE license_id = ? AND del_flg = ?";
+			String shiyouKakunin = "SELECT COUNT(license_id) AS count FROM emp_skill_lic WHERE license_id = ?";
 			String kakunin = "SELECT license_id,  del_flg FROM skill_lic_mas WHERE license_id = ? AND del_flg = ?";
 			String sql = "UPDATE skill_lic_mas SET del_flg = ?, upd_date = current_timestamp WHERE license_id = ? AND del_flg = ?";
 			try{
 				connection = con.connect();
 				preparedstatement = connection.prepareStatement(shiyouKakunin);
 				preparedstatement.setString(1, actionValue);
-				preparedstatement.setString(2, "0");
+				
 				rs = preparedstatement.executeQuery();
 				int count = 0;
 				if(rs.next()){

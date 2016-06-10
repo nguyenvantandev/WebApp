@@ -1,0 +1,15 @@
+package Value;
+
+public class LisenceNameList {
+	private String Info;
+
+	public String getInfo() {
+		return Info;
+	}
+
+	public void setInfo(String info) {
+		Info = info;
+	}
+	
+
+}

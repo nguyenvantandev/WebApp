@@ -258,10 +258,10 @@ public class ShainMasterKensaku extends HttpServlet {
 		 * */
 		if(!"".equals(gijutsushikakuMasterButton) && !"null".equals(gijutsushikakuMasterButton)){
 			request.setAttribute("zengamen_shainId", gijutsushikakuMasterButton);
-//			request.setAttribute("shainId_search", shainID);
-//			request.setAttribute("namae_search", namae);
-//			request.setAttribute("sebetsu_search",seibetsu);
-//			request.setAttribute("sakujo_search", sakujosumi);
+			request.setAttribute("shainId_search", shainID);
+			request.setAttribute("namae_search", namae);
+			request.setAttribute("sebetsu_search",seibetsu);
+			request.setAttribute("sakujo_search", sakujosumi);
 			RequestDispatcher rd = request.getRequestDispatcher("SkillUpdate.jsp");
 			rd.forward(request, response);
 			return;

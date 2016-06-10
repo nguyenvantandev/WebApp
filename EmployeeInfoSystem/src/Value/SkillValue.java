@@ -38,5 +38,4 @@ public class SkillValue {
 	public void setSeiseki(String seiseki) {
 		this.seiseki = seiseki;
 	}
-	
 }

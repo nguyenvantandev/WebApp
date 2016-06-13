@@ -4,11 +4,11 @@ function SkillListUpdate_load(){
 	var firstSearch = document.getElementById("skillListFrom_shikakuId").value;
 	var sex = document.getElementById("sex").value;
 	if(sex == "1"){
-		document.getElementById("seiseki")[0].innerHTML = "無し";
+		$('#seiseki').val("無し");
 	}else if(sex == "0"){
-		document.getElementById("seiseki")[0].innerHTML = "あり";
+		$('#seiseki').val("あり");
 	}else{
-		document.getElementById("seiseki")[0].innerHTML = "";
+		$('#seiseki').val("");
 	}
 	
 	if(shikakuId != "null"){

@@ -15,7 +15,7 @@ function employeeSearch_load(){
 		document.getElementById("namae").value = name;
 	}
 	if(sex != "null"){
-		document.getElementById("sebetsu")[0].innerHTML = sex;
+		$('#sebetsu').val (sex);
 	}
 	
 	if(del == "1"){

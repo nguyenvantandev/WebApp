@@ -2,8 +2,8 @@
 
 .ontop {
 	z-index: 999;
-	    width: 771px;
-    height: 310px;
+	width: 771px;
+	height: 310px;
 	top: 0;
 	left: 0;
 	display: none;
@@ -11,10 +11,10 @@
 	background-color: #BEF781;
 	opacity: 1.4;
 	filter: alpha(opacity = 50);
-	    position: fixed;
-    left: 22%;
-    top: 30%;
-    border-style: double;
+	position: fixed;
+	left: 22%;
+	top: 30%;
+	border-style: double;
 }
 
 table {
@@ -45,7 +45,7 @@ tbody, thead {
 tbody {
 	overflow: auto;
 	height: 265px;
-	width: 848px;
+	width: 865px;
 }
 
 #Interface {
@@ -96,13 +96,13 @@ h3 {
 }
 
 #koushin {
-	    width: 73px;
-    height: 31px;
+	width: 73px;
+	height: 31px;
 }
 
 #sakujo {
-	    width: 73px;
-    height: 31px;
+	width: 73px;
+	height: 31px;
 }
 
 #tsuika {
@@ -114,109 +114,125 @@ h3 {
 	right: 29%;
 	position: absolute;
 }
-#addform{
-    margin-left: 1%;
-    margin-top: 1%;
-    margin-right: 2%;
-}
-#tojiru{
-    right: 2%;
-    position: absolute;
-    height: 28px;
-    width: 46px;
-}
-#label_shiakumei{
-	    margin-right: 42px;
+
+#addform {
+	margin-left: 1%;
+	margin-top: 1%;
+	margin-right: 2%;
 }
 
-#shikakuMei{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-        height: 32px;
-    width: 386px;
-}
-#label_shutokuDate{
-	margin-right: 10px;
-}
-#year{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-     height: 32px;
-        width: 100px;
-}
-#label_year{
-	
-}
-#month{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-     height: 32px;
-     width: 85px;
-}
-#label_month{
-	
-}
-#day{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-     height: 32px;
-     width: 85px;
-}
-#label_day{
-	
-}
-#label_seiseki{
-	margin-right: 63px;
-	
-	
-}
-#seiseki, #upd_seiseki{
-	 height: 32px;
+#tojiru {
+	right: 2%;
+	position: absolute;
+	height: 28px;
+	width: 46px;
 }
 
-#label_houjijun{
+#label_shiakumei {
 	margin-right: 42px;
 }
-#houjijun, #upd_houjijun{
 
-	    margin-top: 10px;
-    margin-bottom: 10px;
-     height: 32px;
-     width: 96px;
+#shikakuMei {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 386px;
 }
-#popup_tsuika{
+
+#label_shutokuDate {
+	margin-right: 10px;
+}
+
+#year {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 100px;
+}
+
+#label_year {
+	
+}
+
+#month {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 85px;
+}
+
+#label_month {
+	
+}
+
+#day {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 85px;
+}
+
+#label_day {
+	
+}
+
+#label_seiseki {
+	margin-right: 63px;
+}
+
+#seiseki, #upd_seiseki {
+	height: 32px;
+}
+
+#label_houjijun {
+	margin-right: 42px;
+}
+
+#houjijun, #upd_houjijun {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 96px;
+}
+
+#popup_tsuika {
 	right: 20%;
-    position: absolute;
-    height: 34px;
-    width: 84px;
+	position: absolute;
+	height: 34px;
+	width: 84px;
 }
-#upd_shikakumei{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 34px;
-    width: 343px;
+
+#upd_shikakumei {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 34px;
+	width: 343px;
 }
-#popup_koushin{
+
+#popup_koushin {
 	right: 20%;
-    position: absolute;
-    height: 34px;
-    width: 84px;
+	position: absolute;
+	height: 34px;
+	width: 84px;
 }
-#upd_year{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-     height: 32px;
-        width: 100px;
+
+#upd_year {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 100px;
 }
-#upd_month{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-     height: 32px;
-     width: 85px;
+
+#upd_month {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 85px;
 }
-#upd_day{
-	    margin-top: 10px;
-    margin-bottom: 10px;
-     height: 32px;
-     width: 85px;
+
+#upd_day {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 85px;
 }

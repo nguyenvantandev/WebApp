@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="houjijun" key="selection"/>
+		<item value="dispSearch" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="dispUpd"/>
 			<item value="houjijun"/>
 			<item value="seiseki"/>
 			<item value="shikakumei"/>
@@ -15,9 +16,9 @@
 			<item value="notFindMes"/>
 			<item value="EmployeeSearch.jsp"/>
 			<item value="completeMs"/>
-			<item value="sakujoButton"/>
 		</list>
 		<list key="replacehistory">
+			<item value="dispSearch"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

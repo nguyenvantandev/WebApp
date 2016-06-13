@@ -55,12 +55,7 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 		String actionName = request.getParameter("actionName");
 		String actionValue = request.getParameter("actionValue");
 		String licenseId = request.getParameter("licenseID");
-		// System.out.println(actionName);
-		// System.out.println(actionValue);
-		
-		
-		
-		
+
 		DBconnection con = new DBconnection();
 		Connection connection = null;
 		PreparedStatement preparedstatement = null;
@@ -73,7 +68,8 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 			 * 初期検索
 			 */
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT emp_mas.emp_id, emp_mas.name, emp_skill_lic.license_id, emp_skill_lic.get_date, emp_skill_lic.record, emp_skill_lic.disp_order, skill_lic_mas.license_name");
+			sql.append(
+					"SELECT emp_mas.emp_id, emp_mas.name, emp_skill_lic.license_id, emp_skill_lic.get_date, emp_skill_lic.record, emp_skill_lic.disp_order, skill_lic_mas.license_name");
 			sql.append(" FROM emp_mas");
 			sql.append(" RIGHT JOIN emp_skill_lic ON emp_mas.emp_id = emp_skill_lic.emp_id");
 			sql.append(" LEFT JOIN skill_lic_mas ON emp_skill_lic.license_id = skill_lic_mas.license_id");
@@ -98,7 +94,7 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 				preparedstatement = connection.prepareStatement(sql.toString());
 				preparedstatement.setString(1, actionValue);
 				preparedstatement.setString(2, "0");
-				
+
 				rs = preparedstatement.executeQuery();
 				Boolean have = false;
 
@@ -215,44 +211,69 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 				preparedstatement.setString(4, actionValue);
 				preparedstatement.setString(5, licenseId);
 				preparedstatement.executeUpdate();
-				
+
+				/*
+				 * 表示順更新 ↓
+				 */
+				String junbanUpd = request.getParameter("junbanUpd");
 				preparedstatement = connection.prepareStatement(dispSearch);
 				preparedstatement.setString(1, actionValue);
 				preparedstatement.setString(2, licenseId);
 				rs = preparedstatement.executeQuery();
 				ArrayList<String> licenseid = new ArrayList<String>();
 				ArrayList<Integer> dispOrder = new ArrayList<Integer>();
-				while (rs.next()){
+				while (rs.next()) {
 					licenseid.add(rs.getString("license_id"));
 					dispOrder.add(rs.getInt("disp_order"));
 				}
-				for(int i = 0; i < dispOrder.size(); i++){
-					if(Integer.parseInt(hyojijun) == dispOrder.get(i)){
-						int num = Integer.parseInt(hyojijun) + 1;
-						for(int j = i; j < dispOrder.size(); j++){
-							dispOrder.set(j, num);
+				int num = Integer.parseInt(hyojijun) + 1;
+				int num2 = Integer.parseInt(junbanUpd);
+				for (int i = 0; i < dispOrder.size(); i++) {
+					if (Integer.parseInt(hyojijun) < Integer.parseInt(junbanUpd)) {
+						if (dispOrder.get(i) >= Integer.parseInt(hyojijun)
+								&& dispOrder.get(i) <= Integer.parseInt(junbanUpd)) {
+
+							for (int j = i; j <= i; j++) {
+								dispOrder.set(j, num);
+							}
 							num += 1;
 						}
 					}
+					if (Integer.parseInt(hyojijun) > Integer.parseInt(junbanUpd)) {
+						if (dispOrder.get(i) <= Integer.parseInt(hyojijun)
+								&& dispOrder.get(i) >= Integer.parseInt(junbanUpd)) {
+							for (int j = i; j <= i; j++) {
+								dispOrder.set(j, num2);
+							}
+							num2 += 1;
+						}
+					}
+
 				}
 				preparedstatement = connection.prepareStatement(dispUpd);
-				for(int z = 0; z < licenseid.size(); z++){
+				for (int z = 0; z < licenseid.size(); z++) {
 					preparedstatement.setInt(1, dispOrder.get(z));
 					preparedstatement.setString(2, actionValue);
 					preparedstatement.setString(3, licenseid.get(z));
 					preparedstatement.executeUpdate();
 				}
+				/*
+				 * ↑ 表示順更新
+				 */
 				connection.commit();
-				
+
 			} catch (Exception e) {
 				try {
+					request.setAttribute("serverErrorMes", "サーバー処理で例外が発生しました。");
 					connection.rollback();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				request.setAttribute("serverErrorMes", "サーバー処理で例外が発生しました。");
 				e.printStackTrace();
 			}
+			request.setAttribute("compeleteMes", "資格名の情報を更新しました。");
 			request.setAttribute("shainId_search", shainId_search);
 			request.setAttribute("namae_search", namae_search);
 			request.setAttribute("sebetsu_search", sebetsu_search);
@@ -274,6 +295,8 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 			String hyojijun = request.getParameter("houjijun");
 			String shutokudate = year + "-" + month + "-" + day;
 			String sql = "INSERT INTO emp_skill_lic (emp_id, license_id, get_date, record, disp_order, teg_date) VALUES (?, ?, ?, ?, ?, current_timestamp)";
+			String dispSearch = "SELECT license_id, disp_order FROM emp_skill_lic WHERE  emp_id = ? AND license_id != ? order by disp_order ASC";
+			String dispUpd = "UPDATE emp_skill_lic SET disp_order = ?, upd_date = current_timestamp WHERE emp_id = ? AND license_id = ?";
 			try {
 				Timestamp formatday = new Timestamp(new SimpleDateFormat("yyyy-MM-dd").parse(shutokudate).getTime());
 				connection = con.connect();
@@ -288,6 +311,41 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 				}
 				preparedstatement.setInt(5, Integer.parseInt(hyojijun));
 				preparedstatement.executeUpdate();
+				/*
+				 * 表示順更新 ↓
+				 */
+				preparedstatement = connection.prepareStatement(dispSearch);
+				preparedstatement.setString(1, actionValue);
+				preparedstatement.setString(2, licenseId);
+				rs = preparedstatement.executeQuery();
+				ArrayList<String> licenseid = new ArrayList<String>();
+				ArrayList<Integer> dispOrder = new ArrayList<Integer>();
+				while (rs.next()) {
+					licenseid.add(rs.getString("license_id"));
+					dispOrder.add(rs.getInt("disp_order"));
+				}
+				for (int i = 0; i < dispOrder.size(); i++) {
+					if (dispOrder.get(i) == Integer.parseInt(hyojijun)) {
+						int num = Integer.parseInt(hyojijun) + 1;
+						for (int j = i; j < dispOrder.size(); j++) {
+							dispOrder.set(j, num);
+							num += 1;
+						}
+					}
+				}
+
+				preparedstatement = connection.prepareStatement(dispUpd);
+				for (int z = 0; z < licenseid.size(); z++) {
+					preparedstatement.setInt(1, dispOrder.get(z));
+					preparedstatement.setString(2, actionValue);
+					preparedstatement.setString(3, licenseid.get(z));
+					preparedstatement.executeUpdate();
+				}
+
+				/*
+				 * 表示順更新 ↑
+				 */
+
 				connection.commit();
 			} catch (Exception e) {
 				try {
@@ -298,6 +356,7 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 				}
 				e.printStackTrace();
 			}
+			request.setAttribute("compeleteMes", "資格ID 「" + licenseId + "」 を追加しました。");
 			request.setAttribute("shainId_search", shainId_search);
 			request.setAttribute("namae_search", namae_search);
 			request.setAttribute("sebetsu_search", sebetsu_search);
@@ -314,6 +373,8 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 		if ("削除".equals(actionName)) {
 			String searchVal = "SELECT emp_id, license_id FROM emp_skill_lic  WHERE emp_id = ? AND license_id = ?";
 			String sql = "DELETE FROM emp_skill_lic WHERE emp_id = ? AND license_id = ?";
+			String dispSearch = "SELECT license_id, disp_order FROM emp_skill_lic WHERE  emp_id = ? AND license_id != ? order by disp_order ASC";
+			String dispUpd = "UPDATE emp_skill_lic SET disp_order = ?, upd_date = current_timestamp WHERE emp_id = ? AND license_id = ?";
 			try {
 				connection = con.connect();
 				preparedstatement = connection.prepareStatement(searchVal);
@@ -325,6 +386,41 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 					preparedstatement.setString(1, actionValue);
 					preparedstatement.setString(2, licenseId);
 					preparedstatement.executeUpdate();
+					/*
+					 * 表示順更新 ↓
+					 */
+					String junbanUpd = request.getParameter("junbanUpd");
+					preparedstatement = connection.prepareStatement(dispSearch);
+					preparedstatement.setString(1, actionValue);
+					preparedstatement.setString(2, licenseId);
+					rs = preparedstatement.executeQuery();
+					ArrayList<String> licenseid = new ArrayList<String>();
+					ArrayList<Integer> dispOrder = new ArrayList<Integer>();
+					while (rs.next()) {
+						licenseid.add(rs.getString("license_id"));
+						dispOrder.add(rs.getInt("disp_order"));
+					}
+					int num = Integer.parseInt(junbanUpd);
+					for (int i = 0; i < dispOrder.size(); i++) {
+
+						if (dispOrder.get(i) > Integer.parseInt(junbanUpd)) {
+
+							dispOrder.set(i, num);
+							num += 1;
+						}
+
+					}
+
+					preparedstatement = connection.prepareStatement(dispUpd);
+					for (int z = 0; z < licenseid.size(); z++) {
+						preparedstatement.setInt(1, dispOrder.get(z));
+						preparedstatement.setString(2, actionValue);
+						preparedstatement.setString(3, licenseid.get(z));
+						preparedstatement.executeUpdate();
+					}
+					/*
+					 * 表示順更新 ↑
+					 */
 					connection.commit();
 					request.setAttribute("compeleteMes",
 							"資格ID " + licenseId + " の社員ID " + actionValue + " の情報を削除しました。");

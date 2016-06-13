@@ -1,6 +1,3 @@
-//function pop(div) {
-//	document.getElementById(div).style.display = 'block';
-//}
 function hide(div) {
 	document.getElementById("tsuika").disabled = false;
 	document.getElementById(div).style.display = 'none';
@@ -117,7 +114,7 @@ function SkillUpdate_load() {
 		}
 		document.getElementsByName("houjijun")[0].innerHTML = show;
 		$('#houjijun').val("");
-		for(var i = 1; i < hyoujijun; i++){
+		for (var i = 1; i < hyoujijun; i++) {
 			showupd += "<option>" + i + "</option>";
 		}
 		document.getElementsByName("upd_houjijun")[0].innerHTML = showupd;
@@ -146,6 +143,7 @@ function popupKoshin_click(Val) {
 	var licenseId = Val.parentNode.parentNode.cells[1].innerHTML;
 	document.getElementById("upd_shikakumei").value = shikakuname;
 	document.getElementById("licenseID").value = licenseId;
+	document.getElementById("junbanUpd").value = junban;
 	document.getElementById("upd_shikakumei").disabled = true;
 	if (seiseki == "○") {
 		document.getElementById("upd_seiseki").value = "";
@@ -182,14 +180,9 @@ function tsuika_click() {
 		var LcsId = document.getElementsByName("LcsId")[0].value;
 		document.getElementById("licenseID").value = LcsId;
 	}
-	document.getElementById("actionName").value = "追加";
-	document.getElementById("SkillUpdate").submit();
-}
-
-function koushin_click() {
-	var year = document.getElementById("upd_year").value;
-	var month = document.getElementById("upd_month").value;
-	var day = document.getElementById("upd_day").value;
+	var year = document.getElementById("year").value;
+	var month = document.getElementById("month").value;
+	var day = document.getElementById("day").value;
 	if (year == "") {
 		alert("生年月日が未選択です。");
 		return false;
@@ -202,6 +195,44 @@ function koushin_click() {
 		alert("生年月日が未選択です。");
 		return false;
 	}
+	dt = new Date(year, month - 1, day);
+	if (dt.getFullYear() != year || dt.getMonth() != month - 1
+			|| dt.getDate() != day) {
+		alert("選択日付は不正です。");
+		return false;
+	}
+	var seiseki = document.getElementById("seiseki").value;
+	if (!document.getElementById("seiseki").disabled) {
+		if (seiseki == "") {
+			alert("成績が未入力です。");
+			return false;
+		} else if (seiseki != "") {
+			var regex = /^[A-Za-z0-9]+$/;
+			if (!seiseki.match(regex)) {
+				alert("成績は半角英数字のみ入力してください。");
+				return false;
+			}
+		}
+	}
+
+	var hyoujijun = document.getElementById("houjijun").value;
+	if (hyoujijun == "") {
+		alert("表示順が未選択です。");
+		return false;
+	}
+	var conf = confirm("新技術資格を追加してよろしいですか。");
+	if (conf == true) {
+		document.getElementById("actionName").value = "追加";
+		document.getElementById("SkillUpdate").submit();
+	} else {
+		return false;
+	}
+}
+
+function koushin_click() {
+	var year = document.getElementById("upd_year").value;
+	var month = document.getElementById("upd_month").value;
+	var day = document.getElementById("upd_day").value;
 	dt = new Date(year, month - 1, day);
 	if (dt.getFullYear() != year || dt.getMonth() != month - 1
 			|| dt.getDate() != day) {
@@ -222,11 +253,6 @@ function koushin_click() {
 		}
 	}
 
-	var hyoujijun = document.getElementById("upd_houjijun").value;
-	if (hyoujijun == "") {
-		alert("表示順が未選択です。");
-		return false;
-	}
 	var conf = confirm("資格名の情報を更新してよろしいですか。");
 	if (conf == true) {
 		document.getElementById("actionName").value = "更新";
@@ -255,6 +281,8 @@ function sakujo_click(Val) {
 	var licenseid = Val.parentNode.parentNode.cells[1].innerHTML;
 	document.getElementById("actionValue").value = shainId;
 	document.getElementById("licenseID").value = licenseid;
+	var junban = Val.parentNode.parentNode.cells[0].innerHTML;
+	document.getElementById("junbanUpd").value = junban;
 	var conf = confirm("資格情報を削除してよろしいですか。");
 	if (conf == true) {
 		document.getElementById("actionName").value = "削除";

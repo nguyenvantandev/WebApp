@@ -43,7 +43,7 @@ public class ShainMasterUpdate extends HttpServlet {
 		String conditionVal = request.getParameter("conditionVal");
 //		System.out.println(shainId);
 		
-		String shainId = request.getParameter("shainId");
+		//String shainId = request.getParameter("shainId");
 		String namae = request.getParameter("namae");
 		String furigane = request.getParameter("furigana");
 		String inisharu = request.getParameter("inisharu");

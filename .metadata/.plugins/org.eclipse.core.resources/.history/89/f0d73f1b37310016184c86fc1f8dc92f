@@ -1,0 +1,23 @@
+function resumeSearch_load(){
+	
+}
+
+function kuria_click(){
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+	document.getElementById("").value = "";
+}
+
+function kensaku_click(){
+	
+}
+
+function shosai_click(Val){
+	
+}

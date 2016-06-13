@@ -1,0 +1,134 @@
+package action;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import connectionDB.DBconnection;
+
+/**
+ * Servlet implementation class KeirekishoKensaku
+ */
+@WebServlet("/KeirekishoKensaku")
+public class KeirekishoKensaku extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public KeirekishoKensaku() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		String shainId = request.getParameter("shainId");
+		String namae = request.getParameter("namae");
+		String sakujoCheck = request.getParameter("sakujocheck");
+		String gyumuMei = request.getParameter("gyumumei");
+		String gyouShu = request.getParameter("gyoushu");
+		String shokumunaiyou = request.getParameter("shokumunaiyou");
+		String shiyougengo = request.getParameter("shiyougengo");
+		String db = request.getParameter("db");
+		String sonohoka = request.getParameter("sonohoka");
+//		System.out.println(shainId);
+//		System.out.println(namae);
+//		System.out.println(sakujoCheck);
+//		System.out.println(gyumuMei);
+//		System.out.println(gyouShu);
+//		System.out.println(shokumunaiyou);
+//		System.out.println(shiyougengo);
+//		System.out.println(db);
+//		System.out.println(sonohoka);
+//		request.setAttribute("shainId", shainId);
+//		request.setAttribute("namae", namae);
+//		request.setAttribute("hidden_sakujocheck", sakujoCheck);
+//		request.setAttribute("gyumumei", gyumuMei);
+//		request.setAttribute("gyoushu", gyouShu);
+//		request.setAttribute("shokumunaiyou", shokumunaiyou);
+//		request.setAttribute("shiyougengo", shiyougengo);
+//		request.setAttribute("db", db);
+//		request.setAttribute("sonohoka", sonohoka);
+		
+		String actionName = request.getParameter("actionName");
+		
+		DBconnection con = new DBconnection();
+		Connection connection = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet rs = null;
+		ArrayList<String> val = new ArrayList<String>();
+		if("åüçı".equals(actionName)){
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT DISTINCT mas.emp_id, mas.name, mas.sex, extract(year from age(current_timestamp,mas.birth_date))AS age,");
+			sql.append(" extract(year from age(current_timestamp,mas.work_start_date))AS workage, mas.near_station, mas.del_flg");
+			sql.append(" FROM emp_mas AS mas");
+			sql.append(" LEFT JOIN emp_resume AS resume");
+			sql.append(" ON mas.emp_id = resume.emp_id");
+			Boolean where = false;
+			if(!"".equals(shainId)){
+				where = true;
+				sql.append(" WHERE mas.emp_id = ?");
+				val.add(shainId);
+			}
+			if(!"".equals(namae)){
+				if(where == false){
+					where = true;
+					sql.append(" WHERE mas.name = ?");
+					val.add(namae);
+				}else{
+					sql.append(" AND mas.name = ?");
+					val.add(namae);
+				}
+			}
+			if(!"".equals(gyumuMei)){
+				if(where == false){
+					where = true;
+					sql.append(" WHERE resume.system_name LIKE ?");
+					val.add("%" + gyumuMei+ "%");
+				}else{
+					sql.append(" AND resume.system_name LIKE ?");
+					val.add("%" + gyumuMei+ "%");
+				}
+			}
+			if(!"".equals(gyouShu)){
+				if(where == false){
+					where = true;
+					sql.append(" WHERE resume.industry_name LIKE ?");
+					val.add("%"+gyouShu+"%");
+				}
+			}
+			try{
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("ResumeSearch.jsp");
+		rd.forward(request, response);
+
+	}
+
+}

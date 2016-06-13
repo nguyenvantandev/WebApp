@@ -1,0 +1,68 @@
+package action;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class KeirekishoKensaku
+ */
+@WebServlet("/KeirekishoKensaku")
+public class KeirekishoKensaku extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public KeirekishoKensaku() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		String shainId = request.getParameter("shainId");
+		String namae = request.getParameter("namae");
+		String sakujoCheck = request.getParameter("sakujocheck");
+		String gyumuMei = request.getParameter("gyumumei");
+		String gyouShu = request.getParameter("gyoushu");
+		String shokumunaiyou = request.getParameter("shokumunaiyou");
+		String shiyougengo = request.getParameter("shiyougengo");
+		String db = request.getParameter("db");
+		String sonohoka = request.getParameter("sonohoka");
+		System.out.println(shainId);
+		System.out.println(namae);
+		System.out.println(sakujoCheck);
+		System.out.println(gyumuMei);
+		System.out.println(gyouShu);
+		System.out.println(shokumunaiyou);
+		System.out.println(shiyougengo);
+		System.out.println(db);
+		System.out.println(sonohoka);
+		
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("");
+		rd.forward(request, response);
+
+	}
+
+}

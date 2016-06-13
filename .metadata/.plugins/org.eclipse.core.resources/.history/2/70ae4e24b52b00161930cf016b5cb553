@@ -1,8 +1,0 @@
-function skillList_load(){
-	var id = document.getElementById("hidden_shikakuId").value;
-	var name = document.getElementById("hidden_shikakumei").value;
-	var seisekinashi = document.getElementById("hidden_seisekinashi").value;
-	var seisekiari = document.getElementById("").value;
-	var sakujosumi = document.getElementById("hidden_sakujosumi").value;
-	
-}

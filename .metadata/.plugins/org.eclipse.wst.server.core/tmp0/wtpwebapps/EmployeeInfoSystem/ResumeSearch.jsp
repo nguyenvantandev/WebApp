@@ -7,8 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/ResumeSearch.css">
 <script type="text/javascript" src="js/ResumeSearch.js"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <title>経歴書検索画面</title>
 </head>
 <body onload="resumeSearch_load()">
@@ -19,13 +18,13 @@
 		</h3>
 		<fieldset>
 			<legend>検索条件</legend>
-			<label id="label_shainId">社員ID</label><input type="text" id="shainId" name="shainId" value="<%=request.getAttribute("shainId")%>">
-			<label id="label_namae">名前</label><input type="text" id="namae" name="namae" value="<%=request.getAttribute("namae")%>"> 
+			<label id="label_shainId">社員ID</label><input type="text" id="shainId" name="shainId" value="<%=request.getAttribute("shainId")%>" style="ime-mode:disabled;" maxlength="4">
+			<label id="label_namae">名前</label><input type="text" id="namae" name="namae" value="<%=request.getAttribute("namae")%>" maxlength="40"> 
 			<input type="checkbox" id="sakujocheck" name="sakujocheck">削除済社員も含める<br> 
 			<input type="hidden" id="hidden_sakujocheck" name="hidden_sakujocheck" value="<%=request.getAttribute("hidden_sakujocheck")%>">
 			
 			<label id="label_gyumumei">業務名</label><input type="text" id="gyumumei" name="gyumumei" value="<%=request.getAttribute("gyumumei")%>"> 
-			<label id="label_gyoushu">業種</label><input type="text" id="gyoushu" name="gyoushu" value="<%=request.getAttribute("gyoushu")%>"> 
+			<label id="label_gyoushu">業種</label><input type="text" id="gyoushu" name="gyoushu" value="<%=request.getAttribute("gyoushu")%>" maxlength="10"> 
 			<label id="label_shokumunaiyou">職務内容</label><input type="text" id="shokumunaiyou" name="shokumunaiyou" value="<%=request.getAttribute("shokumunaiyou")%>"><br>
 			 
 			<label id="label_shiyougengo">使用言語</label><input type="text" id="shiyougengo" name="shiyougengo" value="<%=request.getAttribute("shiyougengo")%>"> 
@@ -41,6 +40,7 @@
 				<c:if test="${not empty count}">
 				対象件数：<%=((Integer) request.getAttribute("count"))%>件<br>
 				</c:if>
+		<input type="hidden" id="kennsu" name="kennsu" value="<%=((Integer) request.getAttribute("count"))%>">		
 		</div>
 		<!--社員一覧  -->
 		<div id="list">
@@ -77,15 +77,17 @@
 									value="${row.saiyorieki}"></c:out></td>
 							<td style="width: 83px" align="center"><c:out
 									value="${row.sakujosumi}"></c:out></td>
-							<td style="width: 188px" align="center"><input type="button"
-								id="shosai" name="shosai" value="詳細" onclick="shosai_click(this)"></td>
+							<td style="width: 188px" align="center">
+							<input type="button" id="shosai${row.num}" class="shosai" name="shosai${row.num}" value="詳細" onclick="shosai_click(this)">
+								</td>
 						</tr>
 					</c:forEach>
 
 				</tbody>
 			</table>
 		</div>
-		<input type="hidden" id="actionName" name="actionName">
+		<input type="hidden" id="actionName" name="actionName" value="<%=request.getAttribute("actionName")%>">
+		<input type="hidden" id="actionValue" name="actionValue">
 	</form>
 
 </body>

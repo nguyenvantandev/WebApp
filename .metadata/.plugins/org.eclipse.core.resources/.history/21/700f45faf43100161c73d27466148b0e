@@ -1,0 +1,65 @@
+package action;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Keirekisho
+ */
+@WebServlet("/Keirekisho")
+public class Keirekisho extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Keirekisho() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		/*
+		 * 社員マスタ検索パラメーター
+		 */
+		String shain_shainId = request.getParameter("shain_shainId");
+		String shain_namae = request.getParameter("shain_namae");
+		String shain_sebetsu = request.getParameter("shain_sebetsu");
+		String shain_sakujo = request.getParameter("shain_sakujo");
+
+		
+		/*
+		 * 経歴書検索パラメーター
+		 */
+		String keireki_shainId = request.getParameter("keireki_shainId");
+		String keireki_namae = request.getParameter("keireki_namae");
+		String keireki_sakujocheck = request.getParameter("keireki_sakujocheck");
+		String keireki_gyumumei = request.getParameter("keireki_gyumumei");
+		String keireki_gyoushu = request.getParameter("keireki_gyoushu");
+		String keireki_shokumunaiyou = request.getParameter("keireki_shokumunaiyou");
+		String keireki_shiyougengo = request.getParameter("keireki_shiyougengo");
+		String keireki_db = request.getParameter("keireki_db");
+		String keireki_sonohoka = request.getParameter("keireki_sonohoka");
+		
+		
+		/*
+		 * 処理使用パラメーター
+		 */
+		String actionId = request.getParameter("actionId");
+		String whatpage = request.getParameter("whatpage");
+		String actionName = request.getParameter("actionName");
+	}
+
+}

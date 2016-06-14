@@ -278,11 +278,13 @@ public class ShainMasterKensaku extends HttpServlet {
 		 *äJén
 		 * */
 		if(!"".equals(gijitsushaKerekishoButton) && !"null".equals(gijitsushaKerekishoButton)){
-			request.setAttribute("id", gijitsushaKerekishoButton);
-//			request.setAttribute("shainId_search", shainID);
-//			request.setAttribute("namae_search", namae);
-//			request.setAttribute("sebetsu_search",seibetsu);
-//			request.setAttribute("sakujo_search", sakujosumi);
+			request.setAttribute("actionId", gijitsushaKerekishoButton);
+			
+			request.setAttribute("shain_shainId", shainID);
+			request.setAttribute("shain_namae", namae);
+			request.setAttribute("shain_sebetsu",seibetsu);
+			request.setAttribute("shain_sakujo", sakujosumi);
+			request.setAttribute("whatpage", "é–àıåüçı");
 			RequestDispatcher rd = request.getRequestDispatcher("Resume.jsp");
 			rd.forward(request, response);
 			return;

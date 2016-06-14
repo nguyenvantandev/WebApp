@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>技術者経歴書画面</title>
+</head>
+<body>
+<p>技術者経歴書画面</p>
+<input type="text" name="id" name="id" value="<%=request.getAttribute("id")%>" >
+
+<!--社員マスタ検索画面と 経歴書検索画面の該当行の社員ID -->
+<input type="text" id="actionId" name="actionId" value="<%=request.getAttribute("actionId")%>">
+<!--社員マスタ検索画面  -->
+<input type="text" id="shain_shainId" name="shain_shainId" value="<%=request.getAttribute("shain_shainId")%>">
+<input type="text" id="shain_namae" name="shain_namae" value="<%=request.getAttribute("shain_namae")%>">
+<input type="text" id="shain_sebetsu" name="shain_sebetsu" value="<%=request.getAttribute("shain_sebetsu")%>">
+<input type="text" id="shain_sakujo" name="shain_sakujo" value="<%=request.getAttribute("shain_sakujo")%>">
+
+<!--経歴書検索画面  -->
+<input type="text" id="" name="" value="<%=request.getAttribute("")%>">
+</body>
+</html>

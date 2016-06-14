@@ -54,6 +54,24 @@ function resumeSearch_load() {
 		document.getElementById("sonohoka").value = sonohoka;
 	}
 	
+	var tbl = document.getElementById("table").rows.length;
+	for(var i = 1; i < tbl; i++){
+		var n = document.getElementById("table").rows[i].cells[7].innerHTML;
+		if(n == "○"){
+			document.getElementById("shosai"+i).disabled = true;
+		}
+	}
+	
+	var count = document.getElementById("kennsu").value;
+	if(count == "0"){
+		alert("検索条件に一致する社員が見つかりません。");
+	}
+	var search = document.getElementById("actionName").value
+	if(search == "再検索"){
+		document.getElementById("actionName").value = "検索"
+	document.getElementById("ResumeSearch").submit();
+	}
+	
 }
 
 function kuria_click() {
@@ -69,6 +87,14 @@ function kuria_click() {
 }
 
 function kensaku_click() {
+	var shainId = document.getElementById("shainId").value;
+	if (shainId != "") {
+		var regex = /^[A-Za-z0-9]+$/;
+		if (!shainId.match(regex)) {
+			alert("社員IDは半角英数字で入力してください。");
+			return false;
+		}
+	}
 	document.getElementById("actionName").value = "検索"
 	document.getElementById("ResumeSearch").submit();
 
@@ -76,5 +102,9 @@ function kensaku_click() {
 }
 
 function shosai_click(Val) {
-
+	var report = Val.parentNode.parentNode.cells[1].innerHTML;
+	document.getElementById("actionName").value = "詳細";
+	document.getElementById("actionValue").value = report;
+	document.getElementById("ResumeSearch").submit();
+	
 }

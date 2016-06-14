@@ -1,0 +1,10 @@
+function Resume_load(){
+	var actionId = document.getElementById("actionId").value;
+	var shainId = document.getElementById("shainId").value;
+	var namae = document.getElementById("namae").value;
+	if(shainId != "null"){
+		document.getElementById("shainId").value = shainId;
+		document.getElementById("shainId").disabled = true;
+	}
+	
+}

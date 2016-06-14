@@ -1,0 +1,44 @@
+function Resume_load(){
+	var actionId = document.getElementById("actionId").value;
+	var shainId = document.getElementById("shainId").value;
+	var namae = document.getElementById("namae").value;
+	if(shainId != "null"){
+		document.getElementById("shainId").value = shainId;
+		document.getElementById("shainId").disabled = true;
+	}
+	if(namae != "null"){
+		document.getElementById("namae").value = namae;
+		document.getElementById("namae").disabled = true;
+	}
+	/*
+	 * 社員マスタ検索
+	 */
+	var shain_shainId = document.getElementById("shain_shainId").value;
+	document.getElementById("shain_shainId").value = shain_shainId;
+	var shain_namae = document.getElementById("shain_namae").value;
+	document.getElementById("shain_namae").value =shain_namae;
+	var shain_sebetsu = document.getElementById("shain_sebetsu").value;
+	document.getElementById("shain_sebetsu").value= shain_sebetsu;
+	var shain_sakujo = document.getElementById("shain_sakujo").value;
+	document.getElementById("shain_sakujo").value = shain_sakujo;
+	/*
+	 * 経歴書検索
+	 */
+	var keireki_shainId = document.getElementById("keireki_shainId").value;
+	var keireki_namae = document.getElementById("keireki_namae").value;
+	var keireki_sakujocheck = document.getElementById("keireki_sakujocheck").value;
+	var keireki_gyumumei = document.getElementById("keireki_gyumumei").value;
+	var keireki_gyoushu = document.getElementById("keireki_gyoushu").value;
+	var keireki_shokumunaiyou = document.getElementById("keireki_shokumunaiyou").value;
+	var keireki_shiyougengo = document.getElementById("keireki_shiyougengo").value;
+	var keireki_db = document.getElementById("keireki_db").value;
+	var keireki_sonohoka = document.getElementById("keireki_sonohoka").value;
+	
+	
+	if(actionId != "null"){
+		document.getElementById("actionId").value = actionId;
+		document.getElementById("actionName").value = "初期検索";
+		document.getElementById("Resume").submit();
+	}
+	
+}

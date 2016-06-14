@@ -1,0 +1,27 @@
+function Resume_load(){
+	var actionId = document.getElementById("actionId").value;
+	var shainId = document.getElementById("shainId").value;
+	var namae = document.getElementById("namae").value;
+	if(shainId != "null"){
+		document.getElementById("shainId").value = shainId;
+		document.getElementById("shainId").disabled = true;
+	}
+	if(namae != "null"){
+		document.getElementById("namae").value = namae;
+		document.getElementById("namae").disabled = true;
+	}
+	/*
+	 * 社員マスタ検索
+	 */
+	
+	/*
+	 * 経歴書検索
+	 */
+	
+	if(actionId != "null"){
+		document.getElementById("actionId").value = actionId;
+		document.getElementById("actionName").value = "初期検索";
+		document.getElementById("Resume").submit();
+	}
+	
+}

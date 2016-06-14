@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="">
+<input type="button" id="modoru" name="modoru" value="戻る"><br>
+<h3><b>経歴書更新</b></h3><br>
+<label>社員ID</label><input type="text" id="shainId" name="shainId"><br>
+<label>自年月日</label><select></select><label>年</label><select></select><label>月</label><select></select><label>日</label><br>
+<label>至年月日</label><select></select><label>年</label><select></select><label>月</label><select></select><label>日</label><br>
+
+<input type="hidden" id="actionId" name="actionId" value="<%=request.getAttribute("actionId")%>" >
+</form>
+</body>
+</html>

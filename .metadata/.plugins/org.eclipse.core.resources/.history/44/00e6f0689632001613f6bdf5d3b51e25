@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+
+body {
+	    margin-left: 15%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right: 15%;
+}
+#modoru{
+	    right: 15%;
+    position: absolute;
+    width: 61px;
+    height: 35px;
+}
+h3{
+	
+}
+#label_shainId{
+	margin-right: 25px;
+}
+#shainId{
+	
+}
+#label_jinengapi{
+	margin-right: 2px;
+}
+#year{
+	
+}
+#label_year{
+	
+}
+#month{
+	
+}
+#label_month{
+	
+}
+#day{
+	
+}
+#label_day{
+	
+}
+#label_itarunengapi{
+	margin-right: 2px;	
+}
+#itaru_year{
+	
+}
+#itaru_month{
+	
+}
+#itaru_day{
+
+}
+#label_gyoushu{
+	    margin-right: 39px;
+}
+#gyoushu{
+	
+}
+#label_gyumumei{
+	margin-right: 23px;
+}
+#gyumumei{
+	
+}
+#label_shokumunaiyo{
+	margin-right: 7px;
+}
+#shokumunaiyo{
+	
+}
+#label_kaihatsukankyou{
+	
+}
+#label_os{
+	margin-left: 44px;
+	    margin-right: 6px;
+}
+#os{
+	
+}
+#label_shiyogengo{
+	    margin-left: 20px;
+    margin-right: 10px;
+}
+#shiyogengo{
+	
+}
+#label_db{
+	margin-left: 44px;
+	    margin-right: 6px;
+}
+#db{
+	
+}
+#label_sonohoka{
+	    margin-left: 20px;
+    margin-right: 10px;
+}
+#sonohoka{
+	
+}
+#addUpd{
+	
+}

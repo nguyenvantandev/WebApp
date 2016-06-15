@@ -46,10 +46,6 @@ public class Keirekisho extends HttpServlet {
 		String shain_namae = request.getParameter("shain_namae");
 		String shain_sebetsu = request.getParameter("shain_sebetsu");
 		String shain_sakujo = request.getParameter("shain_sakujo");
-		System.out.println(shain_shainId);	
-		System.out.println(shain_namae);	
-		System.out.println(shain_sebetsu);	
-		System.out.println(shain_sakujo);	
 		/*
 		 * 経歴書検索パラメーター
 		 */
@@ -62,16 +58,6 @@ public class Keirekisho extends HttpServlet {
 		String keireki_shiyougengo = request.getParameter("keireki_shiyougengo");
 		String keireki_db = request.getParameter("keireki_db");
 		String keireki_sonohoka = request.getParameter("keireki_sonohoka");
-		System.out.println("////////////////////////");
-		System.out.println(keireki_shainId);	
-		System.out.println(keireki_namae);	
-		System.out.println(keireki_sakujocheck);	
-		System.out.println(keireki_gyumumei);	
-		System.out.println(keireki_gyoushu);	
-		System.out.println(keireki_shokumunaiyou);	
-		System.out.println(keireki_shiyougengo);	
-		System.out.println(keireki_db);	
-		System.out.println(keireki_sonohoka);	
 		/*
 		 * 処理使用パラメーター
 		 */
@@ -79,10 +65,6 @@ public class Keirekisho extends HttpServlet {
 		String whatpage = request.getParameter("whatpage");
 		String actionName = request.getParameter("actionName");
 		String actionValue = request.getParameter("actionValue");
-		System.out.println("////////////////////////");
-		System.out.println(actionId);
-		System.out.println(whatpage);	
-		System.out.println(actionName);	
 		
 		DBconnection con = new DBconnection();
 		Connection connection = null;
@@ -188,7 +170,29 @@ public class Keirekisho extends HttpServlet {
 		 * 新規追加ボタン押下処理
 		 */
 		if("新規追加".equals(actionName)){
+			request.setAttribute("actionName", actionName);
 			request.setAttribute("actionId", actionId);
+			
+			/*
+			 * 社員マスタ検索と経歴書検索のパラメーター
+			 */
+			request.setAttribute("shain_shainId", shain_shainId );
+			request.setAttribute("shain_namae", shain_namae);
+			request.setAttribute("shain_sebetsu", shain_sebetsu);
+			request.setAttribute("shain_sakujo", shain_sakujo);
+			
+			request.setAttribute("keireki_shainId", keireki_shainId);
+			request.setAttribute("keireki_namae", keireki_namae);
+			request.setAttribute("keireki_sakujocheck", keireki_sakujocheck);
+			request.setAttribute("keireki_gyumumei", keireki_gyumumei);
+			request.setAttribute("keireki_gyoushu", keireki_gyoushu);
+			request.setAttribute("keireki_shokumunaiyou", keireki_shokumunaiyou);
+			request.setAttribute("keireki_shiyougengo", keireki_shiyougengo);
+			request.setAttribute("keireki_db", keireki_db);
+			request.setAttribute("keireki_sonohoka", keireki_sonohoka);
+			request.setAttribute("whatpage", whatpage);
+			
+			
 			RequestDispatcher rd = request.getRequestDispatcher("ResumeUpdate.jsp");
 			rd.forward(request, response);
 			return;
@@ -197,7 +201,33 @@ public class Keirekisho extends HttpServlet {
 		 * 更新ボタン押下処理
 		 */
 		if("更新".equals(actionName)){
+			request.setAttribute("actionName", actionName);
+			request.setAttribute("actionValue", actionValue);
+			request.setAttribute("actionId", actionId);
 			
+			/*
+			 * 社員マスタ検索と経歴書検索のパラメーター
+			 */
+			request.setAttribute("shain_shainId", shain_shainId );
+			request.setAttribute("shain_namae", shain_namae);
+			request.setAttribute("shain_sebetsu", shain_sebetsu);
+			request.setAttribute("shain_sakujo", shain_sakujo);
+			
+			request.setAttribute("keireki_shainId", keireki_shainId);
+			request.setAttribute("keireki_namae", keireki_namae);
+			request.setAttribute("keireki_sakujocheck", keireki_sakujocheck);
+			request.setAttribute("keireki_gyumumei", keireki_gyumumei);
+			request.setAttribute("keireki_gyoushu", keireki_gyoushu);
+			request.setAttribute("keireki_shokumunaiyou", keireki_shokumunaiyou);
+			request.setAttribute("keireki_shiyougengo", keireki_shiyougengo);
+			request.setAttribute("keireki_db", keireki_db);
+			request.setAttribute("keireki_sonohoka", keireki_sonohoka);
+			request.setAttribute("whatpage", whatpage);
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("ResumeUpdate.jsp");
+			rd.forward(request, response);
+			return;
 		}
 		/*
 		 * 削除ボタン押下処理

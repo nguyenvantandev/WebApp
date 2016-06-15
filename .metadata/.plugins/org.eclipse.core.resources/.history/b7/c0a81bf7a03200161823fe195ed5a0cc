@@ -1,0 +1,51 @@
+function ResumeUpdate_load(){
+	var actionName = document.getElementById("actionName").value;
+	document.getElementById("actionName").value = actionName;
+	
+	var actionValue = document.getElementById("actionValue").value;
+	document.getElementById("actionValue").value = actionValue;
+	
+	var actionId = document.getElementById("actionId").value;
+	document.getElementById("actionId").value = actionId;
+	
+	var shainId = document.getElementById("shainId").value;
+	if(shainId != "null"){
+		document.getElementById("shainId").value = "";
+	}else{
+		document.getElementById("shainId").value = shainId;
+	}
+	
+	var gyoushu = document.getElementById("gyoushu").value;
+	if(gyoushu != "null"){
+		document.getElementById("gyoushu").value = ""
+	}else{
+		document.getElementById("gyoushu").value = gyoushu;
+	}
+	
+	var gyumumei = document.getElementById("gyumumei").value;
+	if(gyumumei != "null"){
+		document.getElementById("gyumumei").value = "";
+	}else{
+		document.getElementById("gyumumei").value = gyumumei;
+	}
+	
+	var shokumunaiyo = document.getElementById("shokumunaiyo").value;
+	if(shokumunaiyo != "null"){
+		document.getElementById("shokumunaiyo").value = "";
+	}else{
+		document.getElementById("shokumunaiyo").value = shokumunaiyo;
+	}
+	
+	var os = document.getElementById("os").value;
+	var shiyogengo = document.getElementById("shiyogengo").value;
+	var db = document.getElementById("db").value;
+	var sonohoka = document.getElementById("sonohoka").value;
+	
+	if(actionName == "新規追加"){
+		
+	}
+}
+
+function addUpd_click(){
+	
+}

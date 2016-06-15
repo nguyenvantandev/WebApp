@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/ResumeUpdate.css">
+<script type="text/javascript" src="js/ResumeUpdate.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<title>経歴書更新画面</title>
+</head>
+<body onload="ResumeUpdate_load()">
+
+<form action="KeirekishoUpdate" method="post" id="ResumeUpdate" name="ResumeUpdate">
+<input type="button" id="modoru" name="modoru" value="戻る"><br>
+<h3><b>経歴書更新</b></h3><br>
+<label id="label_shainId">社員ID</label><input type="text" id="shainId" name="shainId" value="<%=request.getAttribute("shainId")%>"><br>
+<label id="label_jinengapi">自年月日</label>
+<select id="year"><option></option></select><label id="label_year">年</label>
+<select id="month"><option></option></select><label id="label_month">月</label>
+<select id="day"><option></option></select><label id="label_day">日</label><br>
+<!--自年月日の表示されないデータ  -->
+<input type="hidden" id="start_year" name="start_year" value="<%=request.getAttribute("")%>">
+<input type="hidden" id="start_month" name="" value="<%=request.getAttribute("")%>">
+<input type="hidden" id="start_day" name="" value="<%=request.getAttribute("")%>">
+<!--  -->
+<label id="label_itarunengapi">至年月日</label>
+<select id="itaru_year"><option></option></select><label id="label_year">年</label>
+<select id="itaru_month"><option></option></select><label id="label_month">月</label>
+<select id="itaru_day"><option></option></select><label id="label_day">日</label><br>
+
+
+
+<label id="label_gyoushu">業種</label><input type="text" id="gyoushu" name="gyoushu"><br>
+<label id="label_gyumumei">業務名</label><textarea id="gyumumei" name="gyumumei"></textarea><br>
+<label id="label_shokumunaiyo">職務内容</label><textarea id="shokumunaiyo" name="shokumunaiyo"></textarea><br><br><br>
+<label id="label_kaihatsukankyou">開発環境</label><br><br>
+<label id="label_os">OS</label><textarea id="os" name="os"></textarea>
+<label id="label_shiyogengo">使用言語</label><textarea id="shiyogengo" name="shiyogengo"></textarea><br>
+<label id="label_db">DB</label><textarea id="db" name="db"></textarea>
+<label id="label_sonohoka">その他</label><textarea id="sonohoka" name="sonohoka"></textarea><br>
+<input type="button" id="addUpd" name="addUpd" value="登録">
+<!--処理使用データ  -->
+<input type="hidden" id="actionId" name="actionId" value="<%=request.getAttribute("actionId")%>" >
+<input type="hidden" id="actionName" name="actionName" value="<%=request.getAttribute("actionName")%>" >
+<input type="hidden" id="actionValue" name="actionValue" value="<%=request.getAttribute("actionValue")%>" >
+</form>
+</body>
+</html>

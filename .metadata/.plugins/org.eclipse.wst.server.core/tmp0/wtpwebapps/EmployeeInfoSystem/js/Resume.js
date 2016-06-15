@@ -70,7 +70,12 @@ function shinkitsuika_click(){
 }
 
 function henshu_click(Val){
-	
+	var shainId = document.getElementById("shainId").value;
+	document.getElementById("actionId").value = shainId;
+	var report = Val.parentNode.parentNode.cells[1].innerHTML;
+	document.getElementById("actionValue").value = report;
+	document.getElementById("actionName").value = "更新";
+	document.getElementById("Resume").submit();
 }
 function sakujo_click(Val){
 	var shainId = document.getElementById("shainId").value;

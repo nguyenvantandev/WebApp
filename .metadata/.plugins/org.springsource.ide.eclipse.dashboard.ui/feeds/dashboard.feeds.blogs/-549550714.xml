@@ -5,7 +5,54 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-06-14T04:00:00Z</updated>
+  <updated>2016-06-14T20:11:00Z</updated>
+  <entry>
+    <title>Spring Cloud Brixton.SR1 is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/14/spring-cloud-brixton-sr1-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Spencer Gibb</name>
+    </author>
+    <id>tag:spring.io,2016-06-14:2527</id>
+    <updated>2016-06-14T20:11:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that Service Release 1 of the &lt;a href="http://cloud.spring.io"&gt;Spring Cloud Brixton&lt;/a&gt; Release Train is available today. The release can be found in our &lt;a href="http://repo.spring.io/release"&gt;Spring Release repository&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-cloud-dependencies%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is primarily a bug fix release with a few small features. Of particular note is a change that allows Brixton Eureka Servers to work with Angel Eureka clients.&lt;/p&gt;&lt;h4&gt;&lt;a href="#the-following-modules-were-updated-as-part-of-brixton-sr1" class="anchor" name="the-following-modules-were-updated-as-part-of-brixton-sr1"&gt;&lt;/a&gt;The following modules were updated as part of Brixton.SR1:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Cloud Commons &lt;a href="https://github.com/spring-cloud/spring-cloud-commons/issues?q=milestone:1.1.1"&gt;1.1.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Config &lt;a href="https://github.com/spring-cloud/spring-cloud-config/issues?q=milestone:1.1.1"&gt;1.1.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Consul &lt;a href="https://github.com/spring-cloud/spring-cloud-consul/issues?q=milestone:1.0.1"&gt;1.0.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Netflix &lt;a href="https://github.com/spring-cloud/spring-cloud-netflix/issues?q=milestone:1.1.1"&gt;1.1.1.RELEASE&lt;/a&gt; &amp;amp; &lt;a href="https://github.com/spring-cloud/spring-cloud-netflix/issues?q=milestone:1.1.2"&gt;1.1.2.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Sleuth &lt;a href="https://github.com/spring-cloud/spring-cloud-sleuth/issues?q=milestone:1.0.1"&gt;1.0.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Stream &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/issues?q=milestone:1.0.2.RELEASE"&gt;1.0.2.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Zookeeper &lt;a href="https://github.com/spring-cloud/spring-cloud-zookeeper/issues?q=milestone:1.0.1"&gt;1.0.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And, as always, we welcome feedback: either on &lt;a href="https://github.com/spring-cloud"&gt;GitHub&lt;/a&gt;, on &lt;a href="https://gitter.im/spring-cloud/spring-cloud"&gt;gitter&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloudOSS"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;The Spring Cloud team will be talking about Spring Cloud at &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt;, which will be taking place in Las Vegas between August 1-4 this year. There are many other great talks so &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions"&gt;check the agenda&lt;/a&gt; and &lt;a href="https://2016.event.springoneplatform.io/register"&gt;get your ticket&lt;/a&gt; if you havenÅft done so already. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - June 14th, 2016</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/14/this-week-in-spring-june-14th-2016" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2016-06-14:2526</id>
+    <updated>2016-06-14T18:58:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in London and Amsterdam (for the epic &lt;a href="http://gotocon.com/amsterdam-2016/speaker/Josh+Long"&gt;GOTO Amsterdam conference&lt;/a&gt; as well &lt;a href="http://www.jdriven.nl/events"&gt;as the JDriven meetup&lt;/a&gt; and the &lt;a href="http://www.meetup.com/Dutch-Spring-Meetup/events/231334315/"&gt;Dutch Spring User Group&lt;/a&gt;). We&amp;rsquo;ve got a lot to cover, as usual, so let&amp;rsquo;s get to it!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2016/06/10/spring-framework-4-3-goes-ga"&gt;Spring framework 4.3, packed with all sorts of niceties, is now available&lt;/a&gt;. This release provides all sorts of cool updates to various libraries (Hibernate ORM, Jackson, Netty, Undertow, Tomcat) and supports two features I&amp;rsquo;m quite excited about: auto-injection in constructors of Spring managed components whose parameters are unambiguously resolved by other types in the application context and the ability to inject types into a &lt;code&gt;@Configuration&lt;/code&gt;-class&amp;rsquo;s constructor.&lt;/li&gt;
+  &lt;li&gt;Marius Bogoevici just announced &lt;a href="https://spring.io/blog/2016/06/08/spring-cloud-stream-1-0-2-release-is-available"&gt;a critical update to Spring Cloud Stream, 1.0.2.RELEASE, is now available for immediate use&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;the good Dr. David Syer posted the second in a &lt;a href="https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code"&gt;series of posts looking at the reactive programming landscape&lt;/a&gt;. This post looks specifically at Project Reactor. Check it out!&lt;/li&gt;
+  &lt;li&gt;Spring Integration ninja Artem Bilan just announced that &lt;a href="https://spring.io/blog/2016/06/14/spring-integration-4-3-ga-is-available"&gt;Spring Integration 4.3.GA is now available&lt;/a&gt;! This release is packed with all sorts of cool stuff so grab the bits and go ASAP!&lt;/li&gt;
+  &lt;li&gt;I really dig this blog on &lt;a href="http://blog.gardeviance.org/2016/06/how-cloud-foundry-will-save-world-from.html"&gt;how Cloud Foundry will save the world from too much yak-shaving&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;want to quickly build a UI with which to edit data in MySQL? &lt;a href="https://vaadin.com/blog/-/blogs/building-a-web-ui-for-mysql-databases-in-plain-java-"&gt;The Vaadin blog has a nice blog introducing a way to to build one using Vaadin and Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;this looks interesting: an &lt;code&gt;npm&lt;/code&gt; module for &lt;a href="https://www.npmjs.com/package/spring-data-rest-js"&gt;working with Spring Data REST APIs from JavaScript&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;As usual, our buddy Baeldung nails it again with &lt;a href="http://www.baeldung.com/spring-boot-support-for-jooq"&gt;this post on using JOOQ with Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;this is an interesting post from Bartosz Jedrzejewski&lt;br/&gt; on &lt;a href="http://blog.scottlogic.com/2016/06/13/code-reuse-in-microservices-architecture.html"&gt;isolating and reusing functionality with Microservices&lt;/a&gt; demonstrated in terms of Spring Cloud.&lt;/li&gt;
+  &lt;li&gt;The Apereo CAS application, which is meant to be an enterprise single-signon solution, just released &lt;a href="https://groups.google.com/a/apereo.org/forum/#!topic/cas-user/srramLDpBpM"&gt;CAS version 5.0.0.M2&lt;/a&gt;. This release is built on Spring Boot and Spring Cloud, and so a lot of the work in the evolution is providing intelligent auto-configurations. Check it out!&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Integration 4.3 GA is Available</title>
     <link rel="alternate" href="https://spring.io/blog/2016/06/14/spring-integration-4-3-ga-is-available" />
@@ -770,7 +817,7 @@ the mouse would be a good example.&lt;/pre&gt;
 &lt;p&gt;&lt;a href="https://projectreactor.io/"&gt;&lt;strong&gt;Reactor&lt;/strong&gt;&lt;/a&gt; is a Java framework from the &lt;a href="http://www.gopivotal.com/oss"&gt;Pivotal&lt;/a&gt; open source team (the one that created Spring). It builds directly on Reactive Streams, so there is no need for a bridge. The Reactor IO project provides wrappers around low-level network runtimes like Netty and Aeron. Reactor is a "4th Generation" library according to David Karnok&amp;#8217;s &lt;a href="http://akarnokd.blogspot.co.uk/2016/03/operator-fusion-part-1.html"&gt;Generations of Reactive&lt;/a&gt; classification.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;&lt;strong&gt;Spring Framework 5.0&lt;/strong&gt;&lt;/a&gt; (first milestone July 2016) has reactive features built into it, including tools for building HTTP servers and clients. Existing users of Spring in the web tier will find a very familiar programming model using annotations to decorate controller methods to handle HTTP requests, for the most part handing off the dispatching of reactive requests and back pressure concerns to the framework. Spring builds on Reactor, but also exposes APIs that allow its features to be expressed using a choice of libraries (e.g. Reactor or RxJava). Users can choose from Tomcat, Jetty, Netty (via Reactor IO) and Undertow for the server side network stack.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;&lt;strong&gt;Spring Framework 5.0&lt;/strong&gt;&lt;/a&gt; (first milestone June 2016) has reactive features built into it, including tools for building HTTP servers and clients. Existing users of Spring in the web tier will find a very familiar programming model using annotations to decorate controller methods to handle HTTP requests, for the most part handing off the dispatching of reactive requests and back pressure concerns to the framework. Spring builds on Reactor, but also exposes APIs that allow its features to be expressed using a choice of libraries (e.g. Reactor or RxJava). Users can choose from Tomcat, Jetty, Netty (via Reactor IO) and Undertow for the server side network stack.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;&lt;a href="https://ratpack.io"&gt;&lt;strong&gt;Ratpack&lt;/strong&gt;&lt;/a&gt; is a set of libraries for building high performance services over HTTP. It builds on Netty and implements Reactive Streams for interoperability (so you can use other Reactive Streams implementations higher up the stack, for instance). Spring is supported as a native component, and can be used to provide dependency injection using some simple utility classes. There is also some autoconfiguration so that Spring Boot users can embed Ratpack inside a Spring application, bringing up an HTTP endpoint and listening there instead of using one of the embedded servers supplied directly by Spring Boot.&lt;/p&gt;
@@ -792,7 +839,7 @@ the mouse would be a good example.&lt;/pre&gt;
 &lt;h2 id="conclusion"&gt;&lt;a class="anchor" href="#conclusion"&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
 &lt;div class="sectionbody"&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;In this article we have taken a very broad and high level look at the Reactive movement, setting it in context in the modern enterprise. There are a number of Reactive libraries or frameworks for the JVM, all under active development. To a large extent they provide similar features, but increasingly, thanks to Reactive Streams, they are interoperable. In the next article in the series we will get down to brass tacks and have a look at some actual code samples, to get a better picture of the specifics of what it means to be Reactive and why it matters. We will also devote some time to understanding why the "F" in FRP is important, and how the concepts of back pressure and non-blocking code have a profound impact on programming style. And most importantly, we will help you to make the important decision about when and how to go Reactive, and when to stay put on the older styles and stacks.&lt;/p&gt;
+&lt;p&gt;In this article we have taken a very broad and high level look at the Reactive movement, setting it in context in the modern enterprise. There are a number of Reactive libraries or frameworks for the JVM, all under active development. To a large extent they provide similar features, but increasingly, thanks to Reactive Streams, they are interoperable. In the &lt;a href="https://spring.io/blog/2016/06/13/notes-on-reactive-programming-part-ii-writing-some-code"&gt;next article&lt;/a&gt; in the series we will get down to brass tacks and have a look at some actual code samples, to get a better picture of the specifics of what it means to be Reactive and why it matters. We will also devote some time to understanding why the "F" in FRP is important, and how the concepts of back pressure and non-blocking code have a profound impact on programming style. And most importantly, we will help you to make the important decision about when and how to go Reactive, and when to stay put on the older styles and stacks.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content>
@@ -2330,63 +2377,5 @@ so that you can review the state of the database (the default jdbc url is
   &lt;li&gt;Interesting (I&amp;rsquo;m pretty sure, at least!) &lt;a href="http://dev.classmethod.jp/server-side/java/spring-data-dynamodb/"&gt;Japanese-language post on Spring Data DynamoDB&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;this looks to be a nice &lt;a href="https://speakerdeck.com/sinsengumi/spring-boot-application-infrastructure"&gt;Japanese-language slidedeck on using Spring Boot for application infrastructure&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Webinar: Understanding microservice latency: An introduction to Distributed Tracing and Zipkin</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/05/24/webinar-understanding-microservice-latency-an-introduction-to-distributed-tracing-and-zipkin" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-05-24:2506</id>
-    <updated>2016-05-24T07:51:00Z</updated>
-    <content type="html">&lt;p&gt;Speakers: Adrian Cole &amp;amp; Marcin Grzejszczak, Pivotal&lt;/p&gt;
-&lt;p&gt;Latency analysis is the act of blaming components for causing user perceptible delay. In today&amp;rsquo;s world of microservices, this can be tricky as requests can fan out across polyglot components and even data-centers. In many cases, the root source of latency isn&amp;rsquo;t a component, but rather a link between components. This session will overview how to debug latency problems, using call graphs created by Zipkin. We&amp;rsquo;ll use trace zipkin itself, setting up from scratch using docker.&lt;/p&gt;
-&lt;p&gt;While we&amp;rsquo;re at it, we&amp;rsquo;ll discuss how the model works, and how to safely trace production. Finally, we&amp;rsquo;ll overview the ecosystem, including tools to trace ruby, c#, java and spring boot apps. When you leave, you&amp;rsquo;ll at least know something about distributed tracing, and hopefully be on your way to blaming things for causing latency!&lt;/p&gt;
-&lt;p&gt;Thursday, June 30th, 2016 3:00PM London GMT &lt;a href="http://connect.pivotal.io/OSS_Webinar_7AMMicroserviceLatency_ZipkinDistributedTracing_Q216_Register.html"&gt;Register&lt;/a&gt;&lt;br/&gt;&lt;p&gt;Thursday, June 30th, 2016 10:00AM PST (San Francisco GMT-08:00) &lt;a href="http://connect.pivotal.io/OSS_Webinar_10AMMicroserviceLatency_ZipkinDistributedTracing_Q216_Register.html"&gt;Register&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Roo 2.0.0M2 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/05/18/spring-roo-2-0-0m2-released" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2016-05-19:2505</id>
-    <updated>2016-05-18T22:28:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf on the Spring Roo team at DISID Corporation, I&amp;rsquo;m pleased to announce that Spring Roo 2.0.0.M2 has been released!&lt;/p&gt;
-&lt;p&gt;The main goal of this Spring Roo version was to update code generation to use latest Spring technologies:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Use Spring IO Platform to manage dependency versions and be able to use latest Spring technologies.&lt;/li&gt;
-  &lt;li&gt;Update code generation to use the latest Spring framework versions (4.x)&lt;/li&gt;
-  &lt;li&gt;Update code generation to include Spring Boot on generated projects.&lt;/li&gt;
-  &lt;li&gt;Remove all generated configuration based on XML files and use Spring Boot auto-configuration.&lt;/li&gt;
-  &lt;li&gt;Remove Active Record data model in favor of the Repository (Spring Data) based one.&lt;/li&gt;
-  &lt;li&gt;Generate application architecture based on service layer pattern by default&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Also, the Spring Roo shell has improved its usability:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;More intuitive commands that provides only the necessary parameters.&lt;/li&gt;
-  &lt;li&gt;New commands to configure Spring Roo behavior.&lt;/li&gt;
-  &lt;li&gt;Multi-module projects improvement.&lt;/li&gt;
-  &lt;li&gt;Push-in operations using Spring Roo Shell.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Finally, the presentation layer generation engine has been refactored:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Different response types are allowed in the same controller (JSON, THYMELEAF, etc&amp;hellip;)&lt;/li&gt;
-  &lt;li&gt;Views could be generated using THYMELEAF.&lt;/li&gt;
-  &lt;li&gt;View layer generation engine is based on FreeMarker templates that could be installed and customized by developers.&lt;/li&gt;
-  &lt;li&gt;Dojo has been replaced with HTML5, CSS3, Bootstrap and jQuery components. (Datatables, Select2, etc&amp;hellip;)&lt;/li&gt;
-  &lt;li&gt;New amazing Spring Roo Responsive Theme!&lt;/li&gt;
-  &lt;li&gt;&amp;hellip; and much more!&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As always, new version of Spring Roo, includes some bug fixes and improvements reported by the community.&lt;/p&gt;
-&lt;p&gt;For full details on the changes made in the new Spring Roo version, please refer to the&lt;br/&gt;&lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10340&amp;version=15212"&gt;Spring Roo 2.0.0.M2 Release Notes&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Additionally Spring Tool Suite (STS) team is working in releasing the STS 3.8.x which will include the Spring IDE Roo Support for Roo 2.0.0.M2.&lt;/p&gt;
-&lt;p&gt;If you want to install the updated Roo components before, you would do it manually via the Spring IDE nightly update site, but remember that you will get an unstable version of STS that could contains errors.&lt;/p&gt;
-&lt;p&gt;Thanks to all awesome users who came up with useful bug reports and suggestions.&lt;/p&gt;
-&lt;p&gt;For more specific information about Spring Roo project please see the&lt;br/&gt;&lt;a href="http://projects.spring.io/spring-roo/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-roo"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;As always, you&amp;rsquo;ll also find Roo on Twitter - either follow &lt;a href="http://www.twitter.com/springroo"&gt;@SpringRoo&lt;/a&gt; or just include #SpringRoo in your tweets.&lt;/p&gt;
-&lt;p&gt;Stay tuned to Spring Roo news!&lt;/p&gt;</content>
   </entry>
 </feed>

@@ -1,0 +1,13 @@
+function ResumeUpdate_load(){
+	var actionName = document.getElementById("actionName").value;
+	var actionValue = document.getElementById("actionValue").value;
+	var actionId = document.getElementById("actionId").value;
+	var shainId = document.getElementById("shainId").value;
+	if(actionName == "新規追加"){
+		
+	}
+}
+
+function addUpd_click(){
+	
+}

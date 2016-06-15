@@ -75,7 +75,7 @@
 
 
 
-		<!--社員マスタ検索画面と 経歴書検索画面の該当行の社員ID -->
+<!--社員マスタ検索画面と 経歴書検索画面の該当行の社員ID -->
 <input type="hidden" id="actionId" name="actionId" value="<%=request.getAttribute("actionId")%>">
 <input type="hidden" id="whatpage" name="whatpage" value="<%=request.getAttribute("whatpage")%>">
 <!--社員マスタ検索画面  -->

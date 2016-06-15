@@ -653,3 +653,6 @@
 0:0:0:0:0:0:0:1 - - [15/Jun/2016:16:19:07 +0900] "POST /EmployeeInfoSystem/ShainMasterKensaku HTTP/1.1" 200 32493
 0:0:0:0:0:0:0:1 - - [15/Jun/2016:16:19:08 +0900] "GET /EmployeeInfoSystem/Menu.jsp HTTP/1.1" 200 805
 0:0:0:0:0:0:0:1 - - [15/Jun/2016:16:30:25 +0900] "GET /EmployeeInfoSystem/ HTTP/1.1" 200 805
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:17:49:57 +0900] "GET /EmployeeInfoSystem/EmployeeSearch.jsp HTTP/1.1" 200 3611
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:17:49:59 +0900] "POST /EmployeeInfoSystem/ShainMasterKensaku HTTP/1.1" 200 29755
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:17:49:59 +0900] "POST /EmployeeInfoSystem/ShainMasterKensaku HTTP/1.1" 200 29755

@@ -30,19 +30,11 @@ public class KeirekishoKensaku extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -215,9 +207,9 @@ public class KeirekishoKensaku extends HttpServlet {
 			return;
 		}
 		/*
-		 *詳細ボタン押下処理 
+		 * 詳細ボタン押下処理
 		 */
-		if("詳細".equals(actionName)){
+		if ("詳細".equals(actionName)) {
 			request.setAttribute("actionId", actionValue);
 			request.setAttribute("keireki_shainId", shainId);
 			request.setAttribute("keireki_namae", namae);

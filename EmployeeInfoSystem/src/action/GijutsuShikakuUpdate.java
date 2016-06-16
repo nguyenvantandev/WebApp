@@ -83,7 +83,8 @@ public class GijutsuShikakuUpdate extends HttpServlet {
 			 * Ž‘Ši–¼ƒŠƒXƒgŽæ“¾
 			 */
 			StringBuffer licenseVal = new StringBuffer();
-			licenseVal.append("SELECT skill_lic_mas.license_name, skill_lic_mas.record_flg, skill_lic_mas.license_id FROM skill_lic_mas");
+			licenseVal.append(
+					"SELECT skill_lic_mas.license_name, skill_lic_mas.record_flg, skill_lic_mas.license_id FROM skill_lic_mas");
 			licenseVal.append(" LEFT JOIN emp_skill_lic");
 			licenseVal.append(" ON skill_lic_mas.license_id = emp_skill_lic.license_id AND emp_skill_lic.emp_id = ?");
 			licenseVal.append(" WHERE emp_skill_lic.license_id IS NULL");

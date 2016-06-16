@@ -1,5 +1,0 @@
-function ResumeUpdate_load(){
-	var actionName = document.getElementById("").value;
-	var actionValue = document.getElementById("").value;
-	var actionId = document.getElementById("").value;
-}

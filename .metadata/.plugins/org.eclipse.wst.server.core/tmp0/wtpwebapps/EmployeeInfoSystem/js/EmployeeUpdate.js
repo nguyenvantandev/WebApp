@@ -138,7 +138,6 @@ function employeeUpdate_load() {
 		$('#day').val(birth_day);
 	}
 
-	
 	/*
 	 * 社員マスタ検索画面で「新規追加」ボタンを押下場合 ↑
 	 */
@@ -155,7 +154,7 @@ function employeeUpdate_load() {
 		document.getElementById("employeeUpdate").submit();
 	}
 	var completeMs = document.getElementById("completeMs").value;
-	if(completeMs != "null"){
+	if (completeMs != "null") {
 		alert(completeMs);
 	}
 	if (shainNum != "null") {
@@ -178,7 +177,7 @@ function addUpdate_click() {
 		alert("社員IDが未入力です。");
 		return false;
 	}
-	if(shainId != ""){
+	if (shainId != "") {
 		var regex = /^[A-Za-z0-9]+$/;
 		if (!shainId.match(regex)) {
 			alert("社員IDは半角英数字で入力してください。");
@@ -221,23 +220,24 @@ function addUpdate_click() {
 		alert("生年月日が未選択です。");
 		return false;
 	}
-	dt=new Date(year,month-1,day);
-    if(dt.getFullYear()!= year || dt.getMonth()!= month-1 || dt.getDate()!= day){
-    	alert("出版年月日が不正です。");
-    	return false;
-    }
-	
+	dt = new Date(year, month - 1, day);
+	if (dt.getFullYear() != year || dt.getMonth() != month - 1
+			|| dt.getDate() != day) {
+		alert("出版年月日が不正です。");
+		return false;
+	}
+
 	var jusho = document.getElementById("jusho").value;
 	if (jusho == "" || jusho == " " || jusho == "　") {
 		alert("住所が未入力です。");
 		return false;
 	}
-	var com =confirm("社員を登録/更新してよろしいですか？");
-	if(com == true){
+	var com = confirm("社員を登録/更新してよろしいですか？");
+	if (com == true) {
 		document.getElementById("conditionVal").value = "登録/更新";
 		document.getElementById("shainNum").value = shainId;
 		document.getElementById("employeeUpdate").submit();
-	}else{
+	} else {
 		return false;
 	}
 }

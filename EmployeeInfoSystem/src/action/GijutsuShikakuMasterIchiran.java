@@ -61,8 +61,7 @@ public class GijutsuShikakuMasterIchiran extends HttpServlet {
 		ArrayList<SkillListValue> list = new ArrayList<SkillListValue>();
 
 		/*
-		 * 検索ボタン押下処理
-		 * ↓
+		 * 検索ボタン押下処理 ↓
 		 */
 		if ("検索".equals(actionName)) {
 			String sql = "SELECT license_id, license_name, record_flg, del_flg FROM skill_lic_mas";
@@ -161,8 +160,7 @@ public class GijutsuShikakuMasterIchiran extends HttpServlet {
 			return;
 		}
 		/*
-		 * 編集ボタン押下処理
-		 * ↓
+		 * 編集ボタン押下処理 ↓
 		 */
 		if ("編集".equals(actionName) && !"".equals(actionValue)) {
 			request.setAttribute("hidden_shikakuId", search_id);
@@ -176,10 +174,9 @@ public class GijutsuShikakuMasterIchiran extends HttpServlet {
 			return;
 		}
 		/*
-		 * 新規追加ボタン押下
-		 * ↓
+		 * 新規追加ボタン押下 ↓
 		 */
-		if("新規追加".equals(actionName)){
+		if ("新規追加".equals(actionName)) {
 			request.setAttribute("hidden_shikakuId", search_id);
 			request.setAttribute("hidden_shikakumei", search_name);
 			request.setAttribute("hidden_seisekinashi", search_seisekinashi);
@@ -188,47 +185,46 @@ public class GijutsuShikakuMasterIchiran extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("SkillListUpdate.jsp");
 			rd.forward(request, response);
 			return;
-			
+
 		}
 		/*
-		 * 削除ボタン押下処理
-		 * ↓
+		 * 削除ボタン押下処理 ↓
 		 */
-		if("削除".equals(actionName) && !"".equals(actionValue)){
-			//System.out.println("Run");
+		if ("削除".equals(actionName) && !"".equals(actionValue)) {
+			// System.out.println("Run");
 			String shiyouKakunin = "SELECT COUNT(license_id) AS count FROM emp_skill_lic WHERE license_id = ?";
 			String kakunin = "SELECT license_id,  del_flg FROM skill_lic_mas WHERE license_id = ? AND del_flg = ?";
 			String sql = "UPDATE skill_lic_mas SET del_flg = ?, upd_date = current_timestamp WHERE license_id = ? AND del_flg = ?";
-			try{
+			try {
 				connection = con.connect();
 				preparedstatement = connection.prepareStatement(shiyouKakunin);
 				preparedstatement.setString(1, actionValue);
-				
+
 				rs = preparedstatement.executeQuery();
 				int count = 0;
-				if(rs.next()){
+				if (rs.next()) {
 					count = rs.getInt("count");
 				}
-				 
-				if(count != 0){
+
+				if (count != 0) {
 					request.setAttribute("errorMessage", "資格IDが使用されています。削除できません。");
-				}else{
+				} else {
 					preparedstatement = connection.prepareStatement(kakunin);
 					preparedstatement.setString(1, actionValue);
 					preparedstatement.setString(2, "0");
 					rs = preparedstatement.executeQuery();
-					if(rs.next()){
+					if (rs.next()) {
 						preparedstatement = connection.prepareStatement(sql);
 						preparedstatement.setString(1, "1");
 						preparedstatement.setString(2, actionValue);
 						preparedstatement.setString(3, "0");
 						preparedstatement.executeUpdate();
 						connection.commit();
-					}else{
-						request.setAttribute("errorMessage", "資格ID ["+actionValue+"] が見つかりません。");
+					} else {
+						request.setAttribute("errorMessage", "資格ID [" + actionValue + "] が見つかりません。");
 					}
 				}
-			}catch(Exception e){
+			} catch (Exception e) {
 				try {
 					request.setAttribute("errorMessage", "サーバー処理で例外が発生しました。");
 					connection.rollback();

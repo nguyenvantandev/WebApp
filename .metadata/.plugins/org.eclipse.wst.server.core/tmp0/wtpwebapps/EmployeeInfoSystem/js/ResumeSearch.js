@@ -8,70 +8,70 @@ function resumeSearch_load() {
 	var shiyougengo = document.getElementById("shiyougengo").value;
 	var db = document.getElementById("db").value;
 	var sonohoka = document.getElementById("sonohoka").value;
-	if(id == "null"){
+	if (id == "null") {
 		document.getElementById("shainId").value = "";
-	}else{
+	} else {
 		document.getElementById("shainId").value = id;
 	}
-	if(name == "null"){
+	if (name == "null") {
 		document.getElementById("namae").value = "";
-	}else{
+	} else {
 		document.getElementById("namae").value = name;
 	}
-	if(deleted == "null"){
+	if (deleted == "null") {
 		document.getElementById("sakujocheck").checked = false;
-	}else{
+	} else {
 		document.getElementById("sakujocheck").checked = true;
 	}
-	if(gyumumei == "null"){
+	if (gyumumei == "null") {
 		document.getElementById("gyumumei").value = "";
-	}else{
+	} else {
 		document.getElementById("gyumumei").value = gyumumei;
 	}
-	if(gyoushu == "null"){
+	if (gyoushu == "null") {
 		document.getElementById("gyoushu").value = "";
-	}else{
+	} else {
 		document.getElementById("gyoushu").value = gyoushu;
 	}
-	if(shokumunaiyou == "null"){
+	if (shokumunaiyou == "null") {
 		document.getElementById("shokumunaiyou").value = "";
-	}else{
+	} else {
 		document.getElementById("shokumunaiyou").value = shokumunaiyou;
 	}
-	if(shiyougengo == "null"){
+	if (shiyougengo == "null") {
 		document.getElementById("shiyougengo").value = "";
-	}else{
+	} else {
 		document.getElementById("shiyougengo").value = shiyougengo;
 	}
-	if(db == "null"){
+	if (db == "null") {
 		document.getElementById("db").value = "";
-	}else{
+	} else {
 		document.getElementById("db").value = db;
 	}
-	if(sonohoka == "null"){
+	if (sonohoka == "null") {
 		document.getElementById("sonohoka").value = "";
-	}else{
+	} else {
 		document.getElementById("sonohoka").value = sonohoka;
 	}
-	
+
 	var tbl = document.getElementById("table").rows.length;
-	for(var i = 1; i < tbl; i++){
+	for (var i = 1; i < tbl; i++) {
 		var n = document.getElementById("table").rows[i].cells[7].innerHTML;
-		if(n == "○"){
-			document.getElementById("shosai"+i).disabled = true;
+		if (n == "○") {
+			document.getElementById("shosai" + i).disabled = true;
 		}
 	}
-	
+
 	var count = document.getElementById("kennsu").value;
-	if(count == "0"){
+	if (count == "0") {
 		alert("検索条件に一致する社員が見つかりません。");
 	}
 	var search = document.getElementById("actionName").value
-	if(search == "再検索"){
+	if (search == "再検索") {
 		document.getElementById("actionName").value = "検索"
-	document.getElementById("ResumeSearch").submit();
+		document.getElementById("ResumeSearch").submit();
 	}
-	
+
 }
 
 function kuria_click() {
@@ -98,7 +98,6 @@ function kensaku_click() {
 	document.getElementById("actionName").value = "検索"
 	document.getElementById("ResumeSearch").submit();
 
-	
 }
 
 function shosai_click(Val) {
@@ -106,5 +105,5 @@ function shosai_click(Val) {
 	document.getElementById("actionName").value = "詳細";
 	document.getElementById("actionValue").value = report;
 	document.getElementById("ResumeSearch").submit();
-	
+
 }

@@ -1,15 +1,16 @@
 @CHARSET "UTF-8";
 
-div{
+div {
 	height: 380px;
-	    margin-left: 15%;
-    margin-top: 5%;
-    margin-right: 31%;
-    margin-bottom: 1%;
-    border-style: double;
-    background-color: aliceblue;
+	margin-left: 15%;
+	margin-top: 5%;
+	margin-right: 31%;
+	margin-bottom: 1%;
+	border-style: double;
+	background-color: aliceblue;
 }
-#modoru{
+
+#modoru {
 	width: 86px;
 	height: 31px;
 	margin-top: 10px;
@@ -18,7 +19,8 @@ div{
 	right: 40%;
 	position: absolute;
 }
-#AddUpdate{
+
+#AddUpdate {
 	width: 86px;
 	height: 45px;
 	margin-top: 10px;
@@ -27,37 +29,42 @@ div{
 	right: 45%;
 	position: absolute;
 }
-#label_shikakuID{
+
+#label_shikakuID {
 	margin-left: 2%;
-    margin-right: 18px;
-    
+	margin-right: 18px;
 }
-#label_shikakumei{
+
+#label_shikakumei {
 	margin-left: 2%;
 	margin-right: 16px;
 }
-#label_seiseki{
+
+#label_seiseki {
 	margin-left: 2%;
 	margin-right: 31px;
-	
-}
-#shikakuId, #shikakumei, #seiseki{
-margin-top: 15px;
-    margin-bottom: 20px;
-}
-#shikakuId{
-    width: 170px;
-    height: 45px;
-}
-#shikakumei{
-	    width: 480px;
-    height: 45px;
-}
-#seiseki{
-	    height: 47px;
-    width: 142px;
-}
-h3{
-	margin-left: 2%;
 }
 
+#shikakuId, #shikakumei, #seiseki {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+#shikakuId {
+	width: 170px;
+	height: 45px;
+}
+
+#shikakumei {
+	width: 480px;
+	height: 45px;
+}
+
+#seiseki {
+	height: 47px;
+	width: 142px;
+}
+
+h3 {
+	margin-left: 2%;
+}

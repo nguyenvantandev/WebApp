@@ -1,4 +1,4 @@
-function employeeSearch_load(){
+function employeeSearch_load() {
 	var id = document.getElementById("id").value;
 	var name = document.getElementById("name").value;
 	var sex = document.getElementById("sex").value;
@@ -7,62 +7,60 @@ function employeeSearch_load(){
 	var serverErrorMs = document.getElementById("serverErrorMs").value;
 	var searchAgain = document.getElementById("sakujoButton").value;
 	var sakujoMes = document.getElementById("sakujoMes").value;
-	
-	if(id != "null"){
+
+	if (id != "null") {
 		document.getElementById("shain_ID").value = id;
 	}
-	if(name != "null"){
+	if (name != "null") {
 		document.getElementById("namae").value = name;
 	}
-	if(sex != "null"){
-		$('#sebetsu').val (sex);
+	if (sex != "null") {
+		$('#sebetsu').val(sex);
 	}
-	
-	if(del == "1"){
+
+	if (del == "1") {
 		document.getElementById("sakujosumi").checked = true;
 	}
-	if(serverErrorMs != "null"){
+	if (serverErrorMs != "null") {
 		alert(serverErrorMs);
 		return false;
 	}
 	if (sakujoMes != "null") {
-		alert (sakujoMes);
+		alert(sakujoMes);
 	}
 
-	if(searchAgain != "null"){
+	if (searchAgain != "null") {
 		document.getElementById("click_action").value = "検索";
 		document.getElementById("EmployeeSearch").submit();
 	}
-	if(count == "0"){
+	if (count == "0") {
 		alert("検索条件に一致する社員が見つかりません。");
 	}
 	var tbl = document.getElementById("table").rows.length;
-	for(var i = 1; i < tbl; i++){
+	for (var i = 1; i < tbl; i++) {
 		var n = document.getElementById("table").rows[i].cells[7].innerHTML;
-		if(n == "○"){
-			document.getElementById("ShainMaster"+i).disabled = true;
-			document.getElementById("Sakujo"+i).disabled = true;
-			document.getElementById("GijutsushikakuMaster"+i).disabled = true;
-			document.getElementById("GijitsushaKerekisho"+i).disabled = true;
-			
+		if (n == "○") {
+			document.getElementById("ShainMaster" + i).disabled = true;
+			document.getElementById("Sakujo" + i).disabled = true;
+			document.getElementById("GijutsushikakuMaster" + i).disabled = true;
+			document.getElementById("GijitsushaKerekisho" + i).disabled = true;
+
 		}
 	}
-		
-		
-	
+
 }
 
-function kuria_click(){
+function kuria_click() {
 	document.getElementById("shain_ID").value = "";
 	document.getElementById("namae").value = "";
 	document.getElementById("sebetsu").value = "";
 	document.getElementById("sakujosumi").checked = false;
 }
-function shinkitsuika_click(){
+function shinkitsuika_click() {
 	document.getElementById("click_action").value = "新規追加";
 	document.getElementById("EmployeeSearch").submit();
 }
-function kensaku_click(){
+function kensaku_click() {
 	var shainID = document.getElementById("shain_ID").value;
 	if (shainID != "") {
 		var regex = /^[A-Za-z0-9]+$/;
@@ -71,7 +69,7 @@ function kensaku_click(){
 			return false;
 		}
 		var regex2 = /^[0-9]+$/;
-		if(!shainID.match(regex2)){
+		if (!shainID.match(regex2)) {
 			alert("検索条件に一致する社員が見つかりません。");
 			return false;
 		}
@@ -81,33 +79,31 @@ function kensaku_click(){
 
 }
 
-function shainmaster_click(Val){
-    var report = Val.parentNode.parentNode.cells[1].innerHTML;
-    document.getElementById("shainmasterButton").value = report;
-    document.getElementById("EmployeeSearch").submit();
-    //alert(report);
+function shainmaster_click(Val) {
+	var report = Val.parentNode.parentNode.cells[1].innerHTML;
+	document.getElementById("shainmasterButton").value = report;
+	document.getElementById("EmployeeSearch").submit();
 }
 
-function sakujo_click(Val){
+function sakujo_click(Val) {
 	var confim = confirm("社員を削除してよろしいですか？");
-	if(confim == true){
+	if (confim == true) {
 		var report = Val.parentNode.parentNode.cells[1].innerHTML;
 		document.getElementById("sakujoButton").value = report;
 		document.getElementById("EmployeeSearch").submit();
-	}else{
+	} else {
 		return false;
 	}
 }
 
-function GijutsushikakuMaster_click(Val){
+function GijutsushikakuMaster_click(Val) {
 	var report = Val.parentNode.parentNode.cells[1].innerHTML;
 	document.getElementById("GijutsushikakuMasterButton").value = report;
-	 document.getElementById("EmployeeSearch").submit();
+	document.getElementById("EmployeeSearch").submit();
 }
 
-
-function GijitsushaKerekisho_click(Val){
+function GijitsushaKerekisho_click(Val) {
 	var report = Val.parentNode.parentNode.cells[1].innerHTML;
 	document.getElementById("GijitsushaKerekishoButton").value = report;
-	 document.getElementById("EmployeeSearch").submit();
+	document.getElementById("EmployeeSearch").submit();
 }

@@ -51,9 +51,9 @@ function ResumeUpdate_load() {
 	var shain_shainId = document.getElementById("shain_shainId").value;
 	document.getElementById("shain_shainId").value = shain_shainId;
 	var shain_namae = document.getElementById("shain_namae").value;
-	document.getElementById("shain_namae").value =shain_namae;
+	document.getElementById("shain_namae").value = shain_namae;
 	var shain_sebetsu = document.getElementById("shain_sebetsu").value;
-	document.getElementById("shain_sebetsu").value= shain_sebetsu;
+	document.getElementById("shain_sebetsu").value = shain_sebetsu;
 	var shain_sakujo = document.getElementById("shain_sakujo").value;
 	document.getElementById("shain_sakujo").value = shain_sakujo;
 	/*
@@ -69,7 +69,8 @@ function ResumeUpdate_load() {
 	document.getElementById("keireki_gyumumei").value = keireki_gyumumei;
 	var keireki_gyoushu = document.getElementById("keireki_gyoushu").value;
 	document.getElementById("keireki_gyoushu").value = keireki_gyoushu;
-	var keireki_shokumunaiyou = document.getElementById("keireki_shokumunaiyou").value;
+	var keireki_shokumunaiyou = document
+			.getElementById("keireki_shokumunaiyou").value;
 	document.getElementById("keireki_shokumunaiyou").value = keireki_shokumunaiyou;
 	var keireki_shiyougengo = document.getElementById("keireki_shiyougengo").value;
 	document.getElementById("keireki_shiyougengo").value = keireki_shiyougengo;
@@ -79,12 +80,10 @@ function ResumeUpdate_load() {
 	document.getElementById("keireki_sonohoka").value = keireki_sonohoka;
 	var whatpage = document.getElementById("whatpage").value;
 	document.getElementById("whatpage").value = whatpage;
-	
 
 	var actionValue = document.getElementById("actionValue").value;
 	document.getElementById("actionValue").value = actionValue;
 
-	
 	var shainId = document.getElementById("shainId").value;
 	if (shainId == "null") {
 		document.getElementById("shainId").value = "";
@@ -174,16 +173,32 @@ function ResumeUpdate_load() {
 
 	var actionId = document.getElementById("actionId").value;
 	document.getElementById("actionId").value = actionId;
-	
+
 	var actionName = document.getElementById("actionName").value;
-	
+
 	if (actionName == "新規追加") {
 		document.getElementById("addUpd").value = "登録";
 		document.getElementById("shainId").value = actionId;
 		document.getElementById("shainId").disabled = true;
-		
+
 		return false;
 	}
+
+	var completeMs = document.getElementById("completeMs").value;
+	if (completeMs != "null") {
+		alert(completeMs);
+	}
+	var notFindMes = document.getElementById("notFindMes").value;
+	if (notFindMes != "null") {
+		alert(notFindMes);
+		return false;
+	}
+	var serverErrorMs = document.getElementById("serverErrorMs").value;
+	if (serverErrorMs != "null") {
+		alert(serverErrorMs);
+		return false;
+	}
+
 	if (actionName == "更新") {
 		document.getElementById("actionName").value = "初期検索";
 		document.getElementById("ResumeUpdate").submit();
@@ -191,16 +206,86 @@ function ResumeUpdate_load() {
 
 }
 
-function modoru_click(){
+function modoru_click() {
 	document.getElementById("actionName").value = "戻る";
-	document.getElementById("actionId").value = document.getElementById("shainId").value
+	document.getElementById("actionId").value = document
+			.getElementById("shainId").value
 	document.getElementById("ResumeUpdate").submit();
 }
 
 function addUpd_click() {
+	var year = document.getElementById("year").value;
+	if (year == "") {
+		alert("自年月日が未選択です。")
+		return false;
+	}
+	var month = document.getElementById("month").value;
+	if (month == "") {
+		alert("自年月日が未選択です。")
+		return false;
+	}
+	var day = document.getElementById("day").value;
+	if (day == "") {
+		alert("自年月日が未選択です。")
+		return false;
+	}
+	dt = new Date(year, month - 1, day);
+	if (dt.getFullYear() != year || dt.getMonth() != month - 1
+			|| dt.getDate() != day) {
+		alert("自年月日が不正です。");
+		return false;
+	}
+	var itaru_year = document.getElementById("itaru_year").value;
+	if (itaru_year == "") {
+		alert("至年月日が未選択です。")
+		return false;
+	}
+	var itaru_month = document.getElementById("itaru_month").value;
+	if (itaru_month == "") {
+		alert("至年月日が未選択です。")
+		return false;
+	}
+	var itaru_day = document.getElementById("itaru_day").value;
+	if (itaru_day == "") {
+		alert("至年月日が未選択です。")
+		return false;
+	}
+
+	dt = new Date(itaru_year, itaru_month - 1, itaru_day);
+	if (dt.getFullYear() != itaru_year || dt.getMonth() != itaru_month - 1
+			|| dt.getDate() != itaru_day) {
+		alert("至年月日が不正です。");
+		return false;
+	}
+	var gyoushu = document.getElementById("gyoushu").value;
+	if (gyoushu == "") {
+		alert("業種が未選択です。");
+		return false;
+	}
+	var gyumumei = document.getElementById("gyumumei").value;
+	if (gyumumei == "") {
+		alert("業務名が未選択です。");
+		return false;
+	}
+	var shokumunaiyo = document.getElementById("shokumunaiyo").value;
+	if (shokumunaiyo == "") {
+		alert("職務内容が未選択です。");
+		return false;
+	}
+
 	var action = document.getElementById("addUpd").value;
-	document.getElementById("actionName").value = action;
-	document.getElementById("actionId").value = document.getElementById("shainId").value
-	document.getElementById("ResumeUpdate").submit();
-		
+	var conf = null;
+	if (action == "登録") {
+		conf = confirm("経歴書情報を登録してよろしいですか。");
+	} else {
+		conf = confirm("経歴書情報を更新してよろしいですか。");
+	}
+	if (conf == true) {
+		document.getElementById("actionName").value = action;
+		document.getElementById("actionId").value = document
+				.getElementById("shainId").value
+		document.getElementById("ResumeUpdate").submit();
+	} else {
+		return false;
+	}
 }

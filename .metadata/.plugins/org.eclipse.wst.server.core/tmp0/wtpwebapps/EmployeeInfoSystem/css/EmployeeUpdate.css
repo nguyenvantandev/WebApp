@@ -1,74 +1,93 @@
 @CHARSET "UTF-8";
 
 body {
-	    margin-left: 21%;
-    margin-right: 10%;
-    margin-top: 2%;
+	margin-left: 21%;
+	margin-right: 10%;
+	margin-top: 2%;
 }
+
 h2 {
-	    margin-bottom: 43px;
-    margin-top: 0px;
+	margin-bottom: 43px;
+	margin-top: 0px;
 }
-#modoru, #addUpdate{
+
+#modoru, #addUpdate {
 	right: 31%;
 	position: absolute;
-	    width: 64px;
-    height: 31px;
+	width: 64px;
+	height: 31px;
 }
+
 #id {
 	margin-right: 33px;
 }
-#name{
-	    margin-right: 47px;
+
+#name {
+	margin-right: 47px;
 }
-#furiname, #shortname{
-    margin-right: 10px;
-    margin-left: 20px;
+
+#furiname, #shortname {
+	margin-right: 10px;
+	margin-left: 20px;
 }
-#sex{
+
+#sex {
 	margin-right: 42px;
 }
-#birthday{
+
+#birthday {
 	margin-right: 5px;
 }
-#station{
-	    margin-right: 31px;
+
+#station {
+	margin-right: 31px;
 }
-#address{
-	    margin-right: 47px;
+
+#address {
+	margin-right: 47px;
 }
-#pr{
+
+#pr {
 	margin-right: 27px;
 }
-#shainId, #namae, #sebetsu, #year, #month, #day, #saiyorieki, #jusho, #jikopr ,#furigana, #inisharu{
-    margin-bottom: 15px;
-    height: 30px;
+
+#shainId, #namae, #sebetsu, #year, #month, #day, #saiyorieki, #jusho,
+	#jikopr, #furigana, #inisharu {
+	margin-bottom: 15px;
+	height: 30px;
 }
-#year, #month, #day{
-	    margin-right: 20px;
-    margin-left: 10px;
+
+#year, #month, #day {
+	margin-right: 20px;
+	margin-left: 10px;
 }
-#shainId{
-	    width: 80px;
+
+#shainId {
+	width: 80px;
 }
-#saiyorieki{
+
+#saiyorieki {
 	width: 230px;
 }
-#jusho{
-	    width: 717px;
+
+#jusho {
+	width: 717px;
 }
-#jikopr{
-	
-    width: 717px;
-    height: 200px;
-    vertical-align: top;
+
+#jikopr {
+	width: 717px;
+	height: 200px;
+	vertical-align: top;
 }
-#addUpdate{
-	    width: 100px;
+
+#addUpdate {
+	width: 100px;
 }
-#sebetsu{
-	    width: 109px;
+
+#sebetsu {
+	width: 109px;
 }
+
 #year, #month, #day {
-	    width: 100px;
+	width: 100px;
 }

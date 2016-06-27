@@ -1,0 +1,11 @@
+package com.mycompany.myapp;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ExampleDaoImpl implements ExampleDao {
+
+	public String find(){
+		return "test dao !!";
+	}
+}

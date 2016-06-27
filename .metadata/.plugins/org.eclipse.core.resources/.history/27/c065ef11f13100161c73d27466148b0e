@@ -1,5 +1,0 @@
-function Resume_load(){
-	var actionId = document.getElementById("actionId").value;
-	var shainId = document.getElementById("shainId").value;
-	
-}

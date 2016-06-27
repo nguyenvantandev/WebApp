@@ -1,0 +1,27 @@
+package com.mycompany.myapp;
+
+import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.mycompany.service.impl.ExampleServoce;
+
+@Controller
+public class ExampleController {
+
+	@Autowired
+	private ExampleServoce exampleServoce;
+	private static final Logger logger = LoggerFactory.getLogger(ExampleController.class);
+	
+	@RequestMapping( value = "/example", method = RequestMethod.GET)
+	public String get (Locale locale, Model model){
+		logger.debug("API start");
+		
+	}
+}

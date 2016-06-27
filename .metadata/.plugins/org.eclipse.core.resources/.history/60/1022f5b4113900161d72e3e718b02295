@@ -1,0 +1,13 @@
+package com.mycompany.myapp;
+
+import java.util.logging.Logger;
+
+import org.apache.log4j.spi.LoggerFactory;
+import org.springframework.stereotype.Controller;
+
+/**
+ *  * 家族の名前をJSON形式で返却するAPIクラスです。  
+ */
+@Controller
+public class FamilyController {
+    }

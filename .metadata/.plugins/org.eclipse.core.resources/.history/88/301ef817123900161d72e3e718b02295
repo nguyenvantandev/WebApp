@@ -1,0 +1,32 @@
+package com.mycompany.myapp;
+
+import java.util.Locale;
+//import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+
+//import org.apache.log4j.spi.LoggerFactory;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ *  * 家族の名前をJSON形式で返却するAPIクラスです。  
+ */
+@Controller
+public class FamilyController {
+	private static final Logger logger = LoggerFactory.getLogger(FamilyController.class);
+	@RequestMapping(value = "/family", method = Request.GET)
+	public String home (HttpServletRequest request, Locale locale, Model model){
+		looger.debug("API start");
+		model.addAttribute("callback", request.getParameter("callback"));
+		// 
+	}
+    }

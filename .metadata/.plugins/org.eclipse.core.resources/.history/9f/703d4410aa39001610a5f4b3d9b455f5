@@ -1,0 +1,14 @@
+package com.mycompany.model;
+
+import java.util.Date;
+
+public class User {
+    private String username;
+    private String password;
+    private String email;
+    private Date birthDate;
+    private String profession;
+ 
+    // getters and setters...
+ 
+}

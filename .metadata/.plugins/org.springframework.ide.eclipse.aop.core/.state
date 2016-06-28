@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="spring-message-source"/>
+<aop-project name="MemberMvc"/>
+<aop-project name="SpringMvcFormExample"/>
 <aop-project name="FirstExample"/>
 </aop-reference-model>

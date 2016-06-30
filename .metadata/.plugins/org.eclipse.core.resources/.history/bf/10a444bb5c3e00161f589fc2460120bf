@@ -1,0 +1,5 @@
+package jp.co.config;
+
+public class DatabaseConnect {
+
+}

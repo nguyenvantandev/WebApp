@@ -1,0 +1,5 @@
+package jp.co.dao;
+
+public class MasterDAOAction implements MasterDAO {
+
+}

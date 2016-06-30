@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item value="false" key="renameSubpackages"/>
 		<item value="false" key="updateQualifiedNames"/>
 		<item value="*" key="patterns"/>
 		<item value="false" key="updateSimilarElements"/>
@@ -51,6 +52,9 @@
 		<item value="0" key="HISTORY_SIZE"/>
 		<item value="false" key="CASE_SENSITIVE"/>
 		<item value="11" key="INCLUDE_MASK"/>
+	</section>
+	<section name="BuildPathsPropertyPage">
+		<item value="3" key="pageIndex"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>

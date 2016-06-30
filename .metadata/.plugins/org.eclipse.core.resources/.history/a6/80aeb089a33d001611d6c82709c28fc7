@@ -1,0 +1,86 @@
+@CHARSET "UTF-8";
+
+div{
+    margin-left: 25%;
+    margin-right: 35%;
+    border: 1px solid black;
+        height: 450px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: #BACFED;
+}
+#return{
+	    width: 50px;
+    height: 25px;
+    position: fixed;
+    right: 37%;
+}
+#text_input_title, #text_input_author, #text_input_publisher{
+	    margin-top: 1%;
+    width: 250px;
+    height: 25px;
+    margin-bottom: 1%;
+     margin-left: 1%;
+}
+#date_input{
+	margin-top: 1%;
+    width: 100px;
+    height: 25px;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+#month_input{
+	margin-top: 1%;
+    width: 100px;
+    height: 25px;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+#year_input{
+	margin-top: 1%;
+    width: 100px;
+    height: 25px;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+#add {
+	width: 81px;
+    height: 31px;
+    position: fixed;
+    right: 40%;
+}
+#update{
+	    width: 81px;
+    height: 31px;
+    position: fixed;
+    right: 46%;
+}
+#delete{
+	  width: 81px;
+    height: 31px;
+    position: fixed;
+    right: 40%;
+}
+#text_input_id, #text_input_zaiko{
+	 margin-top: 1%;
+    width: 100px;
+    height: 25px;
+    margin-bottom: 1%;
+     margin-left: 1%;
+}
+
+#title{
+	font-size: 25px;
+}
+#buttonlane{
+    width: 10px;
+    height: 10px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;	
+}

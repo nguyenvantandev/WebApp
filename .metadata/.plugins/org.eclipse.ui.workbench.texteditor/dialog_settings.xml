@@ -6,20 +6,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="GijitsushaKerekisho_click" key="selection"/>
+		<item value="searchpage" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="searchpage"/>
+			<item value="update"/>
+			<item value="insert"/>
 			<item value="GijitsushaKerekisho_click"/>
 			<item value="hyoujijun_count"/>
 			<item value="dispUpd"/>
 			<item value="houjijun"/>
 			<item value="seiseki"/>
-			<item value="shikakumei"/>
-			<item value="id"/>
-			<item value="notFindMes"/>
 		</list>
 		<list key="replacehistory">
 			<item value="dispSearch"/>

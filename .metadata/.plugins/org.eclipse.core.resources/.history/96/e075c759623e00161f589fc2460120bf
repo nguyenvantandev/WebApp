@@ -1,0 +1,13 @@
+package jp.co.model;
+
+public class ListInfo {
+	private String bookid;
+	private String booktitle;
+	private String authorname;
+	private String publisher;
+	private String publicationday;
+	private String stock;
+	private String deleleflg;
+	
+	
+}

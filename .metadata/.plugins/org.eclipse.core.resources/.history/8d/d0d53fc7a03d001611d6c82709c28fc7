@@ -1,0 +1,4 @@
+jdbc.driverClassName=org.posgresql.Driver
+jdbc.url=jdbc:postgresql://localhost:5432/BMT
+jdbc.username=postgres
+jdbc.password=123

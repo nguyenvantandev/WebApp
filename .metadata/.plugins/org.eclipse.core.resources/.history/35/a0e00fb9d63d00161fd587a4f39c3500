@@ -1,0 +1,5 @@
+package jp.co.model;
+
+public class SearchInfo {
+
+}

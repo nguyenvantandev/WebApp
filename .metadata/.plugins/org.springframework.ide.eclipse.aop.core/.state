@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="MemberMvc"/>
-<aop-project name="SpringMvcFormExample"/>
-<aop-project name="FirstExample"/>
+<aop-project name="BookMasterSystem"/>
 </aop-reference-model>

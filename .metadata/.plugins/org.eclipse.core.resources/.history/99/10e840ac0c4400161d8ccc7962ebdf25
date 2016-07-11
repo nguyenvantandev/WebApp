@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+
+#learn{
+	    position: absolute;
+    right: 26%;
+    top: 20%;
+     padding: 10px;
+     border: 3px solid #00B3B3;
+      background-color: #A9E2F3;
+}
+
+#back, #next{
+	font-size: 52px;
+	width: 35px;
+    height: 200px;
+      border: aliceblue;
+    background-color: #A9E2F3;
+} 
+
+#context{
+	
+	    height: 300px;
+    width: 700px;
+}

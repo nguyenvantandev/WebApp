@@ -1,6 +1,0 @@
-package com.mycompany.service.impl;
-
-public interface ExampleServoce {
-
-	public String find();
-}

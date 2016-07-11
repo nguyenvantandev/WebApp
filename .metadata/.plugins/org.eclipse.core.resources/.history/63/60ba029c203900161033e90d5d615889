@@ -1,5 +1,0 @@
-package com.mycompany.dao.imple;
-
-public interface ExampleDao {
-	public String find();
-}

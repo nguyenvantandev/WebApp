@@ -1,8 +1,0 @@
-package com.mycompany.springmvc;
-
-public class Snippet {
-	public static void main(String[] args) {
-		/SpringMvcFormExample/src/main/java/com/mycompany/controller/RegisterController.java
-	}
-}
-

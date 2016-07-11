@@ -1,8 +1,0 @@
-package jp.co.dao;
-
-import java.util.List;
-
-import jp.co.model.*;
-public interface MasterDAO {
-
-}

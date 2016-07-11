@@ -1,0 +1,11 @@
+package co.jp.myapp.model;
+
+public class SearchVal {
+
+	private String count;
+	private String kanji;
+	private String hiragana;
+	private String imi;
+	private String hinshi;
+	
+}

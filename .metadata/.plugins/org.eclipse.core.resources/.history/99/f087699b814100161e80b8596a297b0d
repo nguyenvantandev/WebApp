@@ -1,0 +1,5 @@
+package com.lycato.controller;
+
+public class HelloController {
+
+}

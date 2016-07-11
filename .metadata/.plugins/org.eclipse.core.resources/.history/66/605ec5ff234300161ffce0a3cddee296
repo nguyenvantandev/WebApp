@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+
+#screen{
+	    margin-left: 20%;
+    margin-top: 2%;
+}
+
+#modoru{
+	    right: 38%;
+    position: absolute;
+    width: 56px;
+    height: 31px;
+}
+h3{
+	
+}
+#lbId{
+	
+}
+
+#kotobaid{
+	
+}
+
+#lbkotoba{
+	margin-right: 38px;
+}
+
+#kotoba{
+	
+}
+
+#lbhiragana{
+	margin-right: 12px;
+}
+#hiragana{
+	
+}
+#lbimi{
+	margin-right: 38px;
+}
+#imi{
+	
+}
+#lbhinshi{
+	
+}
+#hinshi{
+	
+}
+#lblevel{
+	
+}
+#level{
+	
+}
+#lbreibun{
+	
+}
+#reibun{
+	
+}
+#addupdatebtn{
+	
+}

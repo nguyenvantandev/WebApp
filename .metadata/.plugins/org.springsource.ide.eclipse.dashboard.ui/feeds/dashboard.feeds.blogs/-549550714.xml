@@ -5,16 +5,66 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-07-08T22:14:11Z</updated>
+  <updated>2016-07-11T18:17:00Z</updated>
   <entry>
-    <title>Java DSL for Spring Integration 1.2 M1 and 1.1.2 are available</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/07/08/java-dsl-for-spring-integration-1-2-m1-and-1-1-2-are-available" />
+    <title>Spring Cloud Task 1.0.1.RELEASE is now available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/07/11/spring-cloud-task-1-0-1-release-is-now-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Michael Minella</name>
+    </author>
+    <id>tag:spring.io,2016-07-11:2552</id>
+    <updated>2016-07-11T18:17:00Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce the release of &lt;a href="https://cloud.spring.io/spring-cloud-task/"&gt;Spring Cloud Task&lt;/a&gt; 1.0.1.RELEASE. This is the recommended GA release for Spring Cloud Task and is available from Maven Central as well as the usual other locations.&lt;/p&gt;&lt;h2&gt;&lt;a href="#how-did-we-get-here" class="anchor" name="how-did-we-get-here"&gt;&lt;/a&gt;How did we get here?&lt;/h2&gt;
+&lt;p&gt;Spring Cloud Task, is a step in an evolution of data applications in the Spring portfolio. As we announce this release, it may be helpful to look at how we got to this point.&lt;/p&gt;&lt;h3&gt;&lt;a href="#it-began-with-spring-batch" class="anchor" name="it-began-with-spring-batch"&gt;&lt;/a&gt;It began with Spring Batch&lt;/h3&gt;
+&lt;p&gt;Built upon the Spring portfolio, the evolution of this type of finite workload really began with &lt;a href="https://projects.spring.io/spring-batch/"&gt;Spring Batch&lt;/a&gt;. One of the main workload specific extensions of the Spring framework, Spring Batch provided functionality for performing finite amounts of processing in an enterprise friendly way. With multiple processing models (&lt;code&gt;Tasklet&lt;/code&gt; vs Chunk) as well as scalability options that allowed for optimizing data processing both within a single JVM and using multiple JVMs. Spring Batch has served as the standard bearer of finite processing on the JVM for many years.&lt;/p&gt;&lt;h3&gt;&lt;a href="#introducing-spring-xd" class="anchor" name="introducing-spring-xd"&gt;&lt;/a&gt;Introducing Spring XD&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-xd/"&gt;Spring XD&lt;/a&gt; served as the next step in the evolution to Spring Cloud Task. Spring XD provided the ability to orchestrate Spring Batch jobs in a distributed environment. However, Spring XD, while providing a great tool for the orchestration of batch jobs, identified for us the need for a tool that was a bit more abstract than a job. When looking at use cases in the big data world (and since beyond), there are many that don&amp;rsquo;t require the overhead of a batch job and so forcing that model onto processes didn&amp;rsquo;t make sense. That got us thinking&amp;hellip;&lt;/p&gt;&lt;h3&gt;&lt;a href="#a-look-at-modern-runtimes" class="anchor" name="a-look-at-modern-runtimes"&gt;&lt;/a&gt;A look at modern runtimes&lt;/h3&gt;
+&lt;p&gt;The rearchitecting of Spring XD into &lt;a href="http://cloud.spring.io/spring-cloud-dataflow/"&gt;Spring Cloud Data Flow&lt;/a&gt; also provided us with some insights. When looking at modern application runtimes like &lt;a href="http://cloudfoundry.org/"&gt;Cloud Foundry&lt;/a&gt;, &lt;a href="http://mesos.apache.org/"&gt;Mesos&lt;/a&gt;, &lt;a href="https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html"&gt;YARN&lt;/a&gt;, and &lt;a href="http://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;, we identified that most of them provided facilities for short lived applications. However, the way a user interacted with them, tracked their results, etc was different from runtime to runtime. On Cloud Foundry, &lt;a href="https://docs.cloudfoundry.org/concepts/diego/diego-architecture.html"&gt;Diego&lt;/a&gt; provides the concept of a task but their results are ephemeral. On YARN, there is the Job History Server that may or may not be configured. Kubernetes keeps the pods around after the job has been completed. &lt;/p&gt;
+&lt;p&gt;Providing a single consistent way of constructing finite data microservices in a platform independent way as well as providing both operational and functional features would be useful&amp;hellip;&lt;/p&gt;&lt;h2&gt;&lt;a href="#which-brings-us-to-spring-cloud-task" class="anchor" name="which-brings-us-to-spring-cloud-task"&gt;&lt;/a&gt;Which brings us to Spring Cloud Task&lt;/h2&gt;
+&lt;p&gt;Spring Cloud Task was born out of the idea that there are functions that need to be executed in an enterprise environment that do not require a long running application. &lt;/p&gt;
+&lt;p&gt;Spring Cloud task provides the following capabilities:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;A simple programming model -&lt;/em&gt; Spring Cloud Task builds upon &lt;a href="http://projects.spring.io/spring-boot/"&gt;Spring Boot&lt;/a&gt; and provides additional features to it. By using the &lt;code&gt;@EnableTask&lt;/code&gt; annotation, you get the capabilities of Spring Cloud Task with no additional code.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;A Task repository -&lt;/em&gt; Spring Cloud Task provides the ability to monitor and record the results of tasks in a platform independent way. So regardless of if you&amp;rsquo;re using bare metal, Cloud Foundry, Kubernetes, Mesos, etc&amp;hellip; the way to operationalize tasks remains the same.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Extension points -&lt;/em&gt; Spring Cloud Task provides the ability to extend a task with listeners. This allows you to execute logic before and after your task as well as when something goes wrong.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Integration with Spring Batch -&lt;/em&gt; Running a Spring Batch job as a Spring Cloud Task allows for it to be dynamically managed at runtime via Spring Cloud Data Flow. Instead of having the job listening in a container waiting to be executed, Spring Cloud Task provides the ability to run batch jobs as tasks on their own or orchestrated via Spring Cloud Data Flow providing greater elasticity in your environment. Spring Cloud Task also provides a &lt;a href="http://docs.spring.io/spring-batch/apidocs/org/springframework/batch/core/partition/PartitionHandler.html"&gt;&lt;code&gt;PartitionHandler&lt;/code&gt;&lt;/a&gt; that allows the launching of workers as tasks for partitioned jobs.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Integration with Spring Cloud Stream -&lt;/em&gt; Spring XD provided the ability to launch jobs as well as monitor them via messages. Spring Cloud Task brings that same functionality to developers without the impact of the XD container. With the correct dependencies on the classpath, Spring Cloud Task provides the ability to have tasks and jobs (run as tasks) to emit informational messages as well as have tasks launched via messages with &lt;a href="https://cloud.spring.io/spring-cloud-stream/"&gt;Spring Cloud Stream&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new-in-the-1-0-1-release" class="anchor" name="what-rsquo-s-new-in-the-1-0-1-release"&gt;&lt;/a&gt;What&amp;rsquo;s new in the 1.0.1.RELEASE?&lt;/h2&gt;
+&lt;p&gt;All of the main features mentioned above were available in the 1.0.0.RC1 release and can be read about &lt;a href="https://spring.io/blog/2016/06/17/spring-cloud-task-1-0-0-rc1-is-now-available"&gt;here&lt;/a&gt;. What is different in this release is that the dependencies have been refactored so that instead of including &lt;code&gt;spring-cloud-task-core&lt;/code&gt; and any of the additional task modules desired, you can now include just the &lt;code&gt;spring-cloud-task-starter&lt;/code&gt; dependency and the other spring modules you want to obtain the expected functionality.&lt;/p&gt;
+&lt;p&gt;For example, if a developer wants to write a batch job that is run as a task, instead of needing the &lt;code&gt;spring-cloud-task-core&lt;/code&gt;, &lt;code&gt;spring-cloud-task-batch&lt;/code&gt;, and &lt;code&gt;spring-boot-starter-batch&lt;/code&gt; in your pom, now you only need the &lt;code&gt;spring-cloud-task-starter&lt;/code&gt; and the &lt;code&gt;spring-boot-starter-batch&lt;/code&gt;. The batch features will be automatically bootstrapped for you (with simple options for overrides as with all Boot autoconfig).&lt;/p&gt;&lt;h2&gt;&lt;a href="#where-to-from-here" class="anchor" name="where-to-from-here"&gt;&lt;/a&gt;Where to from here?&lt;/h2&gt;
+&lt;p&gt;Spring Cloud Task is now GA and we&amp;rsquo;re excited to hear from you. Our short-term focus will be to improve Spring Cloud Task&amp;rsquo;s interoperability with Spring Cloud Data Flow and the runtimes it supports. However, we look forward to hearing from you in the comments below, elsewhere online on &lt;a href="http://stackoverflow.com/tags/spring-cloud-task"&gt;StackOverflow&lt;/a&gt; and &lt;a href="https://twitter.com/i/notifications"&gt;Twitter&lt;/a&gt;, as well as in person at &lt;a href="https://springoneplatform.io/"&gt;Spring One Platform&lt;/a&gt; next month!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Brixton.SR3 is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/07/11/spring-cloud-brixton-sr3-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Ryan Baxter</name>
+    </author>
+    <id>tag:spring.io,2016-07-11:2551</id>
+    <updated>2016-07-11T14:45:00Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that Service Release 3 of the &lt;a href="http://cloud.spring.io"&gt;Spring Cloud Brixton&lt;/a&gt; Release Train is available today. The release can be found in our &lt;a href="http://repo.spring.io/release"&gt;Spring Release repository&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22spring-cloud-dependencies%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Included in this release is the &lt;a href="https://spring.io/blog/2016/07/11/spring-cloud-task-1-0-1-release-is-now-available"&gt;GA release of Spring Cloud Task&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Other than the addition of Spring Cloud Task, this release includes primarily bug fixes.&lt;/p&gt;&lt;h4&gt;&lt;a href="#the-following-modules-were-updated-as-part-of-brixton-sr3" class="anchor" name="the-following-modules-were-updated-as-part-of-brixton-sr3"&gt;&lt;/a&gt;The following modules were updated as part of Brixton.SR3:&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Cloud Security &lt;a href="https://github.com/spring-cloud/spring-cloud-security/milestone/12?closed=1"&gt;1.1.2.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Netflix &lt;a href="https://github.com/spring-cloud/spring-cloud-netflix/milestone/24?closed=1"&gt;1.1.4.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Sleuth &lt;a href="https://github.com/spring-cloud/spring-cloud-sleuth/milestone/10?closed=1"&gt;1.0.3.RELEASE&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Cloud Task &lt;a href="https://github.com/spring-cloud/spring-cloud-task/milestone/6?closed=1"&gt;1.0.1.RELEASE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And, as always, we welcome feedback: either on &lt;a href="https://github.com/spring-cloud"&gt;GitHub&lt;/a&gt;, on &lt;a href="https://gitter.im/spring-cloud/spring-cloud"&gt;gitter&lt;/a&gt;, on &lt;a href="http://stackoverflow.com/questions/tagged/spring-cloud"&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href="https://twitter.com/SpringCloudOSS"&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;The Spring Cloud team will be talking about Spring Cloud at &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt;, which will be taking place in Las Vegas between August 1-4 this year. There are many other great talks so &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions"&gt;check the agenda&lt;/a&gt; and &lt;a href="https://2016.event.springoneplatform.io/register"&gt;get your ticket&lt;/a&gt; if you havenÅft done so already. &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Java DSL for Spring Integration 1.2 M1 and 1.1.3 are available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/07/08/java-dsl-for-spring-integration-1-2-m1-and-1-1-3-are-available" />
     <category term="releases" label="Releases" />
     <author>
       <name>Artem Bilan</name>
     </author>
     <id>tag:spring.io,2016-07-08:2550</id>
-    <updated>2016-07-08T22:14:11Z</updated>
+    <updated>2016-07-08T22:14:00Z</updated>
     <content type="html">&lt;div class="paragraph"&gt;
 &lt;p&gt;I&amp;#8217;m pleased to announce that the Java DSL for Spring Integration &lt;code&gt;1.2 M1&lt;/code&gt; is available now!&lt;/p&gt;
 &lt;/div&gt;
@@ -837,44 +887,5 @@ public class SpringBootVaultHelloWorldApplication {&#xD;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;For a complete list of changes and improvements, please refer to the 1.0.0.M3 &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-cloudfoundry/issues?q=milestone%3A1.0.0.M3"&gt;release&lt;/a&gt; as well as the Cloud Foundry deployer &lt;a href="https://github.com/spring-cloud/spring-cloud-deployer-cloudfoundry/issues?q=milestone%3A1.0.0.M2"&gt;release details&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Data Flow for Apache YARN 1.0.0.RC1 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-yarn-1-0-0-rc1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Janne Valkealahti</name>
-    </author>
-    <id>tag:spring.io,2016-06-20:2530</id>
-    <updated>2016-06-21T16:58:16Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the Spring Cloud Data Flow team, I am pleased to announce the 1.0.0.RC1 release of Spring Cloud Data Flow for Apache YARN.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-yarn"&gt;Spring Cloud Data Flow for Apache YARN&lt;/a&gt; allows one to use all the goodness of &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow"&gt;Spring Cloud Data Flow&lt;/a&gt; (like the Shell and UI) while targeting Apache YARN as a backend. Stream components are deployed as individual apps in Apache YARN, leveraging the power of the platform to handle scaling and health monitoring.&lt;/p&gt;
-&lt;p&gt;This first release candicate&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Adds several improvements to launching of short-lived applications a.k.a tasks to Apache YARN&lt;/li&gt;
-  &lt;li&gt;Builds upon Spring StateMachine 1.1.0.RELEASE that includes new features, stability, and API improvements&lt;/li&gt;
-  &lt;li&gt;Adds support to configure command line args as a separate set of properties to be passed to an application when it&amp;rsquo;s deployed. This is an important requirement for running Spring Batch jobs&lt;/li&gt;
-  &lt;li&gt;Several Ambari plugin improvements to simplify provisioning of Spring Cloud Data FlowÅfs YARN server&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To get started using Spring Cloud Data Flow for Apache YARN &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-yarn/docs/1.0.0.RC1/reference/htmlsingle/#_spring_cloud_data_flow_runtime"&gt;follow these steps&lt;/a&gt; outlined in the reference documentation.&lt;/p&gt;
-&lt;p&gt;For a complete list of changes and improvements, please refer to &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-yarn/issues?q=milestone%3A1.0.0.RC1+is%3Aclosed"&gt;1.0.0.RC1 release&lt;/a&gt;.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Data Flow for Apache Mesos 1.0.0.RC1 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/06/21/spring-cloud-data-flow-for-apache-mesos-1-0-0-rc1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Thomas Risberg</name>
-    </author>
-    <id>tag:spring.io,2016-06-21:2532</id>
-    <updated>2016-06-21T16:57:00Z</updated>
-    <content type="html">&lt;p&gt;I am pleased to announce the 1.0.0.RC1 release candidate of Spring Cloud Data Flow for Mesos, a team effort that encompasses many new features under the hood.&lt;/p&gt;
-&lt;p&gt;This release candidate builds upon the recent 1.0.0.RC1 release of Spring Cloud Data Flow. Some highlights include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Improves orchestration mechanics by inheriting latest improvements to spring-cloud-deployer contracts and the supported functionalities.&lt;/li&gt;
-  &lt;li&gt;Builds upon feature-toggle support from Spring Cloud Data FlowÅfs core project to conditionally refine what features get included in each release&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To get started using Spring Cloud Data Flow for Mesos &lt;a href="http://docs.spring.io/spring-cloud-dataflow-server-mesos/docs/1.0.0.RC1/reference/htmlsingle/#_getting_started"&gt;follow these steps&lt;/a&gt; outlined in the reference documentation.&lt;/p&gt;
-&lt;p&gt;For a complete list of changes and improvements, please refer to the &lt;a href="https://github.com/spring-cloud/spring-cloud-dataflow-server-mesos/issues?q=milestone%3A1.0.0.RC1"&gt;1.0.0.RC1 issues&lt;/a&gt;.&lt;/p&gt;</content>
   </entry>
 </feed>

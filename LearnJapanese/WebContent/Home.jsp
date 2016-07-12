@@ -23,7 +23,7 @@
 			<input type="button" id="kuria" name="kuria" value="クリア" onclick="clearclick()">
 		</fieldset>
 		<input type="button" name="kotobarenshu" id="kotobarenshu" value="言葉練習" onclick="learning()"> 
-		<input type="button" name="kadairenshu" id="kadairenshu" value="課題練習"> 
+		<input type="button" name="kadairenshu" id="kadairenshu" value="課題練習" disabled="disabled"> 
 		<input type="button" name="tsuika" id="tsuika" value="追加" onclick="insert()"> 
 		<input type="button" name="kensaku" id="kensaku" value="検索" onclick="search()"><br> 
 		<label id="lbkensu">件数<c:out value="${count}"></c:out>件</label><br>

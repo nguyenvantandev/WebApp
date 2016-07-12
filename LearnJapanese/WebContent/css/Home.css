@@ -73,7 +73,9 @@
     margin-right: 20%;
     margin-top: 2%;
     margin-bottom: 2%;  */
-    width: 100%;
+/*     width: 100%; */
+    width: 90%;
+    position: fixed;
     border: 3px solid #00B3B3;
     padding: 10px;
 }

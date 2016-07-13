@@ -1,0 +1,98 @@
+@CHARSET "UTF-8";
+
+
+body{
+	background-image: url("picture/book_background.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center; 
+}
+#screen {
+	 opacity: 0.9;
+	 background-color: #D8F6CE;
+	    margin-left: 10%;
+    margin-right: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%; 
+    width: 55%;
+    height: 480px;
+    border: 3px solid #00B3B3;
+    padding: 10px;
+}
+
+#modoru{
+	    right: 38%;
+    position: absolute;
+   height: 70px;
+	 border-radius: 41px;
+}
+h3{
+	
+}
+#lbId{
+	
+}
+
+#kotobaid{
+	
+}
+
+#lbkotoba{
+	margin-right: 38px;
+}
+
+#kotoba{
+	    margin-top: 1%;
+    width: 250px;
+    height: 30px;
+}
+
+#lbhiragana{
+	margin-right: 12px;
+}
+#hiragana{
+	    margin-top: 1%;
+    width: 250px;
+    height: 30px;
+}
+#lbimi{
+	margin-right: 38px;
+}
+#imi{
+	    margin-top: 1%;
+    width: 250px;
+    height: 30px;
+}
+#lbhinshi{
+	margin-right: 38px;
+}
+#hinshi{
+	    margin-top: 1%;
+       width: 129px;
+    height: 30px;
+}
+#lblevel{
+	    margin-right: 25px;
+	
+}
+#level{
+	    margin-top: 1%;
+      width: 129px;
+    height: 30px;
+}
+#lbreibun{
+	margin-right: 38px;
+}
+#reibun{
+	vertical-align: top;
+	    margin-top: 1%;
+    width: 450px;
+    height: 120px;
+}
+#addupdatebtn{
+	    margin-top: 1%;
+        right: 46%;
+    position: absolute;
+    width: 81px;
+    height: 35px;
+}

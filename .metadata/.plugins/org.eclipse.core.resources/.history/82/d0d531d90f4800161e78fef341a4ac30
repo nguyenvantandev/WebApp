@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+#topcolection{
+width: 18%;
+    height: 0;
+    padding-left: 50%;
+    padding-bottom: 17%;
+    overflow: hidden;
+}
+#topcolection div {
+    width: 0;
+    height: 0;
+    margin-left: -254px;
+    border-left: 270px solid transparent;
+    border-right: 270px solid transparent;
+    border-bottom: 270px solid #4679BD;
+}

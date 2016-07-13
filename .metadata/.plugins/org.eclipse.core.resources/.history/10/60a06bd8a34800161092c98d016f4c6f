@@ -1,0 +1,10 @@
+function menuload(){
+	document.getElementById("menu").submit();
+}
+
+//.style.display = 'block';
+function honyaku(){
+	document.getElementById("news").style.display = 'none';
+	document.getElementById("honyakupan").style.display = 'block';
+	
+}

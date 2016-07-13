@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/Menu.css">
+<script type="text/javascript" src="js/Menu.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<title>メニュー</title>
+</head>
+<body>
+<div id="screen">
+<table>
+<tr>
+<td id="kotobabtn"><a href="Home.jsp" id="kotoba">言葉</a></td>
+<td rowspan="4" id="info">
+<p id="title">日本の茶道<p>
+<p id="news">初めて中国から体系的に茶の知識を持ち込んだ書物は唐の陸羽（733年 - 804年）の書いた『茶経』と言われている。この本には、茶の木の育て方、収穫方法と道具、たてかた、飲み方、歴史などが詳しく書かれている。 804年、空海と最澄は中国から茶を持ち帰ったが、あまり発展することもなくその後の戦乱で忘れ去られた。
+茶を飲む習慣と茶の製法は平安時代に遣唐使によってもたらされた。当時中国茶は現代の烏龍茶に似ただんご状の微発酵茶と考えられている。この茶の色こそが現代日本人のいうところの茶色である。 当時の日本人は、茶を嗜好品としてよりも薬としてとらえており、必要量のみを煎じて飲んだと考えられている。従来この飲茶習慣は根付かず廃れてしまったと考えられていたが、最近では貴族や僧の間で継続的に愛好されていたと考えられている。</p>
+</td>
+</tr>
+<tr>
+<td id="kanjibtn"><a href="#" id="kanji">漢字</a></td>
+</tr>
+<tr>
+<td id="bunpobtn"><a href="#" id="bunpo">文法</a></td>
+</tr>
+<tr>
+<td id="choukaibtn"><a href="#" id="choukai">聴解</a></td>
+</tr>
+</table>
+</div>
+
+</body>
+</html>

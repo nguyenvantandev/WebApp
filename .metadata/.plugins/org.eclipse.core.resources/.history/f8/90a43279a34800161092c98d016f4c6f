@@ -1,0 +1,7 @@
+function menuload(){
+	document.getElementById("menu").submit();
+}
+
+function honyaku(){
+	
+}

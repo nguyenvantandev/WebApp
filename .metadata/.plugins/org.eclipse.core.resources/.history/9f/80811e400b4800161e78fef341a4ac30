@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+#topcolection{
+	width: 25%;
+	height: 0;
+	padding-left: 25%;
+	padding-bottom: 25%;
+	overflow: hidden;;
+}
+#topcolection div {
+	
+}

@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+#screen{
+	    margin-left: 20%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+        margin-right: 5%;
+            padding: 10px;
+}
+table {
+	width: 100%;
+}
+tr{
+	height: 100px;
+}
+#list{
+	
+}

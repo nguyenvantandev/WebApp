@@ -1,0 +1,16 @@
+package co.jp.myapp.model;
+
+public class KanjiVal {
+	String local1;
+	String local2;
+	String local3;
+	String local4;
+	String local5;
+	String local6;
+	String local7;
+	String local8;
+	String local9;
+	String local10;
+	
+
+}

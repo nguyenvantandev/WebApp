@@ -19,18 +19,19 @@
 <p id="title">${title}<p>
 <p id="news">${news}</p>
 <p id="honyakupan" style="display: none;">${honyakupan}</p>
-<a href="#" id="honyaku" onclick="honyaku()">翻訳...</a>
+<a href="#" id="honyaku" onclick="honyaku()">翻訳...</a><br>
+
 <a href="#" id="honnpan" onclick="honpan()" style="display: none;">本版...</a>
 </td>
 </tr>
 <tr>
-<td id="kanjibtn"><a href="#" id="kanji">漢字</a></td>
+<td id="kanjibtn"><a href="Kanji.jsp" id="kanji">漢字</a></td>
 </tr>
 <tr>
-<td id="bunpobtn"><a href="#" id="bunpo">文法</a></td>
+<td id="bunpobtn"><a href="Bunpo.jsp" id="bunpo">文法</a></td>
 </tr>
 <tr>
-<td id="choukaibtn"><a href="#" id="choukai">聴解</a></td>
+<td id="choukaibtn"><a href="Choukai.jsp" id="choukai">聴解</a></td>
 </tr>
 </table>
 </div>

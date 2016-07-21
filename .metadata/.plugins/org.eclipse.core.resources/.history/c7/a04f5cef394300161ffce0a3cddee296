@@ -1,9 +1,0 @@
-function btnEvent(){
-	var id = document.getElementById("kotobaid").value;
-	if(id == ""){
-		document.getElementById("actionStatus").value = "追加";
-		document.getElementById("addupdate").submit();
-	}else{
-		
-	}
-}

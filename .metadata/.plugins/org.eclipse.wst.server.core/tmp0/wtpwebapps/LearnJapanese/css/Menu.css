@@ -1,14 +1,15 @@
 @CHARSET "UTF-8";
 #screen{
-	opacity: 0.9;
+	/* opacity: 0.9;
 	    margin-left: 8%;
     margin-top: 2%;
     margin-bottom: 1%;
         margin-right: 5%;
-            padding: 10px;
+            padding: 10px; */
 }
 table {
 	width: 100%;
+	height: 740px;
 	 border-collapse: collapse;
     border: 1px solid black;
 }
@@ -26,7 +27,7 @@ tr{
 #kotobabtn{
 	background-image: url("picture/kotoba.jpg");
 	background-repeat: no-repeat;
-    background-size: 416px;
+    background-size: 473px;
 	/* background-color: #366268; */
 }
 #kotobabtn:HOVER {
@@ -36,7 +37,7 @@ tr{
 	background-image: url("picture/kanji.jpg");
 	background-repeat: no-repeat;
     background-position: center;  
-    background-size: 416px;
+    background-size: 473px;
 	/* background-color: #5DA55C; */
 }
 #kanjibtn:HOVER {
@@ -46,7 +47,7 @@ tr{
 	background-image: url("picture/bunpo.jpg");
 	background-repeat: no-repeat;
     background-position: center;  
-    background-size: 416px;
+    background-size: 473px;
 /* 	background-color: #E5A775; */
 }
 #bunpobtn:HOVER {
@@ -56,14 +57,14 @@ tr{
 	background-image: url("picture/choukai.jpg");
 	background-repeat: no-repeat;
     background-position: center;  
-    background-size: 416px;
+    background-size: 473px;
 	/* background-color: #F74F57; */
 }
 #choukaibtn:HOVER {
 	background-color: #FF4147;
 }
 a{
-	font-size: 25px;
+	font-size: 80px;
 	font-family: "Times New Roman", Times, serif;
 	color: white;
 }

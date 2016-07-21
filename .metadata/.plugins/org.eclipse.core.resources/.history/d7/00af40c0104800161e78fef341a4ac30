@@ -1,9 +1,0 @@
-@CHARSET "UTF-8";
-
-#screen{
-	    margin-left: 20%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-        margin-right: 5%;
-}
-}

@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+#modoru{
+	height: 70px;
+	 border-radius: 41px;
+    position: absolute;
+    right: 2%;
+       
+}
+#screen{
+	    height: 100%;
+    width: 100%;
+}

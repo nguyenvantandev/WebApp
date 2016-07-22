@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,18 +54,28 @@ public class KanjiController extends HttpServlet {
 				rs = preparedStatement.executeQuery();
 				while(rs.next()){
 					getlist.add(rs.getString("kanji"));
-
 				}
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-/*			KanjiVal val = new KanjiVal();
-			val.setLocal1(getlist.get(0));
-			val.setLocal2(getlist.get(1));
-			list.add(val);*/
-			
-			
+			int i = 0;
+			while(i<getlist.size()){
+				KanjiVal val = new KanjiVal();
+				val.setLocal1(getlist.get(i));
+				val.setLocal2((1+i<getlist.size())?getlist.get(1+i):"");
+				val.setLocal3((2+i<getlist.size())?getlist.get(2+i):"");
+				val.setLocal4((3+i<getlist.size())?getlist.get(3+i):"");
+				val.setLocal5((4+i<getlist.size())?getlist.get(4+i):"");
+				val.setLocal6((5+i<getlist.size())?getlist.get(5+i):"");
+				val.setLocal7((6+i<getlist.size())?getlist.get(6+i):"");
+				val.setLocal8((7+i<getlist.size())?getlist.get(7+i):"");
+				val.setLocal9((8+i<getlist.size())?getlist.get(8+i):"");
+				val.setLocal10((9+i<getlist.size())?getlist.get(9+i):"");
+				list.add(val);
+				i+=10;
+			}
 			System.out.println(getlist.size());
+			System.out.println(list.size());
 			request.setAttribute("Valshow", list);
 			request.setAttribute("actionVal", "1");
 			RequestDispatcher rd = request.getRequestDispatcher("Kanji.jsp");

@@ -1,0 +1,22 @@
+function kanjiload(){
+	var actionVal = document.getElementById("actionVal").value;
+	var table = document.getElementById("info");
+	var rows = document.getElementById("info").getElementsByTagName("tbody")[0].getElementsByTagName("tr").length;
+
+	if(actionVal == ""){
+		document.getElementById("actionName").value = "初期表示";
+		document.getElementById("kanji").submit();
+	}
+	else{
+		var cellVal = document.getElementById("info").rows[0].cells[0].innerHTML;
+		for(var i = 0; i <= rows; i++){
+			for(var j = 0; j< 10; j++){
+				var cellVal = table.rows[i].cells[j].innerHTML;
+				if(cellVal == ""){
+					table.rows[i].cells[j].style.display = "none";
+				}
+			}
+		}
+	}
+	
+}

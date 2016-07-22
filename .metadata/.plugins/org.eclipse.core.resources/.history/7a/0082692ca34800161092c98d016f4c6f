@@ -1,3 +1,0 @@
-function menuload(){
-	document.getElementById("menu").submit();
-}

@@ -71,3 +71,21 @@ hr{
 #info tr {
 	height: 120px
 }
+#info td{
+	   font-family: "Times New Roman", Times, serif;
+	text-align: center;
+    font-size: 60px;
+    width: 10%; 
+}
+ a{
+     color: blue;
+	 text-decoration: none;
+} 
+
+#info a{
+	color: black;
+}
+#info a:HOVER{
+	color: red;
+	font-weight: bolder;
+}

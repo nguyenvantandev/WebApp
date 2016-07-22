@@ -5,9 +5,9 @@
 	<item value="220" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth1"/>
 	<item value="127" key="org.eclipse.jdt.debug.ui.jre_preference_page_context.columnWidth0"/>
 	<section name="org.eclipse.jdt.internal.debug.ui.ExpressionInformationControlCreator$ExpressionInformationControl">
-		<item value="869" key="SashWeightTree"/>
-		<item value="130" key="SashWeightDetails"/>
+		<item value="474" key="SashWeightTree"/>
+		<item value="525" key="SashWeightDetails"/>
 		<item value="1114" key="WIDTH"/>
-		<item value="347" key="HEIGHT"/>
+		<item value="230" key="HEIGHT"/>
 	</section>
 </section>

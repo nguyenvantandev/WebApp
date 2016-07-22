@@ -138,6 +138,29 @@
 					</tbody>
 				</table>
 			</div>
+<%-- 						<div id="showField">
+				<table border="1" id="info">
+					<tbody>
+						<c:forEach var="row" items="${Valshow}">
+							<tr>
+							
+								<td><a href="#"><c:out value="${row.local1}"></c:out></a>
+								<a href="#"><c:out value="${row.local2}"></c:out></a>
+								<a href="#"><c:out value="${row.local3}"></c:out></a>
+								<a href="#"><c:out value="${row.local4}"></c:out></a>
+								<a href="#"><c:out value="${row.local5}"></c:out></a>
+								<a href="#"><c:out value="${row.local6}"></c:out></a>
+								<a href="#"><c:out value="${row.local7}"></c:out></a>
+								<a href="#"><c:out value="${row.local8}"></c:out></a>
+								<a href="#"><c:out value="${row.local9}"></c:out></a>
+								<a href="#"><c:out value="${row.local10}"></c:out></a>
+								</td>
+							
+							</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div> --%>
 			<input type="hidden" id="actionVal" name="actionVal" value="${actionVal}">
 			<input type="hidden" id="actionName" name="actionName">
 			<input type="hidden" id="searchVal" name="searchVal">

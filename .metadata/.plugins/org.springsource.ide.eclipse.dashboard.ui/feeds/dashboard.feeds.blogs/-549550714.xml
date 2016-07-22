@@ -36,13 +36,26 @@
 &lt;p&gt;Being Reactive forces you to look at the world differently. Instead of asking for something and getting it (or not getting it), everything is delivered as a sequence (&lt;code&gt;Publisher&lt;/code&gt;) and you have to subscribe to it. Instead of waiting for an answer, you have to register a callback. It&amp;#8217;s not so hard when you get used to it, but unless the whole world turns on its head and becomes Reactive, you are going to find you need to interact with an old-style blocking API&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;Suppose we have a back end service, and we want to call it repeatedly with different arguments and aggregate the results. It&amp;#8217;s a classic "scatter-gather" use case, which you would get, for instance, if you had a paginated back end needed to summarize the "top N" items across multiple pages. Since the details of the non-reactive (blocking) operation are not relevant to the scatter-gather pattern, we can push them down into a method called &lt;code&gt;block()&lt;/code&gt;, and implement it later. Here&amp;#8217;s a (bad) example that calls the back end and aggregates into an object of type &lt;code&gt;Result&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Suppose we have a blocking method that returns an &lt;code&gt;HttpStatus&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;private RestTemplate restTemplate = new RestTemplate();
+
+private HttpStatus block(int value) {
+    return this.restTemplate.getForEntity("http://example.com", String.class, value)
+            .getStatusCode();
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;and we want to call it repeatedly with different arguments and aggregate the results. It&amp;#8217;s a classic "scatter-gather" use case, which you would get, for instance, if you had a paginated back end needed to summarize the "top N" items across multiple pages. Since the details of the non-reactive (blocking) operation are not relevant to the scatter-gather pattern, we can push them down into a method called &lt;code&gt;block()&lt;/code&gt;, and implement it later. Here&amp;#8217;s a (bad) example that calls the back end and aggregates into an object of type &lt;code&gt;Result&lt;/code&gt;:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="listingblock"&gt;
 &lt;div class="content"&gt;
 &lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.range(1, 10) &lt;b class="conum"&gt;(1)&lt;/b&gt;
     .log()
-    .map(value -&amp;gt; block(value)) &lt;b class="conum"&gt;(2)&lt;/b&gt;
+    .map(this::block) &lt;b class="conum"&gt;(2)&lt;/b&gt;
     .collect(Result::new, Result::add) &lt;b class="conum"&gt;(3)&lt;/b&gt;
     .doOnSuccess(Result::stop) &lt;b class="conum"&gt;(4)&lt;/b&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -64,16 +77,35 @@
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;Don&amp;#8217;t do this at home. It&amp;#8217;s a "bad" example because, while the APIs are technically being used correctly, we know that it is going to block the calling thread; this code is more or less equivalent to a for loop with the call to &lt;code&gt;block()&lt;/code&gt; in the body of the loop. A better implementation would push the &lt;code&gt;block()&lt;/code&gt; onto a background thread. We can do that with a &lt;code&gt;flatMap()&lt;/code&gt; instead of a &lt;code&gt;map()&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Don&amp;#8217;t do this at home. It&amp;#8217;s a "bad" example because, while the APIs are technically being used correctly, we know that it is going to block the calling thread; this code is more or less equivalent to a for loop with the call to &lt;code&gt;block()&lt;/code&gt; in the body of the loop. A better implementation would push the call to &lt;code&gt;block()&lt;/code&gt; onto a background thread. We can do that by wrapping it in a method that returns a &lt;code&gt;Mono&amp;lt;HttpStatus&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;private Mono&amp;lt;HttpStatus&amp;gt; fetch(int value) {
+    return Mono.fromCallable(() -&amp;gt; block(value)) &lt;b class="conum"&gt;(1)&lt;/b&gt;
+        .subscribeOn(this.scheduler);            &lt;b class="conum"&gt;(2)&lt;/b&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="colist arabic"&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;blocking code here inside a Callable to defer execution&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;subscribe to the slow publisher on a background thread&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The &lt;code&gt;scheduler&lt;/code&gt; is declared separately as a shared field: &lt;code&gt;Scheduler scheduler = Schedulers.parallel()&lt;/code&gt;. Then we can declare that we want to &lt;code&gt;flatMap()&lt;/code&gt; the sequence instead of using &lt;code&gt;map()&lt;/code&gt;:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="listingblock"&gt;
 &lt;div class="content"&gt;
 &lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;Flux.range(1, 10)
     .log()
-    .flatMap( &lt;b class="conum"&gt;(1)&lt;/b&gt;
-        value -&amp;gt; Mono.fromCallable(() -&amp;gt; block(value)) &lt;b class="conum"&gt;(2)&lt;/b&gt;
-                    .subscribeOn(this.scheduler), &lt;b class="conum"&gt;(3)&lt;/b&gt;
-    4) &lt;b class="conum"&gt;(4)&lt;/b&gt;
+    .flatMap(                             &lt;b class="conum"&gt;(1)&lt;/b&gt;
+        this::fetch, 4)                   &lt;b class="conum"&gt;(2)&lt;/b&gt;
     .collect(Result::new, Result::add)
     .doOnSuccess(Result::stop)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -84,23 +116,14 @@
 &lt;p&gt;drop down to a new publisher to process in parallel&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;blocking code here inside a Callable to defer execution&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;subscribe to the slow publisher on a background thread&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
 &lt;p&gt;concurrency hint in flatMap&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The &lt;code&gt;scheduler&lt;/code&gt; is declared separately as a shared field: &lt;code&gt;Scheduler scheduler = Schedulers.parallel()&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
 &lt;div class="sect2"&gt;
 &lt;h3 id="embedding-in-a-non-reactive-server"&gt;&lt;a class="anchor" href="#embedding-in-a-non-reactive-server"&gt;&lt;/a&gt;Embedding in a Non-Reactive Server&lt;/h3&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;If we wanted to run the scatter-gather code in a non-reactive server like a servlet container, we could use Spring MVC, like this:&lt;/p&gt;
+&lt;p&gt;If we wanted to run the scatter-gather code above in a non-reactive server like a servlet container, we could use Spring MVC, like this:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="listingblock"&gt;
 &lt;div class="content"&gt;
@@ -207,10 +230,7 @@ dependencies {
 public Mono&amp;lt;Result&amp;gt; parallel() {
     return Flux.range(1, 10)
             .log()
-            .flatMap(
-                    value -&amp;gt; Mono.fromCallable(() -&amp;gt; block(value))
-                            .subscribeOn(scheduler),
-                    4)
+            .flatMap(this::fetch, 4)
             .collect(Result::new, Result::add)
             .doOnSuccess(Result::stop);
 }&lt;/code&gt;&lt;/pre&gt;
@@ -220,20 +240,7 @@ public Mono&amp;lt;Result&amp;gt; parallel() {
 &lt;p&gt;Take this code and put it in a Spring Boot application and it will run in Tomcat, Jetty or Netty, depending on what it finds on the classpath. Tomcat is the default server in that starter, so you have to exclude it and provide a different one if you want to switch. All three have very similar characteristics in terms of startup time, memory usage and runtime resource usage.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;We still have the blocking backend call in &lt;code&gt;block()&lt;/code&gt;, so we still have to subscribe on a thread pool to avoid blocking the caller. We can change that if we have a non-blocking client, e.g. instead of using &lt;code&gt;RestTemplate&lt;/code&gt; we use the new &lt;code&gt;WebClient&lt;/code&gt;. For example, if the &lt;code&gt;block()&lt;/code&gt; method was implemented like this:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;private RestTemplate restTemplate = new RestTemplate();
-
-private HttpStatus block(int value) {
-    return this.restTemplate.getForEntity("http://example.com", String.class, value)
-            .getStatusCode();
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;then we might do this instead to use a non-blocking client:&lt;/p&gt;
+&lt;p&gt;We still have the blocking backend call in &lt;code&gt;block()&lt;/code&gt;, so we still have to subscribe on a thread pool to avoid blocking the caller. We can change that if we have a non-blocking client, e.g. instead of using &lt;code&gt;RestTemplate&lt;/code&gt; we use the new &lt;code&gt;WebClient&lt;/code&gt; then we might do this instead to use a non-blocking client:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="listingblock"&gt;
 &lt;div class="content"&gt;
@@ -261,10 +268,22 @@ Methods in Spring Reactive that return a &lt;code&gt;Publisher&lt;/code&gt; &lt;
 &lt;/tr&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+&lt;div class="admonitionblock note"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td class="icon"&gt;
+&lt;div class="title"&gt;Note&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class="content"&gt;
+The trick we played just now of using a non-blocking client to simplify the HTTP stack works in regular Spring MVC as well. The result of the &lt;code&gt;fetch()&lt;/code&gt; method above can be converted to a &lt;code&gt;CompletableFuture&lt;/code&gt; and passed out of a regular &lt;code&gt;@RequestMapping&lt;/code&gt; method (in Spring Boot 1.3 for instance).
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
 &lt;div class="sect2"&gt;
 &lt;h3 id="inversion-of-control"&gt;&lt;a class="anchor" href="#inversion-of-control"&gt;&lt;/a&gt;Inversion of Control&lt;/h3&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;Now we can swap the call to &lt;code&gt;block()&lt;/code&gt; for a call to &lt;code&gt;fetch()&lt;/code&gt; in the HTTP request handler:&lt;/p&gt;
+&lt;p&gt;Now we can remove the concurrency hint after the call to &lt;code&gt;fetch()&lt;/code&gt; in the HTTP request handler:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="listingblock"&gt;
 &lt;div class="content"&gt;
@@ -289,7 +308,7 @@ public Mono&amp;lt;Result&amp;gt; netty() {
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;This code is a lot cleaner than when we had to bridge to the blocking client, which can be attributed to the fact that the code is Reactive all the way down. The Reactive &lt;code&gt;WebClient&lt;/code&gt; returns a &lt;code&gt;Mono&lt;/code&gt;, and that drives us immediately to select &lt;code&gt;flatMap()&lt;/code&gt; in the transformation chain, and the code we need just falls out. It&amp;#8217;s a nicer experience to write it, and it&amp;#8217;s more readable, so it&amp;#8217;s easier to maintain. Also, since there is no thread pooling and no concurrency hint, there is no magic factor of 4 to plug into our performance expectations. There is a limit somewhere, but it&amp;#8217;s not imposed by our choices in the application tier any more, nor is it limited by anything in the server "container". It&amp;#8217;s not magic, and there are still laws of physics, so the backend calls are all still going to take 100ms or so each, but with low contention we might even see all 10 requests complete in roughly the same time it takes for one. As the load on the server increases latency and throughput will naturally degrade, but in a way that is governed by buffer contention and kernel networking, not by application thread management. It&amp;#8217;s an inversion of control, to lower levels of the stack below the application code.&lt;/p&gt;
+&lt;p&gt;Taking into account that we don&amp;#8217;t need the extra callable and subscriber thread at all, this code is a lot cleaner than when we had to bridge to the blocking client, which can be attributed to the fact that the code is Reactive all the way down. The Reactive &lt;code&gt;WebClient&lt;/code&gt; returns a &lt;code&gt;Mono&lt;/code&gt;, and that drives us immediately to select &lt;code&gt;flatMap()&lt;/code&gt; in the transformation chain, and the code we need just falls out. It&amp;#8217;s a nicer experience to write it, and it&amp;#8217;s more readable, so it&amp;#8217;s easier to maintain. Also, since there is no thread pooling and no concurrency hint, there is no magic factor of 4 to plug into our performance expectations. There is a limit somewhere, but it&amp;#8217;s not imposed by our choices in the application tier any more, nor is it limited by anything in the server "container". It&amp;#8217;s not magic, and there are still laws of physics, so the backend calls are all still going to take 100ms or so each, but with low contention we might even see all 10 requests complete in roughly the same time it takes for one. As the load on the server increases latency and throughput will naturally degrade, but in a way that is governed by buffer contention and kernel networking, not by application thread management. It&amp;#8217;s an inversion of control, to lower levels of the stack below the application code.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;Remember the same application code runs on Tomcat, Jetty or Netty. Currently, the Tomcat and Jetty support is provided on top of Servlet 3.1 asynchronous processing, so it is limited to one request per thread. When the same code runs on the Netty server platform that constraint is lifted, and the server can dispatch requests sympathetically to the web client. As long as the client doesn&amp;#8217;t block, everyone is happy. Performance metrics for the netty server and client probably show similar characteristics, but the Netty server is not restricted to processing a single request per thread, so it doesn&amp;#8217;t use a large thread pool and we might expect to see some differences in resource utilization. We will come back to that later in another article in this series.&lt;/p&gt;

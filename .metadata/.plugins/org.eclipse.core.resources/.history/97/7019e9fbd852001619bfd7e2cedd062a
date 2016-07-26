@@ -1,0 +1,40 @@
+function kanjiload(){
+	var actionVal = document.getElementById("actionVal").value;
+	if(actionVal == ""){
+		document.getElementById("actionName").value = "0001";
+		document.getElementById("kanji").submit();
+	}
+	var row = document.getElementById("info").getElementsByTagName("tbody")[0].getElementsByTagName("tr").length;
+	if(row == 0 && actionVal != ""){
+		document.getElementById("info").style.display = 'none';
+		document.getElementById("notvalue").style.display = 'block';	
+	}
+}
+
+function searchClick(){
+	document.getElementById("actionName").value = "0002";
+	document.getElementById("kanji").submit();
+}
+function gasuiClick(Val){
+	document.getElementById("searchOther").value = Val;
+	document.getElementById("actionName").value = "0003";
+	document.getElementById("kanji").submit();
+}
+
+function levelClick(Val){
+	document.getElementById("searchOther").value = Val;
+	document.getElementById("actionName").value = "0004";
+	document.getElementById("kanji").submit();
+}
+function overEvent(val){
+	document.getElementById("kanjishow").innerHTML = val;
+	document.getElementById("popuphanviet").value = "HAN VIET OK";
+	document.getElementById("popupkunyomi").value = "訓読み OK";
+	document.getElementById("popuponyomi").value = "音読み OK";
+	document.getElementById("popupgasui").value = "画数 OK";
+	document.getElementById("popuplevel").value = "レベル OK";
+	document.getElementById("popdivdetail").style.display = 'block';
+}
+function outEvent(){
+	document.getElementById("popdivdetail").style.display = 'none';
+}

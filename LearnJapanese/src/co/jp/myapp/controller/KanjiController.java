@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.jp.myapp.dao.ConnectionDao;
+import co.jp.myapp.model.HiddenVal;
 import co.jp.myapp.model.KanjiVal;
 
 /**
@@ -38,22 +38,38 @@ public class KanjiController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 	
 		String actionName = request.getParameter("actionName");
-		String searchVal = request.getParameter("searchVal");
+		
+		String kanjisearch = request.getParameter("kanjisearch");
+		
+		String searchOther = request.getParameter("searchOther");
 		
 		ConnectionDao con = new ConnectionDao();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
 		ArrayList<KanjiVal> list = new ArrayList<KanjiVal>();
+		ArrayList<HiddenVal> hiddenList = new ArrayList<HiddenVal>();
 		ArrayList<String> getlist = new ArrayList<String>();
-		if("èâä˙ï\é¶".equals(actionName)){
-			String sql = "SELECT kanji FROM kanji_list";
+		/*
+		 * 0001 : èâä˙ï\é¶
+		 * èâä˙ï\é¶èàóù
+		 */
+		if("0001".equals(actionName)){
+			String sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level  FROM kanji_list ORDER BY gasui ASC";
 			try{
 				connection = con.connect();
 				preparedStatement= connection.prepareStatement(sql);
 				rs = preparedStatement.executeQuery();
 				while(rs.next()){
+					HiddenVal hVal = new HiddenVal();
 					getlist.add(rs.getString("kanji"));
+					hVal.setKanji(rs.getString("kanji"));
+					hVal.setOnyomi(rs.getString("onyomi"));
+					hVal.setKunyomi(rs.getString("kunyomi"));
+					hVal.setGasui(rs.getString("gasui"));
+					hVal.setImi(rs.getString("imi"));
+					hVal.setLevel(rs.getString("level"));
+					hiddenList.add(hVal);
 				}
 			}catch(Exception e){
 				e.printStackTrace();
@@ -74,9 +90,161 @@ public class KanjiController extends HttpServlet {
 				list.add(val);
 				i+=10;
 			}
-			System.out.println(getlist.size());
-			System.out.println(list.size());
 			request.setAttribute("Valshow", list);
+			request.setAttribute("kanjidetail", hiddenList);
+			request.setAttribute("actionVal", "1");
+			RequestDispatcher rd = request.getRequestDispatcher("Kanji.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		/*
+		 * 0002 : äøéöåüçı
+		 * äøéöåüçıèàóù
+		 */
+		if("0002".equals(actionName)){
+			String sql;
+			if ("ALL".equals(kanjisearch) || "".equals(kanjisearch)){
+				sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list ORDER BY gasui ASC";
+			}else{
+				sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list WHERE kanji = ? OR onyomi = ? OR kunyomi = ?";
+			}
+			try{
+				connection = con.connect();
+				preparedStatement = connection.prepareStatement(sql);
+				if(!"ALL".equals(kanjisearch) && !"".equals(kanjisearch)){
+					preparedStatement.setString(1, kanjisearch);
+					preparedStatement.setString(2, kanjisearch);
+					preparedStatement.setString(3, kanjisearch);
+				}
+				rs = preparedStatement.executeQuery();
+				while(rs.next()){
+					HiddenVal hVal = new HiddenVal();
+					getlist.add(rs.getString("kanji"));
+					hVal.setKanji(rs.getString("kanji"));
+					hVal.setOnyomi(rs.getString("onyomi"));
+					hVal.setKunyomi(rs.getString("kunyomi"));
+					hVal.setGasui(rs.getString("gasui"));
+					hVal.setImi(rs.getString("imi"));
+					hVal.setLevel(rs.getString("level"));
+					hiddenList.add(hVal);
+				}
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+			int i = 0;
+			while(i<getlist.size()){
+				KanjiVal val = new KanjiVal();
+				val.setLocal1(getlist.get(i));
+				val.setLocal2((1+i<getlist.size())?getlist.get(1+i):"");
+				val.setLocal3((2+i<getlist.size())?getlist.get(2+i):"");
+				val.setLocal4((3+i<getlist.size())?getlist.get(3+i):"");
+				val.setLocal5((4+i<getlist.size())?getlist.get(4+i):"");
+				val.setLocal6((5+i<getlist.size())?getlist.get(5+i):"");
+				val.setLocal7((6+i<getlist.size())?getlist.get(6+i):"");
+				val.setLocal8((7+i<getlist.size())?getlist.get(7+i):"");
+				val.setLocal9((8+i<getlist.size())?getlist.get(8+i):"");
+				val.setLocal10((9+i<getlist.size())?getlist.get(9+i):"");
+				list.add(val);
+				i+=10;
+			}
+			request.setAttribute("Valshow", list);
+			request.setAttribute("kanjidetail", hiddenList);
+			request.setAttribute("actionVal", "1");
+			RequestDispatcher rd = request.getRequestDispatcher("Kanji.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		/*
+		 * 0003 : âÊêîåüçı
+		 * âÊêîåüçıèàóù
+		 */
+		if("0003".equals(actionName)){
+			String sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list WHERE gasui = ?";
+			try{
+				connection = con.connect();
+				preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setInt(1, Integer.parseInt(searchOther));
+				rs = preparedStatement.executeQuery();
+				while(rs.next()){
+					HiddenVal hVal = new HiddenVal();
+					getlist.add(rs.getString("kanji"));
+					hVal.setKanji(rs.getString("kanji"));
+					hVal.setOnyomi(rs.getString("onyomi"));
+					hVal.setKunyomi(rs.getString("kunyomi"));
+					hVal.setGasui(rs.getString("gasui"));
+					hVal.setImi(rs.getString("imi"));
+					hVal.setLevel(rs.getString("level"));
+					hiddenList.add(hVal);
+					}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			int i = 0;
+			while(i<getlist.size()){
+				KanjiVal val = new KanjiVal();
+				val.setLocal1(getlist.get(i));
+				val.setLocal2((1+i<getlist.size())?getlist.get(1+i):"");
+				val.setLocal3((2+i<getlist.size())?getlist.get(2+i):"");
+				val.setLocal4((3+i<getlist.size())?getlist.get(3+i):"");
+				val.setLocal5((4+i<getlist.size())?getlist.get(4+i):"");
+				val.setLocal6((5+i<getlist.size())?getlist.get(5+i):"");
+				val.setLocal7((6+i<getlist.size())?getlist.get(6+i):"");
+				val.setLocal8((7+i<getlist.size())?getlist.get(7+i):"");
+				val.setLocal9((8+i<getlist.size())?getlist.get(8+i):"");
+				val.setLocal10((9+i<getlist.size())?getlist.get(9+i):"");
+				list.add(val);
+				i+=10;
+			}
+			request.setAttribute("Valshow", list);
+			request.setAttribute("kanjidetail", hiddenList);
+			request.setAttribute("actionVal", "1");
+			RequestDispatcher rd = request.getRequestDispatcher("Kanji.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		/*
+		 * 0004 : äøåüÇÃãâ
+		 * äøåüÇÃãâÇÃèàóù
+		 */
+		if("0004".equals(actionName)){
+			String sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list WHERE level = ?";
+			try{
+				connection = con.connect();
+				preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.setString(1, searchOther);
+				rs = preparedStatement.executeQuery();
+				while(rs.next()){
+					HiddenVal hVal = new HiddenVal();
+					getlist.add(rs.getString("kanji"));
+					hVal.setKanji(rs.getString("kanji"));
+					hVal.setOnyomi(rs.getString("onyomi"));
+					hVal.setKunyomi(rs.getString("kunyomi"));
+					hVal.setGasui(rs.getString("gasui"));
+					hVal.setImi(rs.getString("imi"));
+					hVal.setLevel(rs.getString("level"));
+					hiddenList.add(hVal);
+					}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			int i = 0;
+			while(i<getlist.size()){
+				KanjiVal val = new KanjiVal();
+				val.setLocal1(getlist.get(i));
+				val.setLocal2((1+i<getlist.size())?getlist.get(1+i):"");
+				val.setLocal3((2+i<getlist.size())?getlist.get(2+i):"");
+				val.setLocal4((3+i<getlist.size())?getlist.get(3+i):"");
+				val.setLocal5((4+i<getlist.size())?getlist.get(4+i):"");
+				val.setLocal6((5+i<getlist.size())?getlist.get(5+i):"");
+				val.setLocal7((6+i<getlist.size())?getlist.get(6+i):"");
+				val.setLocal8((7+i<getlist.size())?getlist.get(7+i):"");
+				val.setLocal9((8+i<getlist.size())?getlist.get(8+i):"");
+				val.setLocal10((9+i<getlist.size())?getlist.get(9+i):"");
+				list.add(val);
+				i+=10;
+			}
+			request.setAttribute("Valshow", list);
+			request.setAttribute("kanjidetail", hiddenList);
 			request.setAttribute("actionVal", "1");
 			RequestDispatcher rd = request.getRequestDispatcher("Kanji.jsp");
 			rd.forward(request, response);

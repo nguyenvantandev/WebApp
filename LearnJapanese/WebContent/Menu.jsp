@@ -14,7 +14,7 @@
 <div id="screen">
 <table>
 <tr>
-<td id="kotobabtn"><a href="Home.jsp" id="kotoba">言葉</a></td>
+<td id="kotobabtn"><a href="Goi.jsp" id="kotoba">言葉</a></td>
 <td rowspan="4" id="info">
 <p id="title">${title}<p>
 <p id="news">${news}</p>

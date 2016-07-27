@@ -1,4 +1,0 @@
-function kanjiload(){
-	var actionVal = document.getElementById("").value;
-	
-}

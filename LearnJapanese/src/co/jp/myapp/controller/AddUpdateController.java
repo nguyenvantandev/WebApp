@@ -136,7 +136,7 @@ public class AddUpdateController extends HttpServlet {
 			request.setAttribute("imi", session.getAttribute("searchImi"));
 			request.setAttribute("level", session.getAttribute("searchLevel"));
 			request.setAttribute("actionStatus", "åüçı");
-			RequestDispatcher rd = request.getRequestDispatcher("Home.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Goi.jsp");
 			rd.forward(request, response);
 			return;
 		}

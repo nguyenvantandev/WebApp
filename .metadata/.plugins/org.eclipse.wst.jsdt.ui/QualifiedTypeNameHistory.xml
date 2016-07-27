@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="Document"/>
-<fullyQualifiedTypeName name="Geolocation"/>
 <fullyQualifiedTypeName name="HTMLInputElement"/>
 <fullyQualifiedTypeName name="CharacterData"/>
 <fullyQualifiedTypeName name="Function"/>
+<fullyQualifiedTypeName name="Geolocation"/>
+<fullyQualifiedTypeName name="Location"/>
 </qualifiedTypeNameHistroy>

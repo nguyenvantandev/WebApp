@@ -1,0 +1,30 @@
+package co.jp.myapp.model;
+
+public class BunpoVal {
+	private String grammar;
+	private String syntax;
+	private String meaning;
+	private String example;
+	private String comment;
+	private String note;
+	public String getGrammar() {
+		return grammar;
+	}
+	public void setGrammar(String grammar) {
+		this.grammar = grammar;
+	}
+	public String getMeaning() {
+		return meaning;
+	}
+	public void setMeaning(String meaning) {
+		this.meaning = meaning;
+	}
+	
+
+}
+
+<td style="display: none;"><c:out value="${row.syntax}"></c:out></td>
+<td style="display: none;"><c:out value="${row.meaning}"></c:out></td>
+<td style="display: none;"><c:out value="${row.example}"></c:out></td>
+<td style="display: none;"><c:out value="${row.comment}"></c:out></td>
+<td style="display: none;"><c:out value="${row.note}"></c:out></td>

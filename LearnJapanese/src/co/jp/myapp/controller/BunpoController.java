@@ -39,6 +39,9 @@ public class BunpoController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String actionId = request.getParameter("actionId");
+		String bunposearch = request.getParameter("bunposearch");
+		String level = request.getParameter("level");
+		String other = request.getParameter("other");
 
 		ConnectionDao con = new ConnectionDao();
 		Connection connection = null;
@@ -47,16 +50,44 @@ public class BunpoController extends HttpServlet {
 		ArrayList<BunpoVal> list = new ArrayList<BunpoVal>();
 
 		if ("0001".equals(actionId)) {
-			String sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou";
+			String sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? ORDER BY b_level DESC";
+			if(!"".equals(bunposearch)){
+				sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? AND grammar LIKE ? ORDER BY b_level DESC";
+			}
+			if(!"".equals(level)){
+				sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? AND b_level = ? ORDER BY b_level DESC";
+			}
+			if(!"".equals(other)){
+				sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? ORDER BY b_level DESC";
+			}
 			try {
 				connection = con.connect();
 				preparedStatement = connection.prepareStatement(sql);
+				
+				if(!"".equals(bunposearch)){
+					preparedStatement.setString(1, "0");
+					preparedStatement.setString(2, "%"+bunposearch+"%");
+				}
+				if(!"".equals(level)){
+					preparedStatement.setString(1, "0");
+					preparedStatement.setString(2, level);
+				}
+				if(!"".equals(other)){
+					preparedStatement.setString(1, other);
+				}else{
+					preparedStatement.setString(1, "0");
+				}
+				
 				rs = preparedStatement.executeQuery();
 				int count = 1;
 				while (rs.next()) {
 					BunpoVal val = new BunpoVal();
-					val.setGrammar(count +". "+rs.getString("grammar"));
+					val.setGrammar(count + ". " + rs.getString("grammar"));
 					val.setMeaning(rs.getString("meaning"));
+					val.setSyntax(rs.getString("syntax"));
+					val.setExample(rs.getString("example"));
+					val.setComment(rs.getString("b_comment"));
+					val.setNote(rs.getString("b_note"));
 					list.add(val);
 					count++;
 				}
@@ -64,7 +95,6 @@ public class BunpoController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		// System.out.println(actionId);
 		request.setAttribute("Valshow", list);
 		request.setAttribute("loadAction", "1");
 		RequestDispatcher rd = request.getRequestDispatcher("Bunpo.jsp");

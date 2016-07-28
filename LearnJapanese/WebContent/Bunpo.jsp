@@ -40,13 +40,13 @@
 				<table border="1" id="levelTable">
 					<tbody>
 						<tr>
-							<td><a href="#">1級</a></td>
-							<td><a href="#">2級</a></td>
-							<td><a href="#">3級</a></td>
+							<td><a href="#" onclick="levelSearch(1)">1級</a></td>
+							<td><a href="#" onclick="levelSearch(2)">2級</a></td>
+							<td><a href="#" onclick="levelSearch(3)">3級</a></td>
 						</tr>
 						<tr>
-							<td><a href="#">4級</a></td>
-							<td><a href="#">5級</a></td>
+							<td><a href="#" onclick="levelSearch(4)">4級</a></td>
+							<td><a href="#" onclick="levelSearch(5)">5級</a></td>
 							<td style="display: none;"></td>
 						</tr>
 					</tbody>
@@ -56,10 +56,10 @@
 				<table id="otherTable">
 					<tbody>
 						<tr>
-							<td><a href="#" style="margin-left: 5px;">◆ 助詞</a></td>
+							<td><a href="#" style="margin-left: 5px;" onclick="otherSearch(1)">◆ 助詞</a></td>
 						</tr>
 						<tr>
-							<td><a href="#" style="margin-left: 5px;">◆ 接続詞</a></td>
+							<td><a href="#" style="margin-left: 5px;" onclick="otherSearch(2)">◆ 接続詞</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -73,16 +73,44 @@
 					<tbody>
 						<c:forEach var="row" items="${Valshow}">
 							<tr>
-								<td><a href="#"><c:out value="${row.grammar}"></c:out></a><br>
-									<label><c:out value="${row.meaning}"></c:out></label>
-									</td>
+								<td><a href="#" onclick="bunpoShow(this)"><c:out
+											value="${row.grammar}"></c:out></a><br> <label><c:out
+											value="${row.meaning}"></c:out></label></td>
+								<td style="display: none;"><c:out value="${row.grammar}"></c:out></td>
+								<td style="display: none;"><c:out value="${row.syntax}"></c:out></td>
+								<td style="display: none;"><c:out value="${row.meaning}"></c:out></td>
+								<td style="display: none;"><c:out value="${row.example}"></c:out></td>
+								<td style="display: none;"><c:out value="${row.comment}"></c:out></td>
+								<td style="display: none;"><c:out value="${row.note}"></c:out></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				<div id="overwindows" style="display: none;">
+				<!--詳細説明  popup ON -->
+				<div id="popdivdetail" class="ontop" style="display: none;">
+					<div id="detailform">
+						<abbr title="閉じる"><a href="#" id="tojiru" name="tojiru"
+							onclick="hide('popdivdetail')">X</a></abbr><br>
+						<h3 id="grammar"></h3>
+						<label>意味：</label><br>
+						<p id="meaning"></p>
+						<label>例：</label><br>
+						<p id="example"></p>
+						<br> <label>説明：</label><br>
+						<p id="comment"></p>
+						<br> <label>注意：</label><br>
+						<p id="note"></p>
+						<br>
+					</div>
+				</div>
+				<!--詳細説明  popup OFF  -->
+				</div>
 			</div>
-			<input type="hidden" id="loadAction" name="loadAction" value="${loadAction}">
+			<input type="hidden" id="loadAction" name="loadAction" value="${loadAction}"> 
 			<input type="hidden" id="actionId" name="actionId">
+			<input type="hidden" id="level" name="level">
+			<input type="hidden" id="other" name="other">
 		</form>
 	</div>
 

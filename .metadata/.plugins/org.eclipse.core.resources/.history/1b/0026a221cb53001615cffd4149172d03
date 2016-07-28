@@ -1,0 +1,7 @@
+function BunpoLoad(){
+	var loadAction = document.getElementById("loadAction").value;
+	if(loadAction == ""){
+		alert("");
+		document.getElementById("actionId").value = "0001";
+	}
+}

@@ -1,0 +1,8 @@
+package co.jp.myapp.model;
+
+public class BunpoVal {
+	private String grammar;
+	private String meaning;
+	
+
+}

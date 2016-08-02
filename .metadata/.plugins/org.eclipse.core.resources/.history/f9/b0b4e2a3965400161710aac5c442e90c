@@ -1,0 +1,61 @@
+function chooseLv(val){
+	document.getElementById("levelList").style.display = 'none';
+	document.getElementById("backdiv").style.display = 'block';
+	document.getElementById("testYear").style.display = 'block';
+}
+
+function backEvent(){
+	document.getElementById("levelList").style.display = 'block';
+	document.getElementById("backdiv").style.display = 'none';
+	document.getElementById("testYear").style.display = 'none';
+}
+
+function chooseYear(val){
+	document.getElementById("testYear").style.display = 'none';
+	document.getElementById("testYear").style.display = 'block';
+	/*var showTest = document.getElementById("showTest").value;
+	var year1 = document.getElementById("year1").value;
+	if(year1 != val){
+		document.getElementById("year1").style.display = 'none';
+	}
+	var year2 = document.getElementById("year2").value;
+	if(year2 != val){
+		document.getElementById("year2").style.display = 'none';
+	}
+	var year3 = document.getElementById("year3").value;
+	if(year3 != val){
+		document.getElementById("year3").style.display = 'none';
+	}
+	var year4 = document.getElementById("year4").value;
+	if(year4 != val){
+		document.getElementById("year4").style.display = 'none';
+	}
+	var year5 = document.getElementById("year5").value;
+	if(year5 != val){
+		document.getElementById("year5").style.display = 'none';
+	}
+	var year6 = document.getElementById("year6").value;
+	if(year6 != val){
+		document.getElementById("year6").style.display = 'none';
+	}
+	var year7 = document.getElementById("year7").value;
+	if(year7 != val){
+		document.getElementById("year7").style.display = 'none';
+	}
+	if(showTest == "0"){
+		document.getElementById("showTest").value = "1";
+		document.getElementById("testExam").style.display = 'block';
+	}else{
+		document.getElementById("showTest").value = "0";
+		document.getElementById("testExam").style.display = 'none';
+		document.getElementById("year1").style.display = 'block';
+		document.getElementById("year2").style.display = 'block';
+		document.getElementById("year3").style.display = 'block';
+		document.getElementById("year4").style.display = 'block';
+		document.getElementById("year5").style.display = 'block';
+		document.getElementById("year6").style.display = 'block';
+		document.getElementById("year7").style.display = 'block';
+
+	}
+	*/
+}

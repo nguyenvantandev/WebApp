@@ -1,0 +1,26 @@
+function chooseLv(val){
+	document.getElementById("levelList").style.display = 'none';
+	document.getElementById("backdiv").style.display = 'block';
+	document.getElementById("testYear").style.display = 'block';
+}
+
+function backEvent(){
+	document.getElementById("levelList").style.display = 'block';
+	document.getElementById("backdiv").style.display = 'none';
+	document.getElementById("testYear").style.display = 'none';
+}
+
+function chooseYear(val){
+	var showTest = document.getElementById("showTest").value;
+	var year1 = document.getElementById("year1").value;
+	if(year1 != val){
+		
+	}
+	var year2 = document.getElementById("year2").value;
+	var year3 = document.getElementById("year3").value;
+	var year4 = document.getElementById("year4").value;
+	var year5 = document.getElementById("year5").value;
+	var year6 = document.getElementById("year6").value;
+	var year7 = document.getElementById("year7").value;
+	
+}

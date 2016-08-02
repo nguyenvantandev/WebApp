@@ -1,0 +1,9 @@
+function chooseLv(val){
+	document.getElementById("levelList").style.display = 'none';
+	document.getElementById("levelList").style.display = 'none';
+	document.getElementById("levelList").style.display = 'none';
+}
+
+function backEvent(){
+	
+}

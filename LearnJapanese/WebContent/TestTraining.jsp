@@ -5,20 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/Choukai.css">
-<script type="text/javascript" src="js/Choukai.js"></script>
+<link rel="stylesheet" type="text/css" href="css/TestTraining.css">
+<script type="text/javascript" src="js/TestTraining.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<title>聴解練習</title>
+<title>試験練習</title>
 </head>
 <body>
 <div id="screen">
-<form action="ChoukaiController" method="post" id="Choukai" name="Choukai">
+<form action="TestTrainingController" method="post" id="testTraining" name="testTraining">
 <abbr title="戻る"> <a id="modoru" href="Menu.jsp"><img
 					id="modoru" src="css/picture/tan.png"
 					onmouseover="src ='css/picture/tan2.png'"
 					onmouseout="src ='css/picture/tan.png'"></a>
 			</abbr>
-			<h3>聴解練習</h3><br>
+			<h3>試験練習</h3><br>
 			
 	<div id="levelList">
 	<input type="button" id="level1" name="level1" value="聴解検定試験1級" onclick="chooseLv(this)"><br>
@@ -33,13 +33,10 @@
 	
 	<div id="testYear" style="display: none;">
 	<input type="hidden" id="showTest" name="showTest" value="0">
-	<input type="button" id="year1" name="year1" value="2016" onclick="chooseYear(this.value)"><br>
-	<input type="button" id="year2" name="year2" value="2015" onclick="chooseYear(this.value)"><br>
-	<input type="button" id="year3" name="year3" value="2014" onclick="chooseYear(this.value)"><br>
-	<input type="button" id="year4" name="year4" value="2013" onclick="chooseYear(this.value)"><br>
-	<input type="button" id="year5" name="year5" value="2012" onclick="chooseYear(this.value)"><br>
-	<input type="button" id="year6" name="year6" value="2011" onclick="chooseYear(this.value)"><br>
-	<input type="button" id="year7" name="year7" value="2010" onclick="chooseYear(this.value)"><br>
+	<input type="button" id="year1" name="year1" value="言葉" onclick="chooseYear(this.value)"><br>
+	<input type="button" id="year2" name="year2" value="漢字" onclick="chooseYear(this.value)"><br>
+	<input type="button" id="year3" name="year3" value="文法" onclick="chooseYear(this.value)"><br>
+	<input type="button" id="year4" name="year4" value="読解" onclick="chooseYear(this.value)"><br>
 	</div>
 	<div id="backyeardiv" style="display: none;">
 	<input type="button" id="backyearbtn" name="backyearbtn" value="⇐" onclick="backyearEvent()"><br>
@@ -75,9 +72,9 @@
 	</div>
 	
 	<div id="audioDiv">
-	<audio controls>
+<!-- 	<audio controls>
 	<source src="css/picture/audio.mp3" type="audio/mpeg">
-	</audio>
+	</audio> -->
 	<a href="#" id="backlink" name="backlink">前へ</a>
 	<a href="#" id="nextlink" name="nextlink">次へ</a>
 	</div>

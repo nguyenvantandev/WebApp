@@ -2,7 +2,7 @@ function BunpoLoad() {
 	var loadAction = document.getElementById("loadAction").value;
 	if (loadAction == "") {
 		document.getElementById("actionId").value = "0001";
-		document.getElementById("Bunpo").submit();
+		document.getElementById("grammar").submit();
 	}
 	var row = document.getElementById("info").getElementsByTagName("tbody")[0].getElementsByTagName("tr").length;
 	if(row == 0 && loadAction != ""){
@@ -41,17 +41,17 @@ function hide(div) {
 
 function searchClick(){
 	document.getElementById("actionId").value = "0001";
-	document.getElementById("Bunpo").submit();
+	document.getElementById("grammar").submit();
 }
 
 function levelSearch(Val){
 	document.getElementById("level").value = Val;
 	document.getElementById("actionId").value = "0001";
-	document.getElementById("Bunpo").submit();
+	document.getElementById("grammar").submit();
 	
 }
 function otherSearch(val){
 	document.getElementById("other").value = val;
 	document.getElementById("actionId").value = "0001";
-	document.getElementById("Bunpo").submit();
+	document.getElementById("grammar").submit();
 }

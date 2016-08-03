@@ -17,7 +17,7 @@ function chooseYear(val){
 	document.getElementById("backyeardiv").style.display = 'block';
 	
 	
-/*	document.getElementById("Choukai").submit();*/
+	/*document.getElementById("Choukai").submit();*/
 
 }
 function backyearEvent(){

@@ -6,15 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/Bunpo.css">
-<script type="text/javascript" src="js/Bunpo.js"></script>
+<link rel="stylesheet" type="text/css" href="css/Grammar.css">
+<script type="text/javascript" src="js/Grammar.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <title>文法練習</title>
 </head>
 <body onload="BunpoLoad()">
 	<div id="screen">
-		<form action="BunpoController" method="post" id="Bunpo" name="Bunpo">
+		<form action="GrammarController" method="post" id="grammar" name="grammar">
 			<abbr title="戻る"> <a id="modoru" href="Menu.jsp"><img
 					id="modoru" src="css/picture/tan.png"
 					onmouseover="src ='css/picture/tan2.png'"

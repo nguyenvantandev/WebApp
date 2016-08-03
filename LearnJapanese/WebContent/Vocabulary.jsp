@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="css/Goi.css">
-<script type="text/javascript" src="js/Goi.js"></script>
+<link rel="stylesheet" type="text/css" href="css/Vocabulary.css">
+<script type="text/javascript" src="js/Vocabulary.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <title>語彙</title>
 </head>
 <body onload="homeload()">
 <div id="screen">
-<form action="GoiController" method="post" id="Goi" name="Goi">
+<form action="VocabularyController" method="post" id="vocabulary" name="vocabulary">
 <abbr title="戻る">
 <a id="modoru" href="Menu.jsp"><img id="modoru" src="css/picture/tan.png" onmouseover="src ='css/picture/tan2.png'" onmouseout="src ='css/picture/tan.png'"></a>
 </abbr> 

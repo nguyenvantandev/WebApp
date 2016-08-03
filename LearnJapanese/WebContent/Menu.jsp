@@ -14,7 +14,7 @@
 <div id="screen">
 <table>
 <tr>
-<td id="kotobabtn"><a href="Goi.jsp" id="kotoba">言葉</a></td>
+<td id="kotobabtn"><a href="Vocabulary.jsp" id="kotoba">言葉</a></td>
 <td rowspan="4" id="info">
 <p id="title">${title}<p>
 <p id="news">${news}</p>
@@ -28,10 +28,10 @@
 <td id="kanjibtn"><a href="Kanji.jsp" id="kanji">漢字</a></td>
 </tr>
 <tr>
-<td id="bunpobtn"><a href="Bunpo.jsp" id="bunpo">文法</a></td>
+<td id="bunpobtn"><a href="Grammar.jsp" id="bunpo">文法</a></td>
 </tr>
 <tr>
-<td id="choukaibtn"><a href="Choukai.jsp" id="choukai">聴解</a></td>
+<td id="choukaibtn"><a href="TestTraining.jsp" id="choukai">試験訓練</a></td>
 </tr>
 </table>
 </div>

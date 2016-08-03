@@ -7,7 +7,7 @@ function homeload() {
 	var action = document.getElementById("actionStatus").value;
 	if (action == "検索") {
 		document.getElementById("actionStatus").value = action;
-		document.getElementById("Goi").submit();
+		document.getElementById("vocabulary").submit();
 	}
 }
 /*
@@ -16,7 +16,7 @@ function homeload() {
 function searchVal() {
 
 	document.getElementById("actionStatus").value = "検索"
-	document.getElementById("Goi").submit();
+	document.getElementById("vocabulary").submit();
 }
 /*
  * 
@@ -32,7 +32,7 @@ function clearclick() {
  */
 function insert() {
 	document.getElementById("actionStatus").value = "追加"
-	document.getElementById("Goi").submit();
+	document.getElementById("vocabulary").submit();
 }
 /*
  * 
@@ -41,7 +41,7 @@ function update(Val) {
 	var report = Val.parentNode.parentNode.cells[0].innerHTML;
 	document.getElementById("kotobaid").value = report;
 	document.getElementById("actionStatus").value = "更新"
-	document.getElementById("Goi").submit();
+	document.getElementById("vocabulary").submit();
 }
 /*
  * 
@@ -52,7 +52,7 @@ function del(Val) {
 		var report = Val.parentNode.parentNode.cells[0].innerHTML;
 		document.getElementById("kotobaid").value = report;
 		document.getElementById("actionStatus").value = "削除"
-		document.getElementById("Goi").submit();
+		document.getElementById("vocabulary").submit();
 	} else {
 		return false;
 	}

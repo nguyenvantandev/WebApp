@@ -6,30 +6,30 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="#backbtn" key="selection"/>
+		<item value="bunpo" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Bunpo"/>
+			<item value="Bunpo.jsp"/>
+			<item value="Goi"/>
+			<item value="Goi.jsp"/>
 			<item value="#backbtn"/>
 			<item value="#backyearbtn"/>
 			<item value="#backdiv"/>
 			<item value="year1"/>
-			<item value="testExam"/>
-			<item value="#Info"/>
-			<item value="#testExam"/>
-			<item value="kankenTable"/>
 		</list>
 		<list key="replacehistory">
+			<item value="grammar"/>
+			<item value="Grammar.jsp"/>
+			<item value="vocabulary"/>
+			<item value="Vocabulary.jsp"/>
 			<item value="year7"/>
 			<item value="year6"/>
 			<item value="year5"/>
 			<item value="year4"/>
-			<item value="year3"/>
-			<item value="year2"/>
-			<item value="testYear"/>
-			<item value="#testYear"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

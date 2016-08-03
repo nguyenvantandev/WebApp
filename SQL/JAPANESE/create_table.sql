@@ -44,10 +44,12 @@ CREATE TABLE test_tbl
 (
 id integer NOT NULL CONSTRAINT test_pkey PRIMARY KEY,
 question text,
-anwser_1 character varying(200),
-anwser_2 character varying(200),
-anwser_3 character varying(200),
-anwser_4 character varying(200),
+anwser_1 text,
+anwser_2 text,
+anwser_3 text,
+anwser_4 text,
+result_anwser character varying(1),
+result_question text,
 test_level character varying(1),
 item character varying(10)
 );

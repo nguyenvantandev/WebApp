@@ -5,7 +5,7 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-08-03T05:30:35Z</updated>
+  <updated>2016-08-03T05:30:00Z</updated>
   <entry>
     <title>This Week in Spring - SpringOne Platform 2016 edition! - August 2nd, 2016</title>
     <link rel="alternate" href="https://spring.io/blog/2016/08/03/this-week-in-spring-springone-platform-2016-edition-august-2nd-2016" />
@@ -14,15 +14,14 @@
       <name>Josh Long</name>
     </author>
     <id>tag:spring.io,2016-08-03:2580</id>
-    <updated>2016-08-03T05:30:35Z</updated>
+    <updated>2016-08-03T05:30:00Z</updated>
     <content type="html">&lt;p&gt;Welcome to another very special installment of &lt;em&gt;This Week in Spring&lt;/em&gt; - this week Pivotal is out in force at SpringOne Platform 2016. This year saw more people, more topics and more sponsors than ever! &lt;a href="https://spring.io/blog/2016/08/02/springone-platform-2016-recap-day-1"&gt;For more, check out our SpringOne Platform recap blog&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re &lt;em&gt;not&lt;/em&gt; here, then fear not all the talks will be available online, but until then.. &lt;em&gt;wish you were here&lt;/em&gt;! As with previous years, the race to SpringOne was filled with awesome releases that should keep you more than busy while you wait for the talks to be available online as replays! Let&amp;rsquo;s get to it!&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Spring Boot co-lead Phillip Webb &lt;a href="https://spring.io/blog/2016/07/28/spring-boot-1-4-released"&gt;announced Spring Boot 1.4&lt;/a&gt;, &lt;em&gt;just&lt;/em&gt; in time for SpringOne Platform!&lt;/li&gt;
   &lt;li&gt;..and Spring Boot ninja Stephane Nicoll &lt;a href="https://spring.io/blog/2016/07/28/spring-boot-1-3-7-available-now"&gt;announced Spring Boot 1.3.7&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data ninja Mark Paluch announced Spring Data Ingalls M1, packed with lots of new features (and 250 tickets fixed!) include for property access in conversion subsystem (Commons, MongoDB), an update to Cassandra 3.0 for Spring Data Cassandra,&lt;br/&gt;support for declarative query methods for Cassandra repositories, support for Redis geo commands, any-match mode for query-by-example, support for XML and JSON based projections for REST payloads and &lt;em&gt;so much&lt;/em&gt; more!&lt;/li&gt;
-  &lt;li&gt;Spring framework lead &lt;a href="https://spring.io/blog/2016/07/28/spring-framework-5-0-m1-released"&gt;Juergen Hoeller just announced Spring framework 5.0.1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;I liked this post &lt;a href="http://www.baeldung.com/akka-with-spring"&gt;on using Spring and Akka together&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Data ninja Mark Paluch announced &lt;a href="https://spring.io/blog/2016/07/27/spring-data-release-train-ingalls-m1-released"&gt;Spring Data Ingalls M1&lt;/a&gt;, packed with lots of new features (and 250 tickets fixed!) include for property access in conversion subsystem (Commons, MongoDB), an update to Cassandra 3.0 for Spring Data Cassandra,&lt;br/&gt;support for declarative query methods for Cassandra repositories, support for Redis geo commands, any-match mode for query-by-example, support for XML and JSON based projections for REST payloads and &lt;em&gt;so much&lt;/em&gt; more!&lt;/li&gt;
+  &lt;li&gt;Spring framework lead &lt;a href="https://spring.io/blog/2016/07/28/spring-framework-5-0-m1-released"&gt;Juergen Hoeller just announced Spring framework 5.0.0 M1&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring web maestro Rossen Stoyanchev introduced the &lt;a href="https://spring.io/blog/2016/07/28/reactive-programming-with-spring-5-0-m1"&gt;reactive programming support in Spring Framework 5.0.0 M1&lt;/a&gt; - this has been a &lt;em&gt;long&lt;/em&gt; time in coming and is definitely worth a look!&lt;/li&gt;
   &lt;li&gt;Janne Valkealahti just &lt;a href="https://spring.io/blog/2016/07/29/spring-cloud-data-flow-for-apache-yarn-1-0-1-released"&gt;announced Spring Cloud Data Flow for Apache YARN 1.0.1&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Platform lead &lt;a href="https://spring.io/blog/2016/07/29/spring-io-platform-2-0-7-release"&gt;Andy Wilkinson announced Spring IO Platform 2.0.7&lt;/a&gt;. Spring IO Platform is a Maven bill-of-materials release train dependency that manages dependencies across different libraries and lets you focus not on playing whack-a-mole with dependency versions.&lt;/li&gt;
@@ -30,6 +29,7 @@
   &lt;li&gt;Spring tools lead Martin Lippert &lt;a href="https://spring.io/blog/2016/08/03/spring-tool-suite-3-8-1-released"&gt;just released Spring Tool Suite 3.8.1&lt;/a&gt; which fixes some minor issues.&lt;/li&gt;
   &lt;li&gt;I really enjoyed &lt;a href="https://blog.pivotal.io/pivotal-cloud-foundry/products/get-closure-deploy-apps-to-production-in-seconds-not-weeks"&gt;Richard Seroter&amp;rsquo;s blog&lt;/a&gt; on deploying to production quickly&lt;/li&gt;
   &lt;li&gt;This is pretty interesting, there&amp;rsquo;s a post on using Excelsior JET - which is an implementation of the Java SE technology for Microsoft Windows, Apple OS X, and Linux that turns code into a native application - &lt;a href="http://www.excelsiorjet.com/kb/38/howto-natively-compile-a-spring-boot-application"&gt;to turn a Spring Boot application into a native application&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;I liked this post &lt;a href="http://www.baeldung.com/akka-with-spring"&gt;on using Spring and Akka together&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
   </entry>
   <entry>

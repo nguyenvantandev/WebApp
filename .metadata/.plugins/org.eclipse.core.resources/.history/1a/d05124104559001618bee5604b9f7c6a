@@ -1,0 +1,29 @@
+function chooseLv(val){
+	document.getElementById("levelList").style.display = 'none';
+	document.getElementById("backdiv").style.display = 'block';
+	document.getElementById("testItem").style.display = 'block';
+}
+
+function backEvent(){
+	document.getElementById("levelList").style.display = 'block';
+	document.getElementById("backdiv").style.display = 'none';
+	document.getElementById("testItem").style.display = 'none';
+}
+
+function chooseItem(val){
+	document.getElementById("testItem").style.display = 'none';
+	document.getElementById("backdiv").style.display = 'none';
+	document.getElementById("testExam").style.display = 'block';
+	document.getElementById("backyeardiv").style.display = 'block';
+	
+	
+	/*document.getElementById("Choukai").submit();*/
+
+}
+function backitemEvent(){
+	document.getElementById("testItem").style.display = 'block';
+	document.getElementById("backdiv").style.display = 'block';
+	document.getElementById("testExam").style.display = 'none';
+	document.getElementById("backyeardiv").style.display = 'none';
+}
+

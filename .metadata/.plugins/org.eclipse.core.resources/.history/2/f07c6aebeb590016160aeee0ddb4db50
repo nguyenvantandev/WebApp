@@ -1,0 +1,15 @@
+package co.jp.myapp.model;
+
+public class TestTrainingVal {
+
+	private String content;
+	private String question;
+	private String anwser1;
+	private String anwser2;
+	private String anwser3;
+	private String anwser4;
+	private String resultAnwser;
+	private String resultQuestion;
+	
+	
+}

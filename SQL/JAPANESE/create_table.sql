@@ -43,6 +43,7 @@ gra_group character varying(1)
 CREATE TABLE test_tbl
 (
 id integer NOT NULL CONSTRAINT test_pkey PRIMARY KEY,
+test_content text,
 question text,
 anwser_1 text,
 anwser_2 text,
@@ -53,3 +54,11 @@ result_question text,
 test_level character varying(1),
 item character varying(10)
 );
+
+
+
+SELECT id, test_content, question, anwser_1, anwser_2, anwser_3, anwser_4, result_anwser, result_question FROM test_tbl 
+WHERE test_level = '1' AND item = '言葉'
+ORDER BY id ASC
+
+

@@ -78,10 +78,13 @@ h3 {
 #questionTable{
 	    width: 60%;
 }
-#btnDiv{
+#btnDiv, #resultDiv{
 	padding-left: 1%;
 	margin-bottom: 1%;
 }
+/* #resultDiv{
+	color: red;
+} */
 #btnDiv a{
 	font-size: 20px;
 	 text-decoration: none;

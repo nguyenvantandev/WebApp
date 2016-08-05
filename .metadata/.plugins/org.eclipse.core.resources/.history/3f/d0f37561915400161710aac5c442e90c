@@ -1,9 +1,0 @@
-function chooseLv(val){
-	document.getElementById("levelList").style.display = 'none';
-	document.getElementById("backdiv").style.display = 'block';
-	document.getElementById("testExam").style.display = 'block';
-}
-
-function backEvent(){
-	
-}

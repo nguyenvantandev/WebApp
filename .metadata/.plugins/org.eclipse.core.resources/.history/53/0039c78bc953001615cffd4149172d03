@@ -1,6 +1,0 @@
-function BunpoLoad(){
-	var loadAction = document.getElementById("loadAction").value;
-	if(loadAction == ""){
-		
-	}
-}

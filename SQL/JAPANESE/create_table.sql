@@ -61,4 +61,7 @@ SELECT id, test_content, question, anwser_1, anwser_2, anwser_3, anwser_4, resul
 WHERE test_level = '1' AND item = '言葉'
 ORDER BY id ASC
 
+SELECT role FROM login_tbl WHERE name = 'NTTN' AND password = '123'
+
+
 

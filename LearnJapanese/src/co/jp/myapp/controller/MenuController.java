@@ -41,8 +41,8 @@ public class MenuController extends HttpServlet {
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
 		
-		String getmax = "SELECT Max(id) max FROM cultural_list";
-		String sql = "SELECT title, japanese, vietnamese FROM cultural_list WHERE id = ?";
+		String getmax = "SELECT Max(id) max FROM news_tbl";
+		String sql = "SELECT title, japanese, vietnamese FROM news_tbl WHERE id = ?";
 		
 	try{
 		connection = con.connect();

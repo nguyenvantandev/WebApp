@@ -6,37 +6,37 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="btnDiv" key="selection"/>
+		<item value="update" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="btnDiv"/>
-			<item value="label"/>
-			<item value="backlink"/>
-			<item value="audioDiv"/>
-			<item value="backyeardiv"/>
-			<item value="testYear"/>
-			<item value="year1"/>
-			<item value="Bunpo"/>
+			<item value="update"/>
+			<item value="kotobarenshu"/>
+			<item value="tsuika"/>
+			<item value="imi"/>
+			<item value="cultural_list"/>
+			<item value="news_tbl"/>
+			<item value="b_group"/>
+			<item value="b_level"/>
 		</list>
 		<list key="replacehistory">
+			<item value="meaning"/>
+			<item value="gra_comment"/>
+			<item value="gra_group"/>
+			<item value="gra_level"/>
+			<item value="gra_note"/>
+			<item value="grammar_tbl"/>
+			<item value="kanji_tbl"/>
 			<item value="resultDiv"/>
-			<item value="resultdiv"/>
-			<item value="backitemdiv"/>
-			<item value="testItem"/>
-			<item value="vocabulary"/>
-			<item value="grammar"/>
-			<item value="Grammar.jsp"/>
-			<item value="Vocabulary.jsp"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="377" key="DIALOG_WIDTH"/>
 		<item value="1|メイリオ|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|メイリオ" key="DIALOG_FONT_NAME"/>
-		<item value="411" key="DIALOG_HEIGHT"/>
-		<item value="1074" key="DIALOG_X_ORIGIN"/>
-		<item value="367" key="DIALOG_Y_ORIGIN"/>
+		<item value="414" key="DIALOG_HEIGHT"/>
+		<item value="1046" key="DIALOG_X_ORIGIN"/>
+		<item value="266" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

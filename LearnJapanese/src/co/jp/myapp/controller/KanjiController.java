@@ -55,7 +55,7 @@ public class KanjiController extends HttpServlet {
 		 * èâä˙ï\é¶èàóù
 		 */
 		if("0001".equals(actionName)){
-			String sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level  FROM kanji_list ORDER BY gasui ASC";
+			String sql = "SELECT kanji, onyomi, kunyomi, meaning, gasui, level  FROM kanji_tbl ORDER BY gasui ASC";
 			try{
 				connection = con.connect();
 				preparedStatement= connection.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class KanjiController extends HttpServlet {
 					hVal.setOnyomi(rs.getString("onyomi"));
 					hVal.setKunyomi(rs.getString("kunyomi"));
 					hVal.setGasui(rs.getString("gasui"));
-					hVal.setImi(rs.getString("imi"));
+					hVal.setImi(rs.getString("meaning"));
 					hVal.setLevel(rs.getString("level"));
 					hiddenList.add(hVal);
 				}
@@ -104,9 +104,9 @@ public class KanjiController extends HttpServlet {
 		if("0002".equals(actionName)){
 			String sql;
 			if ("ALL".equals(kanjisearch) || "".equals(kanjisearch)){
-				sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list ORDER BY gasui ASC";
+				sql = "SELECT kanji, onyomi, kunyomi, meaning, gasui, level FROM kanji_tbl ORDER BY gasui ASC";
 			}else{
-				sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list WHERE kanji = ? OR onyomi = ? OR kunyomi = ?";
+				sql = "SELECT kanji, onyomi, kunyomi, meaning, gasui, level FROM kanji_tbl WHERE kanji = ? OR onyomi = ? OR kunyomi = ?";
 			}
 			try{
 				connection = con.connect();
@@ -124,7 +124,7 @@ public class KanjiController extends HttpServlet {
 					hVal.setOnyomi(rs.getString("onyomi"));
 					hVal.setKunyomi(rs.getString("kunyomi"));
 					hVal.setGasui(rs.getString("gasui"));
-					hVal.setImi(rs.getString("imi"));
+					hVal.setImi(rs.getString("meaning"));
 					hVal.setLevel(rs.getString("level"));
 					hiddenList.add(hVal);
 				}
@@ -159,7 +159,7 @@ public class KanjiController extends HttpServlet {
 		 * âÊêîåüçıèàóù
 		 */
 		if("0003".equals(actionName)){
-			String sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list WHERE gasui = ?";
+			String sql = "SELECT kanji, onyomi, kunyomi, meaning, gasui, level FROM kanji_tbl WHERE gasui = ?";
 			try{
 				connection = con.connect();
 				preparedStatement = connection.prepareStatement(sql);
@@ -172,7 +172,7 @@ public class KanjiController extends HttpServlet {
 					hVal.setOnyomi(rs.getString("onyomi"));
 					hVal.setKunyomi(rs.getString("kunyomi"));
 					hVal.setGasui(rs.getString("gasui"));
-					hVal.setImi(rs.getString("imi"));
+					hVal.setImi(rs.getString("meaning"));
 					hVal.setLevel(rs.getString("level"));
 					hiddenList.add(hVal);
 					}
@@ -207,7 +207,7 @@ public class KanjiController extends HttpServlet {
 		 * äøåüÇÃãâÇÃèàóù
 		 */
 		if("0004".equals(actionName)){
-			String sql = "SELECT kanji, onyomi, kunyomi, imi, gasui, level FROM kanji_list WHERE level = ?";
+			String sql = "SELECT kanji, onyomi, kunyomi, meaning, gasui, level FROM kanji_tbl WHERE level = ?";
 			try{
 				connection = con.connect();
 				preparedStatement = connection.prepareStatement(sql);
@@ -220,7 +220,7 @@ public class KanjiController extends HttpServlet {
 					hVal.setOnyomi(rs.getString("onyomi"));
 					hVal.setKunyomi(rs.getString("kunyomi"));
 					hVal.setGasui(rs.getString("gasui"));
-					hVal.setImi(rs.getString("imi"));
+					hVal.setImi(rs.getString("meaning"));
 					hVal.setLevel(rs.getString("level"));
 					hiddenList.add(hVal);
 					}

@@ -53,14 +53,14 @@
 					onclick="chooseItem(this.value)"><br>
 			</div>
 			<div id="backitemdiv" style="display: none;">
-				<label id="countTime" style="font-size: 40px;"><time>00:00:00</time></label>
+				<label id="countTime" style="font-size: 40px;"><time>00:00:00</time></label><label id="timelimit">テスト時間：<b id="time"></b> 分</label>
 				<input type="button" id="backyearbtn" name="backyearbtn" value="⇐"
 					onclick="backitemEvent()"><br>
 			</div>
 			<div id="testExam" style="display: none;">
 				<!-- c:for start -->
 				<c:forEach var="val" items="${testform}">
-				<div id="testInfo">
+				<div id="testInfo" class="testInfo" >
 					<textarea disabled="disabled" style="display: block;" id="question" name="question"> <c:out value="${val.content}"></c:out>
 					</textarea>
 					<textarea disabled="disabled" style="display: none;" id="resultquestion" name="resultquestion"><c:out value="${val.resultQuestion}"></c:out>
@@ -81,8 +81,8 @@
 				</div>
 				<input type="hidden" id="${val.id}">
 				<input type="hidden" id="corectresult${val.id}" name="corectresult" value="${val.resultAnwser}">	
-				<div id="resultDiv" style="display: none;">
-					<label id="resultval${val.id}"></label> 
+				<div id="resultDiv" class="resultDiv" style="display: none;">
+					<label id="resultval${val.id}" style="color: red;">回答：${val.resultAnwser} 間違い</label> 
 				</div>
 				</c:forEach>
 				<div id="btnDiv">
@@ -94,7 +94,7 @@
 			<input type="hidden" id="levelchoosed" name="levelchoosed" value="${levelchoosed}">
 			<input type="hidden" id="itemchoosed" name="itemchoosed" value="${itemchoosed}">
 			<input type="hidden" id="showpage" name="showpage" value="${showpage}">
-			<input type="hidden" id="point" name="point" value="0">
+			<input type="hidden" id="point" name="point">
 		</form>
 	</div>
 </body>

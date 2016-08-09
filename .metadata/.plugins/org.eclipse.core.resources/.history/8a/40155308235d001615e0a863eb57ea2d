@@ -1,0 +1,12 @@
+function loginClick(){
+	var user = document.getElementById("user").value;
+	var pass = document.getElementById("pass").value;
+	if(user == ""){
+		alert("ユーザーを入力してください");
+		return false;
+	}
+	if(){
+		
+	}
+	
+}

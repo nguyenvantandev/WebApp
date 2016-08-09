@@ -32,14 +32,6 @@
 		<a href="#" id="kotobarenshu" name="kotobarenshu" onclick="learning()">
 		<abbr title="言葉練習"><img src="css/picture/learning1.png" style="width: 40px; height: 40px;"></abbr>
 		</a>
-		<a href="#" id="kadairenshu" name="kadairenshu">
-		<abbr title="課題練習"><img src="css/picture/training.png" style="width: 40px; height: 40px;"></abbr>
-		</a>
-		
-		<a href="#" id="tsuika" name="tsuika" onclick="insert()">
-		<abbr title="追加"><img src="css/picture/create.png" style="width: 40px; height: 40px;"></abbr>
-		</a>
-		
 		<a href="#" id="kensaku" name="kensaku" onclick="searchVal()">
 		<abbr title="検索"><img src="css/picture/search1.png" style="width: 40px; height: 40px;"></abbr>
 		</a>
@@ -47,7 +39,6 @@
 		<div style="margin-top: 1%">
 		<label id="lbkensu">件数<c:out value="${count}"></c:out>件</label><br>
 		</div>
-		
 		<div id="list">
 			<table id="table" border="1">
 				<thead>
@@ -74,9 +65,9 @@
 							<a href="#"  id="shosai" name="shosai" onclick="detailShow(this)">
 							<abbr title="詳細"><img src="css/picture/details.png" style="width: 30px; height: 30px;"></abbr>
 							</a>
-							<a href="#"  id="update" name="update" onclick="update(this)">
+<!-- 							<a href="#"  id="update" name="update" onclick="update(this)">
 							<abbr title="更新"><img src="css/picture/update.png" style="width: 30px; height: 30px;"></abbr>
-							</a>
+							</a> -->
 							<a href="#" id="sakujo" name="sakujo" onclick="del(this)">
 							<abbr title="削除"><img src="css/picture/delete.png" style="width: 30px; height: 30px;"></abbr>
 							</a>

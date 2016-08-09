@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+
+#listTbl{
+	width: 50%;
+	height: auto; 
+	text-align: center;
+}

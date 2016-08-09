@@ -11,7 +11,13 @@
 </head>
 <body onload="menuload()">
 <form action="MenuController" method="post" id="menu" name="menu">
+			<abbr title="ログアウト"> <a id="modoru" href="Login.jsp"><img
+					id="modoru" src="css/picture/tan.png"
+					onmouseover="src ='css/picture/tan2.png'"
+					onmouseout="src ='css/picture/tan.png'"></a>
+			</abbr>
 <div id="screen">
+
 <table>
 <tr>
 <td id="kotobabtn"><a href="Vocabulary.jsp" id="kotoba">言葉</a></td>

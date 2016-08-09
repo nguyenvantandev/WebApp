@@ -16,56 +16,45 @@ import javax.servlet.http.HttpServletResponse;
 import co.jp.myapp.dao.ConnectionDao;
 import co.jp.myapp.model.TestTrainingVal;
 
-/**
- * Servlet implementation class TestTrainingController
- */
 @WebServlet("/TestTrainingController")
+
 public class TestTrainingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TestTrainingController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public TestTrainingController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		
-		
+
 		String level = request.getParameter("levelchoosed");
 		String item = request.getParameter("itemchoosed");
-		
-		
+
 		ConnectionDao con = new ConnectionDao();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		
+
 		ArrayList<TestTrainingVal> list = new ArrayList<TestTrainingVal>();
-		
+
 		String sql = "SELECT id, test_content, question, anwser_1, anwser_2, anwser_3, anwser_4, result_anwser, result_question FROM test_tbl WHERE test_level = ? AND item = ? ORDER BY id ASC";
-		try{
+		try {
 			connection = con.connect();
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, level);
 			preparedStatement.setString(2, item);
 			resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()){
+			while (resultSet.next()) {
 				TestTrainingVal val = new TestTrainingVal();
 				val.setId(resultSet.getString("id"));
 				val.setContent(resultSet.getString("test_content"));
@@ -78,7 +67,7 @@ public class TestTrainingController extends HttpServlet {
 				val.setResultQuestion(resultSet.getString("result_question"));
 				list.add(val);
 			}
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("showpage", "1");

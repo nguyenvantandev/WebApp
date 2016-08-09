@@ -58,15 +58,15 @@ public class GrammarController extends HttpServlet {
 		ArrayList<BunpoVal> list = new ArrayList<BunpoVal>();
 
 		if ("0001".equals(actionId)) {
-			String sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? ORDER BY b_level DESC";
+			String sql = "SELECT grammar, syntax, meaning, example, gra_comment, gra_note, gra_level, gra_group FROM grammar_tbl WHERE gra_group = ? ORDER BY gra_level DESC";
 			if(!"".equals(bunposearch)){
-				sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? AND grammar LIKE ? ORDER BY b_level DESC";
+				sql = "SELECT grammar, syntax, meaning, example, gra_comment, gra_note, gra_level, gra_group FROM grammar_tbl WHERE gra_group = ? AND grammar LIKE ? ORDER BY gra_level DESC";
 			}
 			if(!"".equals(level)){
-				sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? AND b_level = ? ORDER BY b_level DESC";
+				sql = "SELECT grammar, syntax, meaning, example, gra_comment, gra_note, gra_level, gra_group FROM grammar_tbl WHERE gra_group = ? AND gra_level = ? ORDER BY gra_level DESC";
 			}
 			if(!"".equals(other)){
-				sql = "SELECT grammar, syntax, meaning, example, b_comment, b_note, b_level, b_group FROM bunpou WHERE b_group = ? ORDER BY b_level DESC";
+				sql = "SELECT grammar, syntax, meaning, example, gra_comment, gra_note, gra_level, gra_group FROM grammar_tbl WHERE gra_group = ? ORDER BY gra_level DESC";
 			}
 			try {
 				connection = con.connect();
@@ -94,8 +94,8 @@ public class GrammarController extends HttpServlet {
 					val.setMeaning(rs.getString("meaning"));
 					val.setSyntax(rs.getString("syntax"));
 					val.setExample(rs.getString("example"));
-					val.setComment(rs.getString("b_comment"));
-					val.setNote(rs.getString("b_note"));
+					val.setComment(rs.getString("gra_comment"));
+					val.setNote(rs.getString("gra_note"));
 					list.add(val);
 					count++;
 				}

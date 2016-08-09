@@ -72,12 +72,9 @@ function detailShow(Val) {
 	document.getElementById("popimi").value = "◆　" + imi;
 	document.getElementById("pophinshi").value = "☆　" + hinshi;
 	document.getElementById("popbun").value = reibun;
-	
 	document.getElementById("kotobarenshu").disabled = true;
-	document.getElementById("tsuika").disabled = true;
 	document.getElementById("kensaku").disabled = true;
 	document.getElementById("shosai").style.pointerEvents = "none";
-	document.getElementById("update").style.pointerEvents = "none";
 	document.getElementById("sakujo").style.pointerEvents = "none";
 	
 	document.getElementById("popdivdetail").style.display = 'block';
@@ -87,10 +84,8 @@ function detailShow(Val) {
  */
 function hide(div) {
 	document.getElementById("kotobarenshu").disabled = false;
-	document.getElementById("tsuika").disabled = false;
 	document.getElementById("kensaku").disabled = false;
 	document.getElementById("shosai").style.pointerEvents = "auto";
-	document.getElementById("update").style.pointerEvents = "auto";
 	document.getElementById("sakujo").style.pointerEvents = "auto";
 	
 	document.getElementById("popdivdetail").style.display = 'none';
@@ -115,10 +110,8 @@ function learning() {
 	document.getElementById("countrows").value = 1;
 	
 	document.getElementById("kotobarenshu").disabled = "true";
-	document.getElementById("tsuika").disabled = "true";
 	document.getElementById("kensaku").disabled = "true";
 	document.getElementById("shosai").style.pointerEvents = "none";
-	document.getElementById("update").style.pointerEvents = "none";
 	document.getElementById("sakujo").style.pointerEvents = "none";
 	
 	document.getElementById("poplearn").style.display = 'block';

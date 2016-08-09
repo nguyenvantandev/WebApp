@@ -77,7 +77,7 @@ public class VocabularyController extends HttpServlet {
 		if ("検索".equals(actionStatus)) {
 			ArrayList<SearchVal> list = new ArrayList<SearchVal>();
 			ArrayList<String> dk = new ArrayList<String>();
-			String sql = "SELECT id, word, hiragana, meaning, sort, ex FROM language_list";
+			String sql = "SELECT id, word, hiragana, meaning, sort, example FROM vocabulary_tbl";
 			//検索条件を作成する。
 			boolean where = false;
 			if (!"".equals(kanji)) {
@@ -136,7 +136,7 @@ public class VocabularyController extends HttpServlet {
 					val.setHiragana(rs.getString("hiragana"));
 					val.setImi(rs.getString("meaning"));
 					val.setHinshi(rs.getString("sort"));
-					val.setReibun(rs.getString("ex"));
+					val.setReibun(rs.getString("example"));
 					list.add(val);
 					count += 1;
 				}
@@ -165,7 +165,7 @@ public class VocabularyController extends HttpServlet {
 		 * 更新リンク押下処理
 		 */
 		if("更新".equals(actionStatus)){
-			String sql = "SELECT id, word, hiragana, meaning, sort, ex, level FROM language_list WHERE id = ?";
+			String sql = "SELECT id, word, hiragana, meaning, sort, example, level FROM vocabulary_tbl WHERE id = ?";
 			try{
 				connection = con.connect();
 				preparedStatement = connection.prepareStatement(sql);
@@ -178,7 +178,7 @@ public class VocabularyController extends HttpServlet {
 					request.setAttribute("imi", rs.getString("meaning"));
 					request.setAttribute("hinshi", rs.getString("sort"));
 					request.setAttribute("level", "N"+rs.getString("level"));
-					request.setAttribute("reibun", rs.getString("ex"));
+					request.setAttribute("reibun", rs.getString("example"));
 				}
 			}catch(Exception e){
 				e.printStackTrace();
@@ -192,7 +192,7 @@ public class VocabularyController extends HttpServlet {
 		 * 削除リンク押下処理
 		 */
 		if("削除".equals(actionStatus)){
-			String sql = "DELETE FROM language_list WHERE id = ?";
+			String sql = "DELETE FROM vocabulary_tbl WHERE id = ?";
 			try{
 				connection = con.connect();
 				preparedStatement = connection.prepareStatement(sql);

@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+
+#listTbl{
+	width: 50%;
+	height: auto; 
+	text-align: center;
+}
+
+#modoru{
+	height: 40px;
+	 border-radius: 41px;
+    position: absolute;
+    right: 2%;
+       
+}
+#VocabularyInsert{
+	margin-top: 1%;
+}
+#ContentList{
+	margin-bottom: 1%;
+}

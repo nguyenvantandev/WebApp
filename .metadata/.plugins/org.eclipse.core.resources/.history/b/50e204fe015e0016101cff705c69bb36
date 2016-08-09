@@ -1,0 +1,191 @@
+function addRow(dataTable) {
+
+	if(dataTable == "0001"){
+		var table = document.getElementById("VocabularyInsertTable");
+
+		var rowCount = table.rows.length;
+		var row = table.insertRow(rowCount);
+
+		var cell1 = row.insertCell(0);
+		var element1 = document.createElement("input");
+		element1.type = "checkbox";
+		element1.name = "chkbox[]";
+		cell1.appendChild(element1);
+
+		var cell2 = row.insertCell(1);
+		cell2.innerHTML = rowCount;
+
+		var cell3 = row.insertCell(2);
+		var element2 = document.createElement("input");
+		element2.type = "text";
+		element2.name = "txtbox[]";
+		cell3.appendChild(element2);
+
+		var cell4 = row.insertCell(3);
+		var element3 = document.createElement("input");
+		element3.type = "text";
+		element3.name = "txtbox[]";
+		cell4.appendChild(element3);
+
+		var cell5 = row.insertCell(4);
+		var element4 = document.createElement("input");
+		element4.type = "text";
+		element4.name = "txtbox[]";
+		cell5.appendChild(element4);
+
+		var cell6 = row.insertCell(5);
+		var element5 = document.createElement("input");
+		element5.type = "text";
+		element5.name = "txtbox[]";
+		cell6.appendChild(element5);
+
+		var cell7 = row.insertCell(6);
+		var element6 = document.createElement("input");
+		element6.type = "text";
+		element6.name = "txtbox[]";
+		cell7.appendChild(element6);
+
+		var cell8 = row.insertCell(7);
+		var element7 = document.createElement("input");
+		element7.type = "text";
+		element7.name = "txtbox[]";
+		cell8.appendChild(element7);
+	}
+
+
+}
+
+function deleteRow(dataTable) {
+	try {
+		var table = document.getElementById(dataTable);
+		var rowCount = table.rows.length;
+
+		for (var i = 0; i < rowCount; i++) {
+			var row = table.rows[i];
+			var chkbox = row.cells[0].childNodes[0];
+			if (null != chkbox && true == chkbox.checked) {
+				table.deleteRow(i);
+				rowCount--;
+				i--;
+			}
+
+		}
+	} catch (e) {
+		alert(e);
+	}
+}
+
+
+function VocabularyInsertClick(){
+	document.getElementById("VocabularyInsert").style.display = 'block';
+	document.getElementById("VocabularyUpdate").style.display = 'none';
+	
+	document.getElementById("KanjiInsert").style.display = 'none';
+	document.getElementById("KanjiUpdate").style.display = 'none';
+	
+	document.getElementById("GrammarInsert").style.display = 'none';
+	document.getElementById("GrammarUpdate").style.display = 'none';
+	
+	document.getElementById("TestInsert").style.display = 'none';
+	document.getElementById("TestUpdate").style.display = 'none';
+	
+}
+function VocabularyUpdateClick(){
+	document.getElementById("VocabularyInsert").style.display = 'none';
+	document.getElementById("VocabularyUpdate").style.display = 'block';
+	
+	document.getElementById("KanjiInsert").style.display = 'none';
+	document.getElementById("KanjiUpdate").style.display = 'none';
+	
+	document.getElementById("GrammarInsert").style.display = 'none';
+	document.getElementById("GrammarUpdate").style.display = 'none';
+	
+	document.getElementById("TestInsert").style.display = 'none';
+	document.getElementById("TestUpdate").style.display = 'none';
+	
+}
+function KanjiInsertClick(){
+	document.getElementById("VocabularyInsert").style.display = 'none';
+	document.getElementById("VocabularyUpdate").style.display = 'none';
+	
+	document.getElementById("KanjiInsert").style.display = 'block';
+	document.getElementById("KanjiUpdate").style.display = 'none';
+	
+	document.getElementById("GrammarInsert").style.display = 'none';
+	document.getElementById("GrammarUpdate").style.display = 'none';
+	
+	document.getElementById("TestInsert").style.display = 'none';
+	document.getElementById("TestUpdate").style.display = 'none';
+}
+
+function KanjiUpdateClick(){
+	document.getElementById("VocabularyInsert").style.display = 'none';
+	document.getElementById("VocabularyUpdate").style.display = 'none';
+	
+	document.getElementById("KanjiInsert").style.display = 'none';
+	document.getElementById("KanjiUpdate").style.display = 'block';
+	
+	document.getElementById("GrammarInsert").style.display = 'none';
+	document.getElementById("GrammarUpdate").style.display = 'none';
+	
+	document.getElementById("TestInsert").style.display = 'none';
+	document.getElementById("TestUpdate").style.display = 'none';
+}
+
+function GrammarInsertClick(){
+	document.getElementById("VocabularyInsert").style.display = 'none';
+	document.getElementById("VocabularyUpdate").style.display = 'none';
+	
+	document.getElementById("KanjiInsert").style.display = 'none';
+	document.getElementById("KanjiUpdate").style.display = 'none';
+	
+	document.getElementById("GrammarInsert").style.display = 'block';
+	document.getElementById("GrammarUpdate").style.display = 'none';
+	
+	document.getElementById("TestInsert").style.display = 'none';
+	document.getElementById("TestUpdate").style.display = 'none';
+}
+
+function GrammarUpdateClick(){
+	document.getElementById("VocabularyInsert").style.display = 'none';
+	document.getElementById("VocabularyUpdate").style.display = 'none';
+	
+	document.getElementById("KanjiInsert").style.display = 'none';
+	document.getElementById("KanjiUpdate").style.display = 'none';
+	
+	document.getElementById("GrammarInsert").style.display = 'none';
+	document.getElementById("GrammarUpdate").style.display = 'block';
+	
+	document.getElementById("TestInsert").style.display = 'none';
+	document.getElementById("TestUpdate").style.display = 'none';
+}
+
+function TestInsertClick(){
+	document.getElementById("VocabularyInsert").style.display = 'none';
+	document.getElementById("VocabularyUpdate").style.display = 'none';
+	
+	document.getElementById("KanjiInsert").style.display = 'none';
+	document.getElementById("KanjiUpdate").style.display = 'none';
+	
+	document.getElementById("GrammarInsert").style.display = 'none';
+	document.getElementById("GrammarUpdate").style.display = 'none';
+	
+	document.getElementById("TestInsert").style.display = 'block';
+	document.getElementById("TestUpdate").style.display = 'none';
+}
+
+function TestUpdateClick(){
+	document.getElementById("VocabularyInsert").style.display = 'none';
+	document.getElementById("VocabularyUpdate").style.display = 'none';
+	
+	document.getElementById("KanjiInsert").style.display = 'none';
+	document.getElementById("KanjiUpdate").style.display = 'none';
+	
+	document.getElementById("GrammarInsert").style.display = 'none';
+	document.getElementById("GrammarUpdate").style.display = 'none';
+	
+	document.getElementById("TestInsert").style.display = 'none';
+	document.getElementById("TestUpdate").style.display = 'block';
+}
+
+
